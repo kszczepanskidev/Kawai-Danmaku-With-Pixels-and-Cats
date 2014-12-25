@@ -1,0 +1,36 @@
+﻿Build started 2014-12-26 00:30:12.
+     1>Project "C:\Users\Kamil\Documents\GitHub\Kawai-Danmaku-With-Pixels-and-Cats\danmaku\danmaku\danmaku.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         D:\Pliki programów (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\SFML\include /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Application.cpp StateManager.cpp mainfile.cpp
+         Application.cpp
+     1>c:\users\kamil\documents\github\kawai-danmaku-with-pixels-and-cats\danmaku\danmaku\StateManager.h(8): error C2143: syntax error : missing ';' before '*'
+     1>c:\users\kamil\documents\github\kawai-danmaku-with-pixels-and-cats\danmaku\danmaku\StateManager.h(8): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\kamil\documents\github\kawai-danmaku-with-pixels-and-cats\danmaku\danmaku\StateManager.h(11): error C2061: syntax error : identifier 'State'
+     1>c:\users\kamil\documents\github\kawai-danmaku-with-pixels-and-cats\danmaku\danmaku\StateManager.h(13): error C2143: syntax error : missing ';' before '*'
+     1>c:\users\kamil\documents\github\kawai-danmaku-with-pixels-and-cats\danmaku\danmaku\StateManager.h(13): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\kamil\documents\github\kawai-danmaku-with-pixels-and-cats\danmaku\danmaku\StateManager.h(13): warning C4183: 'getActiveState': missing return type; assumed to be a member function returning 'int'
+         StateManager.cpp
+     1>c:\users\kamil\documents\github\kawai-danmaku-with-pixels-and-cats\danmaku\danmaku\StateManager.h(8): error C2143: syntax error : missing ';' before '*'
+     1>c:\users\kamil\documents\github\kawai-danmaku-with-pixels-and-cats\danmaku\danmaku\StateManager.h(8): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\kamil\documents\github\kawai-danmaku-with-pixels-and-cats\danmaku\danmaku\StateManager.h(11): error C2061: syntax error : identifier 'State'
+     1>c:\users\kamil\documents\github\kawai-danmaku-with-pixels-and-cats\danmaku\danmaku\StateManager.h(13): error C2143: syntax error : missing ';' before '*'
+     1>c:\users\kamil\documents\github\kawai-danmaku-with-pixels-and-cats\danmaku\danmaku\StateManager.h(13): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\kamil\documents\github\kawai-danmaku-with-pixels-and-cats\danmaku\danmaku\StateManager.h(13): warning C4183: 'getActiveState': missing return type; assumed to be a member function returning 'int'
+     1>StateManager.cpp(3): error C2065: 'State' : undeclared identifier
+     1>StateManager.cpp(3): error C2059: syntax error : ')'
+     1>StateManager.cpp(3): error C2143: syntax error : missing ';' before '{'
+     1>StateManager.cpp(3): error C2447: '{' : missing function header (old-style formal list?)
+     1>StateManager.cpp(5): error C2143: syntax error : missing ';' before '*'
+     1>StateManager.cpp(5): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+         mainfile.cpp
+     1>c:\users\kamil\documents\github\kawai-danmaku-with-pixels-and-cats\danmaku\danmaku\StateManager.h(8): error C2143: syntax error : missing ';' before '*'
+     1>c:\users\kamil\documents\github\kawai-danmaku-with-pixels-and-cats\danmaku\danmaku\StateManager.h(8): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\kamil\documents\github\kawai-danmaku-with-pixels-and-cats\danmaku\danmaku\StateManager.h(11): error C2061: syntax error : identifier 'State'
+     1>c:\users\kamil\documents\github\kawai-danmaku-with-pixels-and-cats\danmaku\danmaku\StateManager.h(13): error C2143: syntax error : missing ';' before '*'
+     1>c:\users\kamil\documents\github\kawai-danmaku-with-pixels-and-cats\danmaku\danmaku\StateManager.h(13): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\kamil\documents\github\kawai-danmaku-with-pixels-and-cats\danmaku\danmaku\StateManager.h(13): warning C4183: 'getActiveState': missing return type; assumed to be a member function returning 'int'
+     1>Done Building Project "C:\Users\Kamil\Documents\GitHub\Kawai-Danmaku-With-Pixels-and-Cats\danmaku\danmaku\danmaku.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:01.10
