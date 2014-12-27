@@ -80,12 +80,22 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="ConnectState.cpp" />
+    <ClCompile Include="GameState.cpp" />
     <ClCompile Include="mainfile.cpp" />
+    <ClCompile Include="MenuState.cpp" />
+    <ClCompile Include="SplashState.cpp" />
+    <ClCompile Include="State.cpp" />
     <ClCompile Include="StateManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
+    <ClInclude Include="ConnectState.h" />
+    <ClInclude Include="GameState.h" />
     <ClInclude Include="Includes.h" />
+    <ClInclude Include="MenuState.h" />
+    <ClInclude Include="SplashState.h" />
+    <ClInclude Include="State.h" />
     <ClInclude Include="StateManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
