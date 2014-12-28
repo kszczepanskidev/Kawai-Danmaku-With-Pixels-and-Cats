@@ -1,15 +1,15 @@
 #include "MenuState.h"
 
-void MenuState::onEvent(Event*) {
+void MenuState::handleEvent(Event*) {
 
 }
 
-void MenuState::onLoop() {
+void MenuState::update() {
 
 }
 
-void MenuState::onDraw() {
-	cout << "Manu draw" << endl;
+void MenuState::draw() {
+
 }
 
 MenuState::MenuState() {}

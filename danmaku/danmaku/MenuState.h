@@ -2,9 +2,9 @@
 #include "State.h"
 class MenuState : public State {
 public:
-	void onEvent(Event*);
-	void onLoop();
-	void onDraw();
+	void handleEvent(Event*);
+	void update();
+	void draw();
 
 	MenuState();
 	virtual ~MenuState();

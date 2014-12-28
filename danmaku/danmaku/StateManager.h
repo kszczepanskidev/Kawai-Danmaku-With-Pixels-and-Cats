@@ -1,5 +1,6 @@
 #pragma once
 #include "Includes.h"
+
 #include "State.h"
 #include "GameState.h"
 #include "MenuState.h"
@@ -12,9 +13,11 @@ private:
 	State* activeState;
 	State* states[3];
 public:
+	void onEventStateChange(Event*);
+
 	void setActiveState(State*);
-	void onEventStateChange(Event*); 
 	State* getActiveState();
+
 	State* getState(int);
 
 	StateManager();

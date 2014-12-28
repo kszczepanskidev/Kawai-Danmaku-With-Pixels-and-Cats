@@ -1,14 +1,14 @@
 #include "ConnectState.h"
 
-void ConnectState::onEvent(Event*) {
+void ConnectState::handleEvent(Event*) {
 
 }
 
-void ConnectState::onLoop() {
+void ConnectState::update() {
 
 }
 
-void ConnectState::onDraw() {
+void ConnectState::draw() {
 
 }
 

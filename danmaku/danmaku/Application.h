@@ -1,6 +1,7 @@
 #pragma once
 #include "Includes.h"
 #include "StateManager.h"
+#include "TextureManager.h"
 
 #include "GameState.h"
 #include "MenuState.h"
@@ -11,7 +12,7 @@ class Application {
 private:
 	StateManager* stManager;
 	//Player* player;
-	//TextureManager* texManager;
+	TextureManager* texManager;
 	//AnimationManager* aniManager;
 	RenderWindow* window;
 	View* camera;

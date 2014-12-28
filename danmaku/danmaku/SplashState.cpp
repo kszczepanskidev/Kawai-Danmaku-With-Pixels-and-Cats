@@ -1,14 +1,14 @@
 #include "SplashState.h"
 
-void SplashState::onEvent(Event*) {
+void SplashState::handleEvent(Event*) {
 
 }
 
-void SplashState::onLoop() {
+void SplashState::update() {
 
 }
 
-void SplashState::onDraw() {
+void SplashState::draw() {
 
 }
 

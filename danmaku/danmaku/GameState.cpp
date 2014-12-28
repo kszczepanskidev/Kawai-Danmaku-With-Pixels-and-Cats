@@ -1,15 +1,15 @@
 #include "GameState.h"
 
-void GameState::onEvent(Event*) {
+void GameState::handleEvent(Event*) {
 
 }
 
-void GameState::onLoop() {
+void GameState::update() {
 
 }
 
-void GameState::onDraw() {
-	cout << "Gamu draw" << endl;
+void GameState::draw() {
+
 }
 
 GameState::GameState() {}

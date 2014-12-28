@@ -3,9 +3,10 @@
 
 class GameState : public State {
 public:
-	void onEvent(Event*);
-	void onLoop();
-	void onDraw();
+	void handleEvent(Event*);
+	void update();
+	void draw();
+
 	GameState();
 	virtual ~GameState();
 };

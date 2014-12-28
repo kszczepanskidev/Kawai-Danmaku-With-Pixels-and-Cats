@@ -3,9 +3,9 @@
 
 class State {
 public:
-	virtual void onEvent(Event*) = 0;
-	virtual void onLoop() = 0;
-	virtual void onDraw() = 0;
+	virtual void handleEvent(Event*) = 0;
+	virtual void update() = 0;
+	virtual void draw() = 0;
 
 	State();
 	~State();
