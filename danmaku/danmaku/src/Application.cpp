@@ -1,6 +1,5 @@
 #include "Application.h"
 
-
 void Application::appMainLoop() {
 	while (window->isOpen()) {
 		appEvent();
@@ -8,7 +7,10 @@ void Application::appMainLoop() {
 	}
 }
 
-void Application::appDraw() {}
+void Application::appDraw() {
+	stManager->getActiveState()->draw(window);
+	window->display();
+}
 
 void Application::appEvent() {
 	Event event;
@@ -19,18 +21,53 @@ void Application::appEvent() {
 			case Keyboard::Escape:
 				window->close();
 				break;
-			case Keyboard::Return:
-				window->clear(Color::Black);
-				window->display();
+			default:
+				stManager->getActiveState()->handleEvent(&event);
 				break;
 			}
 		}
 	}
 }
 
+void Application::splashScreen(Sprite splash) {
+	splash.setTexture(texManager->getTexture("splashin"));
+
+	Uint8 light = 10;
+	/*	fade in */
+	while (light < 210) {
+		splash.setColor(Color(light, light, light));
+		window->draw(splash);
+		window->display();
+		sleep(seconds(0.01f));
+		light += 2;
+	}
+	sleep(seconds(0.05f));
+
+	/*	fade out */
+	while (light > 0) {
+		splash.setColor(Color(light, light, light));
+		window->draw(splash);
+		window->display();
+		sleep(seconds(0.01f));
+		light -= 3;
+	}
+}
+
+void Application::initSprites() {
+	Sprite sprite;
+
+	sprites.clear();
+
+	sprite.setTexture(texManager->getTexture("splashin"));
+	sprites.push_back(sprite);
+	
+}
+
 
 Application::Application() {
-	stManager = new StateManager();
+	font.loadFromFile("Verdana.ttf");
+
+	stManager = new StateManager(font);
 	texManager = new TextureManager();
 	aniHandler = new AnimationHandler();
 
@@ -40,6 +77,7 @@ Application::Application() {
 
 	window = new RenderWindow();
 	window->create(VideoMode(1280, 720), "Kawai Danmaku With Pixels and Cats");
+	window->clear(Color::Black);
 	window->setFramerateLimit(60);
 	//window->setView(*camera);
 	
@@ -47,33 +85,11 @@ Application::Application() {
 	windowPos.y -= 15;
 	window->setPosition(windowPos);
 
-	/* 'animated' splash screen */
-	Sprite sprite;
-	sprite.setTexture(texManager->getTexture("splashin"));
+	/*	Loading tetures to sprites	*/
+	initSprites();
 
-	Uint8 light = 10;
-	/*	fade in */
-	while (light < 210) {
-		sprite.setColor(Color(light, light, light));
-		window->draw(sprite);
-		window->display();
-		sleep(seconds(0.01f));
-		light += 1;
-	}
-	sleep(seconds(0.05f));
-
-	/*	fade out */
-	while (light > 0) {
-		sprite.setColor(Color(light, light, light));
-		window->draw(sprite);
-		window->display();
-		sleep(seconds(0.01f));
-		light -= 1;
-	}
-	/*							*/
-
-
+	/* 'animated' splash screen	 */
+	splashScreen(sprites[SPLASH]);
 }
-
 
 Application::~Application() {}

@@ -7,6 +7,6 @@ int main() {
 
 	app->appMainLoop();
 
-	PAUSE();
+	//PAUSE();
 	return 0;
 }

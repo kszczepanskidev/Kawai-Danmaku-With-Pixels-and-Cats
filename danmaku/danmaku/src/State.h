@@ -5,7 +5,7 @@ class State {
 public:
 	virtual void handleEvent(Event*) = 0;
 	virtual void update() = 0;
-	virtual void draw() = 0;
+	virtual void draw(RenderWindow*) = 0;
 
 	State();
 	~State();

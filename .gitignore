@@ -13,9 +13,7 @@
 
 [Dd]ebug/
 Release/
-Release\
-danmaku/[Rr]elease/
-danmaku\danmaku\Release
+Release/
 x64/
 build/
 [Bb]in/

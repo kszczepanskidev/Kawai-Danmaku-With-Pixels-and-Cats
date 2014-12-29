@@ -15,11 +15,11 @@ State* StateManager::getActiveState() {
 }
 
 
-StateManager::StateManager() {
-	states[MAINMENU] = new MenuState();
+StateManager::StateManager(Font font) {
+	states[MAINMENU] = new MenuState(font);
 	states[GAME] = new GameState();
 	states[CONNECT] = new ConnectState();
-	states[SPLASH] = new SplashState();
+	//states[SPLASH] = new SplashState();
 
 	setActiveState(states[MAINMENU]);
 }

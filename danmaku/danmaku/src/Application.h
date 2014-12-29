@@ -9,6 +9,7 @@
 #include "SplashState.h"
 #include "ConnectState.h"
 
+
 class Application {
 private:
 	StateManager* stManager;
@@ -17,10 +18,17 @@ private:
 	AnimationHandler* aniHandler;
 	RenderWindow* window;
 	View* camera;
+
+	vector<Sprite> sprites;
+
+	Font font;
+
 public:
 	void appMainLoop();
 	void appDraw();
 	void appEvent();
+	void splashScreen(Sprite);
+	void initSprites();
 
 	Application();
 	virtual ~Application();

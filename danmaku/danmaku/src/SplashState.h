@@ -4,7 +4,7 @@ class SplashState : public State {
 public:
 	void handleEvent(Event*);
 	void update();
-	void draw();
+	void draw(RenderWindow* window);
 
 	SplashState();
 	virtual ~SplashState();

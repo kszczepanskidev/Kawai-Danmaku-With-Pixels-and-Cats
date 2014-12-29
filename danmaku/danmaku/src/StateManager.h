@@ -4,7 +4,7 @@
 #include "State.h"
 #include "GameState.h"
 #include "MenuState.h"
-#include "SplashState.h"
+//#include "SplashState.h"
 #include "ConnectState.h"
 
 
@@ -20,7 +20,7 @@ public:
 
 	State* getState(int);
 
-	StateManager();
+	StateManager(Font);
 	virtual ~StateManager();
 };
 

@@ -8,7 +8,7 @@ void GameState::update() {
 
 }
 
-void GameState::draw() {
+void GameState::draw(RenderWindow* window) {
 
 }
 

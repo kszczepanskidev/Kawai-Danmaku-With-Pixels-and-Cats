@@ -8,7 +8,7 @@ void SplashState::update() {
 
 }
 
-void SplashState::draw() {
+void SplashState::draw(RenderWindow* window) {
 
 }
 

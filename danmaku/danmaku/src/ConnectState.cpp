@@ -8,7 +8,7 @@ void ConnectState::update() {
 
 }
 
-void ConnectState::draw() {
+void ConnectState::draw(RenderWindow* window) {
 
 }
 
