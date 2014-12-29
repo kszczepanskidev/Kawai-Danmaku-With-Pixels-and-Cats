@@ -42,21 +42,35 @@ Application::Application() {
 	window->create(VideoMode(1280, 720), "Kawai Danmaku With Pixels and Cats");
 	window->setFramerateLimit(60);
 	//window->setView(*camera);
+	
 	Vector2i windowPos = window->getPosition();
 	windowPos.y -= 15;
 	window->setPosition(windowPos);
 
-	/* test stuff shit */
+	/* 'animated' splash screen */
 	Sprite sprite;
 	sprite.setTexture(texManager->getTexture("splashin"));
 
-	window->clear(Color::Color(200, 200, 200, 255));
-	window->draw(sprite);
-	window->display();
+	Uint8 light = 10;
+	/*	fade in */
+	while (light < 210) {
+		sprite.setColor(Color(light, light, light));
+		window->draw(sprite);
+		window->display();
+		sleep(seconds(0.01f));
+		light += 1;
+	}
+	sleep(seconds(0.05f));
 
-
-
-
+	/*	fade out */
+	while (light > 0) {
+		sprite.setColor(Color(light, light, light));
+		window->draw(sprite);
+		window->display();
+		sleep(seconds(0.01f));
+		light -= 1;
+	}
+	/*							*/
 
 
 }

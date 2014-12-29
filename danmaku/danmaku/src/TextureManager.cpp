@@ -22,7 +22,7 @@ Texture& TextureManager::getTexture(const string &texture) {
 
 /* loading all textures on texture manager creating*/
 TextureManager::TextureManager() {
-	loadTexture("splashin", "krysztal.png");
+	loadTexture("splashin", "krysztal_splash.png");
 	/*loadTexture("player", "player.png");
 	loadTexture("page", "key.png");
 	loadTexture("drink", "drink.png");

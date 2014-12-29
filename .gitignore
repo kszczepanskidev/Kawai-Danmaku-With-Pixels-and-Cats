@@ -12,15 +12,14 @@
 # Build results
 
 [Dd]ebug/
-[Rr]elease/*
-danmaku/[Rr]elease/*
-danmaku/danmaku/[Rr]elease/*
+Release/
+Release\
+danmaku/[Rr]elease/
+danmaku\danmaku\Release
 x64/
 build/
 [Bb]in/
 [Oo]bj/
-
-*.tlog
 
 # Enable "build/" folder in the NuGet Packages folder since NuGet packages use it for MSBuild targets
 !packages/*/build/
@@ -162,3 +161,6 @@ $RECYCLE.BIN/
 # Mac desktop service store files
 .DS_Store
 *.save
+*.log
+*.tlog
+danmaku/Release/danmaku.pdb
