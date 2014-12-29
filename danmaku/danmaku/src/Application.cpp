@@ -32,6 +32,7 @@ void Application::appEvent() {
 Application::Application() {
 	stManager = new StateManager();
 	texManager = new TextureManager();
+	aniHandler = new AnimationHandler();
 
 	/*camera = new View();
 	camera->setCenter(Vector2f(1280.0f / 2.0f, 720.0f / 2.0f));
@@ -52,6 +53,12 @@ Application::Application() {
 	window->clear(Color::Color(200, 200, 200, 255));
 	window->draw(sprite);
 	window->display();
+
+
+
+
+
+
 }
 
 

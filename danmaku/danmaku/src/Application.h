@@ -2,6 +2,7 @@
 #include "Includes.h"
 #include "StateManager.h"
 #include "TextureManager.h"
+#include "AnimationHandler.h"
 
 #include "GameState.h"
 #include "MenuState.h"
@@ -13,7 +14,7 @@ private:
 	StateManager* stManager;
 	//Player* player;
 	TextureManager* texManager;
-	//AnimationManager* aniManager;
+	AnimationHandler* aniHandler;
 	RenderWindow* window;
 	View* camera;
 public:

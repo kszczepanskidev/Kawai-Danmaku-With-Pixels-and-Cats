@@ -10,6 +10,30 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\AnimationHandler.cpp" />
+    <ClCompile Include="src\Application.cpp" />
+    <ClCompile Include="src\ConnectState.cpp" />
+    <ClCompile Include="src\GameState.cpp" />
+    <ClCompile Include="src\mainfile.cpp" />
+    <ClCompile Include="src\MenuState.cpp" />
+    <ClCompile Include="src\SplashState.cpp" />
+    <ClCompile Include="src\State.cpp" />
+    <ClCompile Include="src\StateManager.cpp" />
+    <ClCompile Include="src\TextureManager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\AnimationHandler.h" />
+    <ClInclude Include="src\Application.h" />
+    <ClInclude Include="src\ConnectState.h" />
+    <ClInclude Include="src\GameState.h" />
+    <ClInclude Include="src\Includes.h" />
+    <ClInclude Include="src\MenuState.h" />
+    <ClInclude Include="src\SplashState.h" />
+    <ClInclude Include="src\State.h" />
+    <ClInclude Include="src\StateManager.h" />
+    <ClInclude Include="src\TextureManager.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{DAF14E2B-600F-4291-820A-BAB0325F24D1}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
@@ -78,28 +102,6 @@
       <AdditionalDependencies>sfml-graphics.lib;sfml-system.lib;sfml-window.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="src/Application.cpp" />
-    <ClCompile Include="src/ConnectState.cpp" />
-    <ClCompile Include="src/GameState.cpp" />
-    <ClCompile Include="src/mainfile.cpp" />
-    <ClCompile Include="src/MenuState.cpp" />
-    <ClCompile Include="src/SplashState.cpp" />
-    <ClCompile Include="src/State.cpp" />
-    <ClCompile Include="src/StateManager.cpp" />
-    <ClCompile Include="src/TextureManager.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src/Application.h" />
-    <ClInclude Include="src/ConnectState.h" />
-    <ClInclude Include="src/GameState.h" />
-    <ClInclude Include="src/Includes.h" />
-    <ClInclude Include="src/MenuState.h" />
-    <ClInclude Include="src/SplashState.h" />
-    <ClInclude Include="src/State.h" />
-    <ClInclude Include="src/StateManager.h" />
-    <ClInclude Include="src/TextureManager.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

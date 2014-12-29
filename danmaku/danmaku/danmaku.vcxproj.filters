@@ -15,60 +15,66 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="mainfile.cpp">
+    <ClCompile Include="src\TextureManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Application.cpp">
+    <ClCompile Include="src\AnimationHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="StateManager.cpp">
+    <ClCompile Include="src\Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="State.cpp">
+    <ClCompile Include="src\ConnectState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MenuState.cpp">
+    <ClCompile Include="src\GameState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameState.cpp">
+    <ClCompile Include="src\mainfile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SplashState.cpp">
+    <ClCompile Include="src\MenuState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ConnectState.cpp">
+    <ClCompile Include="src\SplashState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TextureManager.cpp">
+    <ClCompile Include="src\State.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\StateManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Application.h">
+    <ClInclude Include="src\AnimationHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="StateManager.h">
+    <ClInclude Include="src\Application.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Includes.h">
+    <ClInclude Include="src\ConnectState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="State.h">
+    <ClInclude Include="src\GameState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MenuState.h">
+    <ClInclude Include="src\Includes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameState.h">
+    <ClInclude Include="src\MenuState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SplashState.h">
+    <ClInclude Include="src\SplashState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ConnectState.h">
+    <ClInclude Include="src\State.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TextureManager.h">
+    <ClInclude Include="src\StateManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TextureManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
