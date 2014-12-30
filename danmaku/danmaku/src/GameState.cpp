@@ -8,7 +8,7 @@ void GameState::update() {
 
 }
 
-void GameState::draw(RenderWindow* window) {
+void GameState::draw(RenderWindow* window, TextureManager* texManager) {
 
 }
 

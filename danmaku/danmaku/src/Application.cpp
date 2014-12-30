@@ -8,7 +8,7 @@ void Application::appMainLoop() {
 }
 
 void Application::appDraw() {
-	stManager->getActiveState()->draw(window);
+	stManager->getActiveState()->draw(window, texManager);
 	window->display();
 }
 
@@ -60,12 +60,16 @@ void Application::initSprites() {
 
 	sprite.setTexture(texManager->getTexture("splashin"));
 	sprites.push_back(sprite);
+
+	sprite.setTexture(texManager->getTexture("menu_bg"));
+	sprites.push_back(sprite);
 	
 }
 
 
 Application::Application() {
-	font.loadFromFile("Verdana.ttf");
+	//font.loadFromFile("Verdana.ttf");
+	font.loadFromFile("PressStart2P.ttf");
 
 	stManager = new StateManager(font);
 	texManager = new TextureManager();

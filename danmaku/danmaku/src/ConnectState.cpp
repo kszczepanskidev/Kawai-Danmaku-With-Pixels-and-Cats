@@ -8,7 +8,7 @@ void ConnectState::update() {
 
 }
 
-void ConnectState::draw(RenderWindow* window) {
+void ConnectState::draw(RenderWindow* window, TextureManager* texManager) {
 
 }
 

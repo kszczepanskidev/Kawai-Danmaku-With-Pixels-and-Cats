@@ -11,7 +11,8 @@
 
 
 class Application {
-private:
+//private:
+public:
 	StateManager* stManager;
 	//Player* player;
 	TextureManager* texManager;
@@ -29,6 +30,8 @@ public:
 	void appEvent();
 	void splashScreen(Sprite);
 	void initSprites();
+
+
 
 	Application();
 	virtual ~Application();

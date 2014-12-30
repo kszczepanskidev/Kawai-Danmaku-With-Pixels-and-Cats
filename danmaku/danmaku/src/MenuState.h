@@ -1,5 +1,6 @@
 #pragma once
 #include "State.h"
+
 class MenuState : public State {
 private:
 	Font font;
@@ -8,7 +9,7 @@ private:
 public:
 	void handleEvent(Event*);
 	void update();
-	void draw(RenderWindow*);
+	void draw(RenderWindow*, TextureManager*);
 
 	MenuState(Font);
 	virtual ~MenuState();

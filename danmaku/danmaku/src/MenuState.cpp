@@ -21,11 +21,14 @@ void MenuState::update() {
 
 }
 
-void MenuState::draw(RenderWindow* window) {
+void MenuState::draw(RenderWindow* window, TextureManager* texManager) {
 	Text temp;
+	Sprite bg;
 
-	window->clear(Color(200, 200, 200, 255));
-	float posx = 600.f, posy = 300.f;
+	bg.setTexture(texManager->getTexture("menu_bg"));
+	window->draw(bg);
+
+	float posx = 137.f, posy = 281.f;
 
 	for (unsigned int i = 0; i < menuTexts.size(); ++i) {
 		temp = menuTexts[i];
@@ -35,7 +38,7 @@ void MenuState::draw(RenderWindow* window) {
 			temp.setColor(Color::Yellow);
 
 		window->draw(temp);
-		posy += 30.f;
+		posy += 80.f;
 	}
 }
 
@@ -43,14 +46,14 @@ MenuState::MenuState(Font f) {
 	font = f; 
 
 	text.setFont(font);
-	text.setCharacterSize(24);
+	text.setCharacterSize(32);
 	text.setColor(Color::White);
 	text.setStyle(Text::Bold);
 
 	text.setString("Start game");
 	menuTexts.push_back(text);
 
-	text.setString("Quit");
+	text.setString("   Quit");
 	menuTexts.push_back(text);
 
 	currentMenu = 0;

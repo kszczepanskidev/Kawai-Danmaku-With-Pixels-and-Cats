@@ -8,7 +8,7 @@ void SplashState::update() {
 
 }
 
-void SplashState::draw(RenderWindow* window) {
+void SplashState::draw(RenderWindow* window, TextureManager* texManager) {
 
 }
 
