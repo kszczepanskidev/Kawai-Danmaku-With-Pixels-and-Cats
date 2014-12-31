@@ -1,6 +1,6 @@
 #include "GameState.h"
 
-void GameState::handleEvent(Event*) {
+void GameState::handleEvent(Event*, StateManager* stManager) {
 
 }
 
@@ -8,7 +8,7 @@ void GameState::update() {
 
 }
 
-void GameState::draw(RenderWindow* window, TextureManager* texManager) {
+void GameState::draw(RenderWindow* window, vector<Sprite>* sprites) {
 
 }
 

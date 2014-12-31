@@ -1,15 +1,22 @@
 #include "Application.h"
 
+bool fullscreen = false;
+
 void Application::appMainLoop() {
 	while (window->isOpen()) {
 		appEvent();
+		appUpdate();
 		appDraw();
 	}
 }
 
 void Application::appDraw() {
-	stManager->getActiveState()->draw(window, texManager);
+	stManager->getActiveState()->draw(window, &sprites);
 	window->display();
+}
+
+void Application::appUpdate() {
+	stManager->getActiveState()->update();
 }
 
 void Application::appEvent() {
@@ -19,10 +26,10 @@ void Application::appEvent() {
 		if (event.type == Event::KeyReleased) {
 			switch (event.key.code) {
 			case Keyboard::Escape:
-				window->close();
+				stManager->setActiveState(stManager->getState(QUIT));
 				break;
 			default:
-				stManager->getActiveState()->handleEvent(&event);
+				stManager->getActiveState()->handleEvent(&event, stManager);
 				break;
 			}
 		}
@@ -59,17 +66,16 @@ void Application::initSprites() {
 	sprites.clear();
 
 	sprite.setTexture(texManager->getTexture("splashin"));
-	sprites.push_back(sprite);
+	sprites.emplace_back(sprite);
 
 	sprite.setTexture(texManager->getTexture("menu_bg"));
-	sprites.push_back(sprite);
+	sprites.emplace_back(sprite);
 	
 }
 
 
 Application::Application() {
-	//font.loadFromFile("Verdana.ttf");
-	font.loadFromFile("PressStart2P.ttf");
+	font.loadFromFile("resources/fonts/PressStart2P.ttf");
 
 	stManager = new StateManager(font);
 	texManager = new TextureManager();

@@ -6,7 +6,6 @@
 
 #include "GameState.h"
 #include "MenuState.h"
-#include "SplashState.h"
 #include "ConnectState.h"
 
 
@@ -28,6 +27,8 @@ public:
 	void appMainLoop();
 	void appDraw();
 	void appEvent();
+	void appUpdate();
+
 	void splashScreen(Sprite);
 	void initSprites();
 

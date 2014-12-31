@@ -3,9 +3,9 @@
 
 class GameState : public State {
 public:
-	void handleEvent(Event*);
+	void handleEvent(Event*, StateManager*);
 	void update();
-	void draw(RenderWindow*, TextureManager*);
+	void draw(RenderWindow*, vector<Sprite>*);
 
 	GameState();
 	virtual ~GameState();

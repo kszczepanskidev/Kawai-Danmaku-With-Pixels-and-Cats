@@ -1,6 +1,6 @@
 #include "ConnectState.h"
 
-void ConnectState::handleEvent(Event*) {
+void ConnectState::handleEvent(Event*, StateManager* stManager) {
 
 }
 
@@ -8,7 +8,7 @@ void ConnectState::update() {
 
 }
 
-void ConnectState::draw(RenderWindow* window, TextureManager* texManager) {
+void ConnectState::draw(RenderWindow* window, vector<Sprite>* sprites) {
 
 }
 

@@ -4,7 +4,7 @@ void TextureManager::loadTexture(const string &name, string filename) {
 	Texture* tex = new Texture();
 
 	/* loading texture from file */
-	if (!tex->loadFromFile("textures/" + filename)) {
+	if (!tex->loadFromFile("resources/textures/" + filename)) {
 		system("pause");
 		exit(-1);
 	}
@@ -24,14 +24,6 @@ Texture& TextureManager::getTexture(const string &texture) {
 TextureManager::TextureManager() {
 	loadTexture("splashin", "krysztal_splash.png");
 	loadTexture("menu_bg", "menu_bg.png");
-	/*loadTexture("player", "player.png");
-	loadTexture("page", "key.png");
-	loadTexture("drink", "drink.png");
-	loadTexture("door", "door.png");
-
-	loadTexture("splash1", "splash1.png");
-	loadTexture("splash2", "splash2.png");
-	loadTexture("splash3", "splash3.png");*/
 }
 
 TextureManager::~TextureManager() {}

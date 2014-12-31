@@ -16,8 +16,9 @@
     <ClCompile Include="src\ConnectState.cpp" />
     <ClCompile Include="src\GameState.cpp" />
     <ClCompile Include="src\mainfile.cpp" />
+    <ClCompile Include="src\MenuOption.cpp" />
     <ClCompile Include="src\MenuState.cpp" />
-    <ClCompile Include="src\SplashState.cpp" />
+    <ClCompile Include="src\QuitState.cpp" />
     <ClCompile Include="src\State.cpp" />
     <ClCompile Include="src\StateManager.cpp" />
     <ClCompile Include="src\TextureManager.cpp" />
@@ -28,8 +29,9 @@
     <ClInclude Include="src\ConnectState.h" />
     <ClInclude Include="src\GameState.h" />
     <ClInclude Include="src\Includes.h" />
+    <ClInclude Include="src\MenuOption.h" />
     <ClInclude Include="src\MenuState.h" />
-    <ClInclude Include="src\SplashState.h" />
+    <ClInclude Include="src\QuitState.h" />
     <ClInclude Include="src\State.h" />
     <ClInclude Include="src\StateManager.h" />
     <ClInclude Include="src\TextureManager.h" />
@@ -68,6 +70,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <SourcePath>$(VC_SourcePath);</SourcePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

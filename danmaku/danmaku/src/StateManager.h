@@ -2,19 +2,17 @@
 #include "Includes.h"
 
 #include "State.h"
-#include "GameState.h"
 #include "MenuState.h"
-//#include "SplashState.h"
+#include "GameState.h"
 #include "ConnectState.h"
+#include "QuitState.h"
 
 
 class StateManager {
 private:
 	State* activeState;
-	State* states[3];
+	vector<State*> states;
 public:
-	void onEventStateChange(Event*);
-
 	void setActiveState(State*);
 	State* getActiveState();
 

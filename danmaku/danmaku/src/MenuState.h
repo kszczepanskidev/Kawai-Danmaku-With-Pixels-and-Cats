@@ -1,15 +1,19 @@
 #pragma once
 #include "State.h"
+#include "MenuOption.h"
+
 
 class MenuState : public State {
 private:
 	Font font;
 	int currentMenu;
-	vector<Text> menuTexts;
+	vector<MenuOption*> menuOptions;
 public:
-	void handleEvent(Event*);
+	void handleEvent(Event*, StateManager*);
 	void update();
-	void draw(RenderWindow*, TextureManager*);
+	void initOptions();
+	void draw(RenderWindow*, vector<Sprite>*);
+	void selectState(StateManager*);
 
 	MenuState(Font);
 	virtual ~MenuState();

@@ -1,24 +1,35 @@
-﻿Build started 2014-12-30 02:38:59.
-     1>Project "C:\Users\Kamil\Documents\GitHub\Kawai-Danmaku-With-Pixels-and-Cats\danmaku\danmaku\danmaku.vcxproj" on node 2 (Build target(s)).
+﻿Build started 2014-12-31 19:31:23.
+     1>Project "C:\Users\Kamil\Documents\GitHub\Kawai-Danmaku-With-Pixels-and-Cats\danmaku\danmaku\danmaku.vcxproj" on node 2 (Rebuild target(s)).
      1>ClCompile:
-         D:\Pliki programów (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\SFML\include /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt src\MenuState.cpp
+         D:\Pliki programów (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\SFML\include /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt src\AnimationHandler.cpp src\Application.cpp src\ConnectState.cpp src\GameState.cpp src\mainfile.cpp src\MenuOption.cpp src\MenuState.cpp src\QuitState.cpp src\State.cpp src\StateManager.cpp src\TextureManager.cpp
+         AnimationHandler.cpp
+         Application.cpp
+         ConnectState.cpp
+         GameState.cpp
+         mainfile.cpp
+         MenuOption.cpp
          MenuState.cpp
+         QuitState.cpp
+         State.cpp
+         StateManager.cpp
+         TextureManager.cpp
        Link:
          D:\Pliki programów (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Kamil\Documents\GitHub\Kawai-Danmaku-With-Pixels-and-Cats\danmaku\Release\danmaku.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:C:\SFML\lib "sfml-graphics.lib" "sfml-system.lib" "sfml-window.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Kamil\Documents\GitHub\Kawai-Danmaku-With-Pixels-and-Cats\danmaku\Release\danmaku.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Kamil\Documents\GitHub\Kawai-Danmaku-With-Pixels-and-Cats\danmaku\Release\danmaku.lib" /MACHINE:X86 /SAFESEH Release\AnimationHandler.obj
          Release\Application.obj
          Release\ConnectState.obj
          Release\GameState.obj
          Release\mainfile.obj
+         Release\MenuOption.obj
          Release\MenuState.obj
-         Release\SplashState.obj
+         Release\QuitState.obj
          Release\State.obj
          Release\StateManager.obj
          Release\TextureManager.obj
          Generating code
          Finished generating code
          danmaku.vcxproj -> C:\Users\Kamil\Documents\GitHub\Kawai-Danmaku-With-Pixels-and-Cats\danmaku\Release\danmaku.exe
-     1>Done Building Project "C:\Users\Kamil\Documents\GitHub\Kawai-Danmaku-With-Pixels-and-Cats\danmaku\danmaku\danmaku.vcxproj" (Build target(s)).
+     1>Done Building Project "C:\Users\Kamil\Documents\GitHub\Kawai-Danmaku-With-Pixels-and-Cats\danmaku\danmaku\danmaku.vcxproj" (Rebuild target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.35
+Time Elapsed 00:00:05.49

@@ -4,8 +4,6 @@ void StateManager::setActiveState(State* state) {
 	activeState = state;
 }
 
-void StateManager::onEventStateChange(Event* event) {}
-
 State* StateManager::getState(int state) {
 	return states[state];
 }
@@ -16,10 +14,10 @@ State* StateManager::getActiveState() {
 
 
 StateManager::StateManager(Font font) {
-	states[MAINMENU] = new MenuState(font);
-	states[GAME] = new GameState();
-	states[CONNECT] = new ConnectState();
-	//states[SPLASH] = new SplashState();
+	states.emplace_back(new MenuState(font));
+	states.emplace_back(new GameState());
+	states.emplace_back(new ConnectState());
+	states.emplace_back(new QuitState());
 
 	setActiveState(states[MAINMENU]);
 }
