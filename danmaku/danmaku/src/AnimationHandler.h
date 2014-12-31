@@ -10,7 +10,7 @@ public:
 	unsigned int getLength();
 	unsigned int getStartFrame();
 	unsigned int getEndFrame();
-	float getDuration();
+	float		 getDuration();
 
 	Animation(unsigned int, unsigned int, float);
 	virtual ~Animation();

@@ -38,9 +38,8 @@ void MenuState::update() {
 void MenuState::initOptions() {
 	menuOptions.clear();
 
-	menuOptions.emplace_back(new MenuOption("Start game", font, 137.f, 281.f));
-	menuOptions.emplace_back(new MenuOption("   Quit", font, 137.f, 361.f));
-	cout << menuOptions.size() << endl;
+	menuOptions.emplace_back(new GameText("Start game ", font, 137.f, 281.f));
+	menuOptions.emplace_back(new GameText("   Quit", font, 137.f, 361.f)); 
 }
 
 void MenuState::draw(RenderWindow* window, vector<Sprite>* sprites) {

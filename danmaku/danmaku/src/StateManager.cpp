@@ -15,11 +15,11 @@ State* StateManager::getActiveState() {
 
 StateManager::StateManager(Font font) {
 	states.emplace_back(new MenuState(font));
-	states.emplace_back(new GameState());
-	states.emplace_back(new ConnectState());
+	states.emplace_back(new GameState(font));
+	states.emplace_back(new ConnectState(font));
 	states.emplace_back(new QuitState());
 
-	setActiveState(states[MAINMENU]);
+	setActiveState(states[GAME]);
 }
 
 

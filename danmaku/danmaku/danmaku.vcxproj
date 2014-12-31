@@ -16,8 +16,9 @@
     <ClCompile Include="src\ConnectState.cpp" />
     <ClCompile Include="src\GameState.cpp" />
     <ClCompile Include="src\mainfile.cpp" />
-    <ClCompile Include="src\MenuOption.cpp" />
+    <ClCompile Include="src\GameText.cpp" />
     <ClCompile Include="src\MenuState.cpp" />
+    <ClCompile Include="src\Player.cpp" />
     <ClCompile Include="src\QuitState.cpp" />
     <ClCompile Include="src\State.cpp" />
     <ClCompile Include="src\StateManager.cpp" />
@@ -29,8 +30,9 @@
     <ClInclude Include="src\ConnectState.h" />
     <ClInclude Include="src\GameState.h" />
     <ClInclude Include="src\Includes.h" />
-    <ClInclude Include="src\MenuOption.h" />
+    <ClInclude Include="src\GameText.h" />
     <ClInclude Include="src\MenuState.h" />
+    <ClInclude Include="src\Player.h" />
     <ClInclude Include="src\QuitState.h" />
     <ClInclude Include="src\State.h" />
     <ClInclude Include="src\StateManager.h" />

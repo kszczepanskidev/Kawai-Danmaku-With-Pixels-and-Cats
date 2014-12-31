@@ -24,6 +24,10 @@ Texture& TextureManager::getTexture(const string &texture) {
 TextureManager::TextureManager() {
 	loadTexture("splashin", "krysztal_splash.png");
 	loadTexture("menu_bg", "menu_bg.png");
+	loadTexture("game_bg", "game_bg.png");
+	loadTexture("game_scroll1", "scroll1.png");
+	loadTexture("game_scroll2", "scroll2.png");
+	loadTexture("game_scroll3", "scroll3.png");
 }
 
 TextureManager::~TextureManager() {}

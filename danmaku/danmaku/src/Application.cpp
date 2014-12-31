@@ -11,7 +11,10 @@ void Application::appMainLoop() {
 }
 
 void Application::appDraw() {
+	window->clear(Color::Black);
+
 	stManager->getActiveState()->draw(window, &sprites);
+
 	window->display();
 }
 
@@ -70,7 +73,18 @@ void Application::initSprites() {
 
 	sprite.setTexture(texManager->getTexture("menu_bg"));
 	sprites.emplace_back(sprite);
-	
+
+	sprite.setTexture(texManager->getTexture("game_bg"));
+	sprites.emplace_back(sprite);
+
+	sprite.setTexture(texManager->getTexture("game_scroll1"));
+	sprites.emplace_back(sprite);
+
+	sprite.setTexture(texManager->getTexture("game_scroll2"));
+	sprites.emplace_back(sprite);
+
+	sprite.setTexture(texManager->getTexture("game_scroll3"));
+	sprites.emplace_back(sprite);
 }
 
 
@@ -99,7 +113,7 @@ Application::Application() {
 	initSprites();
 
 	/* 'animated' splash screen	 */
-	splashScreen(sprites[SPLASH]);
+	//splashScreen(sprites[SPLASH]);
 }
 
 Application::~Application() {}

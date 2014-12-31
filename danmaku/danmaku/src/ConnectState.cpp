@@ -12,7 +12,9 @@ void ConnectState::draw(RenderWindow* window, vector<Sprite>* sprites) {
 
 }
 
-ConnectState::ConnectState() {}
+ConnectState::ConnectState(Font f) {
+	font = f;
+}
 
 
 ConnectState::~ConnectState() {}
