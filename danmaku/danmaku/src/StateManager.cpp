@@ -19,7 +19,7 @@ StateManager::StateManager(Font font) {
 	states.emplace_back(new ConnectState(font));
 	states.emplace_back(new QuitState());
 
-	setActiveState(states[GAME]);
+	setActiveState(states[MAINMENU]);
 }
 
 

@@ -113,7 +113,7 @@ Application::Application() {
 	initSprites();
 
 	/* 'animated' splash screen	 */
-	//splashScreen(sprites[SPLASH]);
+	splashScreen(sprites[SPLASH]);
 }
 
 Application::~Application() {}

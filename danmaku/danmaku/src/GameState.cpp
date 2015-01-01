@@ -56,17 +56,9 @@ void GameState::initTexts() {
 
 	gameTexts.emplace_back(new GameText("Graze:", font, 920.f, 410.f));
 	gameTexts.emplace_back(new GameText("0", font, 1250.f, 452.f));
-	
-	/* aligning text to right */
-	gameTexts[SCORE_V]->text.setOrigin(gameTexts[SCORE_V]->text.getLocalBounds().width, 0);
-	gameTexts[LIFE_V]->text.setOrigin(gameTexts[LIFE_V]->text.getLocalBounds().width, 0);
-	gameTexts[POWER_V]->text.setOrigin(gameTexts[POWER_V]->text.getLocalBounds().width, 0);
-	gameTexts[SPECIAL_V]->text.setOrigin(gameTexts[SPECIAL_V]->text.getLocalBounds().width, 0);
-	gameTexts[GRAZE_V]->text.setOrigin(gameTexts[GRAZE_V]->text.getLocalBounds().width, 0);
 }
 
 void GameState::draw(RenderWindow* window, vector<Sprite>* sprites) {
-
 	(*sprites)[bg1].setPosition(pos_x, pos_y1);
 	(*sprites)[bg2].setPosition(pos_x, pos_y2);
 	(*sprites)[bg3].setPosition(pos_x, pos_y3);
@@ -77,10 +69,16 @@ void GameState::draw(RenderWindow* window, vector<Sprite>* sprites) {
 
 	window->draw((*sprites)[GAME_BG]);
 
+	/* aligning text to right */
 	gameTexts[SCORE_V]->text.setOrigin(gameTexts[SCORE_V]->text.getLocalBounds().width, 0);
+	gameTexts[LIFE_V]->text.setOrigin(gameTexts[LIFE_V]->text.getLocalBounds().width, 0);
+	gameTexts[POWER_V]->text.setOrigin(gameTexts[POWER_V]->text.getLocalBounds().width, 0);
+	gameTexts[SPECIAL_V]->text.setOrigin(gameTexts[SPECIAL_V]->text.getLocalBounds().width, 0);
+	gameTexts[GRAZE_V]->text.setOrigin(gameTexts[GRAZE_V]->text.getLocalBounds().width, 0);
 
-	for (auto t : gameTexts)
+	for (auto t : gameTexts) {
 		window->draw(t->text);
+	}
 
 	window->draw(gameTexts[SCORE]->text);
 }

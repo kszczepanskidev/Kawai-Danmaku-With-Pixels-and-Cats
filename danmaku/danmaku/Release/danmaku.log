@@ -1,8 +1,9 @@
-﻿Build started 2015-01-01 00:40:00.
+﻿Build started 2015-01-01 01:50:54.
      1>Project "C:\Users\Kamil\Documents\GitHub\Kawai-Danmaku-With-Pixels-and-Cats\danmaku\danmaku\danmaku.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         D:\Pliki programów (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\SFML\include /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt src\GameState.cpp
-         GameState.cpp
+         D:\Pliki programów (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\SFML\include /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt src\Application.cpp src\StateManager.cpp
+         Application.cpp
+         StateManager.cpp
        Link:
          D:\Pliki programów (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Kamil\Documents\GitHub\Kawai-Danmaku-With-Pixels-and-Cats\danmaku\Release\danmaku.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:C:\SFML\lib "sfml-graphics.lib" "sfml-system.lib" "sfml-window.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Kamil\Documents\GitHub\Kawai-Danmaku-With-Pixels-and-Cats\danmaku\Release\danmaku.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Kamil\Documents\GitHub\Kawai-Danmaku-With-Pixels-and-Cats\danmaku\Release\danmaku.lib" /MACHINE:X86 /SAFESEH Release\AnimationHandler.obj
          Release\Application.obj
@@ -23,4 +24,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.40
+Time Elapsed 00:00:01.75
