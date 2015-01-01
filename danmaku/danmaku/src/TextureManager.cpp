@@ -10,7 +10,7 @@ void TextureManager::loadTexture(const string &name, string filename) {
 	}
 
 	/* setting smoothing for texture and adding it to map of textures*/
-	tex->setSmooth(true);
+	//tex->setSmooth(true);
 	this->textures[name] = *tex;
 
 	return;
@@ -28,6 +28,7 @@ TextureManager::TextureManager() {
 	loadTexture("game_scroll1", "scroll1.png");
 	loadTexture("game_scroll2", "scroll2.png");
 	loadTexture("game_scroll3", "scroll3.png");
+	loadTexture("game_custom1", "sarima.png");
 }
 
 TextureManager::~TextureManager() {}

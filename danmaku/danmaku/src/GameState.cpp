@@ -41,7 +41,6 @@ void GameState::scrollBG() {
 void GameState::initTexts() {
 	gameTexts.clear();
 
-	/* 896.f 1270.f*/
 	gameTexts.emplace_back(new GameText("Score:", font, 920.f, 8.f));
 	gameTexts.emplace_back(new GameText("0", font, 1250.f, 51.f));
 
@@ -58,6 +57,7 @@ void GameState::initTexts() {
 	gameTexts.emplace_back(new GameText("0", font, 1250.f, 452.f));
 }
 
+
 void GameState::draw(RenderWindow* window, vector<Sprite>* sprites) {
 	(*sprites)[bg1].setPosition(pos_x, pos_y1);
 	(*sprites)[bg2].setPosition(pos_x, pos_y2);
@@ -68,6 +68,8 @@ void GameState::draw(RenderWindow* window, vector<Sprite>* sprites) {
 	window->draw((*sprites)[bg3]);
 
 	window->draw((*sprites)[GAME_BG]);
+
+	window->draw((*sprites)[GAME_CUSTOM1]);
 
 	/* aligning text to right */
 	gameTexts[SCORE_V]->text.setOrigin(gameTexts[SCORE_V]->text.getLocalBounds().width, 0);
@@ -81,6 +83,7 @@ void GameState::draw(RenderWindow* window, vector<Sprite>* sprites) {
 	}
 
 	window->draw(gameTexts[SCORE]->text);
+	window->draw((*sprites)[GAME_CUSTOM1]);
 }
 
 

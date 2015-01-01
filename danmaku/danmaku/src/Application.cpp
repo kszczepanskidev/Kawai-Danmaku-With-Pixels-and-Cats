@@ -78,12 +78,20 @@ void Application::initSprites() {
 	sprites.emplace_back(sprite);
 
 	sprite.setTexture(texManager->getTexture("game_scroll1"));
+	sprite.setTextureRect(IntRect(0, 0, 700, 720));
 	sprites.emplace_back(sprite);
 
 	sprite.setTexture(texManager->getTexture("game_scroll2"));
+	sprite.setTextureRect(IntRect(0, 0, 700, 720));
 	sprites.emplace_back(sprite);
 
 	sprite.setTexture(texManager->getTexture("game_scroll3"));
+	sprite.setTextureRect(IntRect(0, 0, 700, 720));
+	sprites.emplace_back(sprite);
+
+	sprite.setTexture(texManager->getTexture("game_custom1"));
+	sprite.setTextureRect(IntRect(0, 0, 157, 280));
+	sprite.setPosition(932.f, 440.f);
 	sprites.emplace_back(sprite);
 }
 
@@ -113,7 +121,7 @@ Application::Application() {
 	initSprites();
 
 	/* 'animated' splash screen	 */
-	splashScreen(sprites[SPLASH]);
+	//splashScreen(sprites[SPLASH]);
 }
 
 Application::~Application() {}
