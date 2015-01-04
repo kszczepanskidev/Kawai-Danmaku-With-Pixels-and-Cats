@@ -26,7 +26,8 @@ void Application::appEvent() {
 	Event event;
 
 	while (window->pollEvent(event)) {
-		if (event.type == Event::KeyReleased) {
+		//if ()
+		if (event.type == Event::KeyReleased || event.type == Event::TextEntered) {
 			switch (event.key.code) {
 			case Keyboard::Escape:
 				stManager->setActiveState(stManager->getState(QUIT));
@@ -77,21 +78,26 @@ void Application::initSprites() {
 	sprite.setTexture(texManager->getTexture("game_bg"));
 	sprites.emplace_back(sprite);
 
-	sprite.setTexture(texManager->getTexture("game_scroll1"));
 	sprite.setTextureRect(IntRect(0, 0, 700, 720));
+
+	sprite.setTexture(texManager->getTexture("game_scroll1"));
 	sprites.emplace_back(sprite);
 
 	sprite.setTexture(texManager->getTexture("game_scroll2"));
-	sprite.setTextureRect(IntRect(0, 0, 700, 720));
 	sprites.emplace_back(sprite);
 
 	sprite.setTexture(texManager->getTexture("game_scroll3"));
-	sprite.setTextureRect(IntRect(0, 0, 700, 720));
 	sprites.emplace_back(sprite);
 
 	sprite.setTexture(texManager->getTexture("game_custom1"));
-	sprite.setTextureRect(IntRect(0, 0, 157, 280));
-	sprite.setPosition(932.f, 440.f);
+		sprite.setTextureRect(IntRect(0, 0, 157, 280));
+		sprite.setPosition(932.f, 440.f);
+	sprites.emplace_back(sprite);
+
+	sprite.setTextureRect(IntRect(0, 0, 1280, 720));
+	sprite.setPosition(0, 0.f);
+
+	sprite.setTexture(texManager->getTexture("connect_bg"));
 	sprites.emplace_back(sprite);
 }
 

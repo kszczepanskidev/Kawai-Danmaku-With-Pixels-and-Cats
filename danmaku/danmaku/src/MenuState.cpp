@@ -22,7 +22,7 @@ void MenuState::handleEvent(Event* event, StateManager* stManager) {
 void MenuState::selectState(StateManager* stManager) {
 	switch (currentMenu) {
 	case 0:
-		stManager->setActiveState(stManager->getState(GAME));
+		stManager->setActiveState(stManager->getState(CONNECT));
 		break;
 	case 1:
 		stManager->setActiveState(stManager->getState(QUIT));
