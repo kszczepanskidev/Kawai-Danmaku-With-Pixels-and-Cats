@@ -1,18 +1,21 @@
 #pragma once
 #include "Includes.h"
+#include "Bullet.h"
 
 class Player {
 private:
-	int score;
-	int life;
-	int graze;
-	int power;
-	int special;
-public:
 	float pos_x, pos_y;
+	int score, life, graze, power, special;
+	bool shooting;
+
+	int fireTime;
+	const int FLIMIT = 10;
+public:
+	vector<Bullet*> bullets;
+
 	void handleEvent(Event*);
 	void update();
-	void draw(RenderWindow*, Sprite);
+	void draw(RenderWindow*, vector<Sprite>*);
 
 	float getPosX();
 	float getPosY();

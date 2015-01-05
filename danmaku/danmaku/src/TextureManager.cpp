@@ -31,6 +31,7 @@ TextureManager::TextureManager() {
 	loadTexture("game_custom1", "sarima.png");
 	loadTexture("connect_bg", "connect_bg.png");
 	loadTexture("player", "player.png");
+	loadTexture("bullet", "bullet.png");
 }
 
 TextureManager::~TextureManager() {}

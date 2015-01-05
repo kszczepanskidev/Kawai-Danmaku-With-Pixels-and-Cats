@@ -103,6 +103,9 @@ void Application::initSprites() {
 	sprite.setTexture(texManager->getTexture("player"));
 	sprite.setTextureRect(IntRect(0, 0, 50, 50));
 	sprites.emplace_back(sprite);
+
+	sprite.setTexture(texManager->getTexture("bullet"));
+	sprites.emplace_back(sprite);
 }
 
 

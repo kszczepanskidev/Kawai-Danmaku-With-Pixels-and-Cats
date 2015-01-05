@@ -3,19 +3,21 @@
 float speedY = 5.f, speedX = 5.f;
 
 void Player::handleEvent(Event* event) {
-	/*switch (event->key.code) {
-	case Keyboard::W:
-		break;
-	case Keyboard::S:
-		break;
-	case Keyboard::A:
-		break;
-	case Keyboard::D:
-		break;
-	}*/
+	if (event->type == Event::KeyReleased)
+		switch (event->key.code) {
+		case Keyboard::Z:
+			shooting = !shooting;
+			break;
+		}
 }
 
 void Player::update() {
+	
+	if (fireTime == FLIMIT + 1)
+		fireTime = 0;
+	else
+		++fireTime;
+
 	if ((Keyboard::isKeyPressed(Keyboard::Up) || Keyboard::isKeyPressed(Keyboard::W)))
 		pos_y -= speedY;
 
@@ -27,11 +29,20 @@ void Player::update() {
 
 	if ((Keyboard::isKeyPressed(Keyboard::Right) || Keyboard::isKeyPressed(Keyboard::D)))
 		pos_x += speedX;
+
+	if ((Keyboard::isKeyPressed(Keyboard::Space) || shooting) && fireTime == FLIMIT)
+		bullets.emplace_back(new Bullet(pos_x, pos_y));
+
+	for (auto b : bullets)
+		b->update();
 }
 
-void Player::draw(RenderWindow* window, Sprite sprite) {
-	sprite.setPosition(pos_x, pos_y);
-	window->draw(sprite);
+void Player::draw(RenderWindow* window, vector<Sprite>* sprites) {
+	(*sprites)[PLAYER].setPosition(pos_x, pos_y);
+	window->draw((*sprites)[PLAYER]);
+
+	for (auto b : bullets)
+		b->draw(window, sprites);
 }
 
 float Player::getPosX() {
@@ -52,6 +63,10 @@ Player::Player() {
 
 	graze = 0;
 	score = 0;
+
+	shooting = false;
+
+	fireTime = 0;
 }
 
 

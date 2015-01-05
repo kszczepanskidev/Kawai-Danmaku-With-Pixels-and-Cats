@@ -6,12 +6,16 @@ void GameState::handleEvent(Event* event, StateManager* stManager) {
 	case Keyboard::Return:
 		stManager->setActiveState(stManager->getState(MAINMENU));
 		break;
+	default:
+		player->handleEvent(event);
+		break;
 	}
 }
 
 void GameState::update() {
 	scrollBG();
 	player->update();
+	updateTexts();
 }
 
 void GameState::scrollBG() {
@@ -57,6 +61,15 @@ void GameState::initTexts() {
 	gameTexts.emplace_back(new GameText("0", font, 1250.f, 452.f));
 }
 
+void GameState::updateTexts() {
+	/* aligning text to right */
+	gameTexts[SCORE_V]->text.setOrigin(gameTexts[SCORE_V]->text.getLocalBounds().width, 0);
+	gameTexts[LIFE_V]->text.setOrigin(gameTexts[LIFE_V]->text.getLocalBounds().width, 0);
+	gameTexts[POWER_V]->text.setOrigin(gameTexts[POWER_V]->text.getLocalBounds().width, 0);
+	gameTexts[SPECIAL_V]->text.setOrigin(gameTexts[SPECIAL_V]->text.getLocalBounds().width, 0);
+	gameTexts[GRAZE_V]->text.setOrigin(gameTexts[GRAZE_V]->text.getLocalBounds().width, 0);
+}
+
 
 void GameState::draw(RenderWindow* window, vector<Sprite>* sprites) {
 	(*sprites)[bg1].setPosition(pos_x, pos_y1);
@@ -71,13 +84,6 @@ void GameState::draw(RenderWindow* window, vector<Sprite>* sprites) {
 
 	window->draw((*sprites)[GAME_CUSTOM1]);
 
-	/* aligning text to right */
-	gameTexts[SCORE_V]->text.setOrigin(gameTexts[SCORE_V]->text.getLocalBounds().width, 0);
-	gameTexts[LIFE_V]->text.setOrigin(gameTexts[LIFE_V]->text.getLocalBounds().width, 0);
-	gameTexts[POWER_V]->text.setOrigin(gameTexts[POWER_V]->text.getLocalBounds().width, 0);
-	gameTexts[SPECIAL_V]->text.setOrigin(gameTexts[SPECIAL_V]->text.getLocalBounds().width, 0);
-	gameTexts[GRAZE_V]->text.setOrigin(gameTexts[GRAZE_V]->text.getLocalBounds().width, 0);
-
 	for (auto t : gameTexts) {
 		window->draw(t->text);
 	}
@@ -85,7 +91,7 @@ void GameState::draw(RenderWindow* window, vector<Sprite>* sprites) {
 	window->draw(gameTexts[SCORE]->text);
 	window->draw((*sprites)[GAME_CUSTOM1]);
 
-	player->draw(window, (*sprites)[PLAYER]);
+	player->draw(window, sprites);
 }
 
 

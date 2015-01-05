@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClCompile Include="src\AnimationHandler.cpp" />
     <ClCompile Include="src\Application.cpp" />
+    <ClCompile Include="src\Bullet.cpp" />
     <ClCompile Include="src\ConnectState.cpp" />
     <ClCompile Include="src\GameState.cpp" />
     <ClCompile Include="src\mainfile.cpp" />
@@ -29,6 +30,7 @@
     <ClInclude Include="src\Application.h" />
     <ClInclude Include="src\ConnectState.h" />
     <ClInclude Include="src\GameState.h" />
+    <ClInclude Include="src\Bullet.h" />
     <ClInclude Include="src\Includes.h" />
     <ClInclude Include="src\GameText.h" />
     <ClInclude Include="src\MenuState.h" />
