@@ -14,6 +14,10 @@ void ConnectState::handleEvent(Event* event, StateManager* stManager) {
 		case Keyboard::Return:
 			stManager->setActiveState(stManager->getState(GAME));
 			break;
+		case Keyboard::Escape:
+			stManager->setActiveState(stManager->getState(MAINMENU));
+			break;
+
 		case Keyboard::BackSpace:
 			if (temp.size() > 0) {
 				temp.pop_back();
@@ -39,8 +43,9 @@ void ConnectState::draw(RenderWindow* window, vector<Sprite>* sprites) {
 void ConnectState::initTexts() {
 	connectTexts.clear();
 
-	connectTexts.emplace_back(new GameText("Enter IP:", font, 498.f, 229.f));
-	connectTexts.emplace_back(new GameText("", font, 423.f, 324.f));
+	connectTexts.emplace_back(new GameText("Enter IP", font, 498.f, 206.f));
+	connectTexts.emplace_back(new GameText("_", font, 423.f, 299.f));
+	connectTexts.emplace_back(new GameText("and press ENTER.", font, 393.f, 392.f));
 }
 
 void ConnectState::connect() {

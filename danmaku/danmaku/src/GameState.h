@@ -1,5 +1,6 @@
 #pragma once
 #include "State.h"
+#include "Player.h"
 #include "GameText.h"
 
 enum stats{ SCORE, SCORE_V, LIFE, LIFE_V, POWER, POWER_V, SPECIAL, SPECIAL_V, GRAZE, GRAZE_V };
@@ -8,7 +9,7 @@ enum stats{ SCORE, SCORE_V, LIFE, LIFE_V, POWER, POWER_V, SPECIAL, SPECIAL_V, GR
 class GameState : public State {
 private:
 	Font font, symbols;
-	//Player* player;
+	Player* player;
 	vector<GameText*> gameTexts;
 	float pos_y1, pos_y2, pos_y3, pos_x;
 	int bg1, bg2, bg3;

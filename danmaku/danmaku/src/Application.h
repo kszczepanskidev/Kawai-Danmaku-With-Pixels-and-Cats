@@ -12,7 +12,6 @@
 class Application {
 private:
 	StateManager* stManager;
-	//Player* player;
 	TextureManager* texManager;
 	AnimationHandler* aniHandler;
 	RenderWindow* window;

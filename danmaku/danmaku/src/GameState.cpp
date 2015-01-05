@@ -10,8 +10,8 @@ void GameState::handleEvent(Event* event, StateManager* stManager) {
 }
 
 void GameState::update() {
-	//gameTexts[SCORE_V]->text.setString(to_string(score));
 	scrollBG();
+	player->update();
 }
 
 void GameState::scrollBG() {
@@ -84,6 +84,8 @@ void GameState::draw(RenderWindow* window, vector<Sprite>* sprites) {
 
 	window->draw(gameTexts[SCORE]->text);
 	window->draw((*sprites)[GAME_CUSTOM1]);
+
+	player->draw(window, (*sprites)[PLAYER]);
 }
 
 
@@ -100,6 +102,8 @@ GameState::GameState(Font f) {
 	bg3 = SCROLL3;
 
 	initTexts();
+
+	player = new Player();
 }
 
 

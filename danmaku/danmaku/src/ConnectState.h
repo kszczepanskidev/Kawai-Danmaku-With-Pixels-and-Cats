@@ -2,7 +2,7 @@
 #include "State.h"
 #include "GameText.h"
 
-enum texts{ COMMAND, ENTERED_IP };
+enum texts{ COMMAND, ENTERED_IP, PRESS};
 
 class ConnectState : public State {
 private:
