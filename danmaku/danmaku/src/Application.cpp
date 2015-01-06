@@ -1,7 +1,5 @@
 #include "Application.h"
 
-bool fullscreen = false;
-
 void Application::appMainLoop() {
 	while (window->isOpen()) {
 		appEvent();

@@ -1,4 +1,4 @@
-﻿Build started 2015-01-05 23:47:34.
+﻿Build started 2015-01-06 17:09:24.
      1>Project "C:\Users\Kamil\Documents\GitHub\Kawai-Danmaku-With-Pixels-and-Cats\danmaku\danmaku\danmaku.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          D:\Pliki programów (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\SFML\include /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt src\Player.cpp
@@ -24,4 +24,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.27
+Time Elapsed 00:00:01.38

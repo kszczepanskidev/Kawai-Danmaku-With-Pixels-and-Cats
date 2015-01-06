@@ -14,6 +14,8 @@ private:
 	float pos_y1, pos_y2, pos_y3, pos_x;
 	int bg1, bg2, bg3;
 
+	int gameTime;
+
 	Player* player;
 
 	void initTexts();

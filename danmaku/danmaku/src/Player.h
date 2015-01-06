@@ -2,14 +2,17 @@
 #include "Includes.h"
 #include "Bullet.h"
 
+enum dir{ UP, DOWN, LEFT, RIGHT };
+
 class Player {
 private:
 	float pos_x, pos_y;
 	int score, life, graze, power, special;
 	bool shooting;
 
-	int fireTime;
-	const int FLIMIT = 10;
+	int fireTime, currentTime;
+
+	void shoot();
 public:
 	vector<Bullet*> bullets;
 

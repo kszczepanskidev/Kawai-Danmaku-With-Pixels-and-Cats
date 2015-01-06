@@ -12,3 +12,5 @@ enum texs{ SPLASH, MENU_BG, GAME_BG, SCROLL1, SCROLL2, SCROLL3, GAME_CUSTOM1, CO
 
 using namespace std;
 using namespace sf;
+
+const int FLIMIT = 10;

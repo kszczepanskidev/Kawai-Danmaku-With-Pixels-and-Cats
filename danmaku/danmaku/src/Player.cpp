@@ -8,33 +8,42 @@ void Player::handleEvent(Event* event) {
 		case Keyboard::Z:
 			shooting = !shooting;
 			break;
+		case Keyboard::Equal:
+			if (power < 3)power++;
+			break;
+		case Keyboard::Dash:
+			if (power > 1)power--;
+			break;
 		}
 }
 
 void Player::update() {
 	
-	if (fireTime == FLIMIT + 1)
-		fireTime = 0;
+	if (currentTime > 60) {
+		currentTime = 1;
+		fireTime -= 60;
+	}
 	else
-		++fireTime;
-
-	if ((Keyboard::isKeyPressed(Keyboard::Up) || Keyboard::isKeyPressed(Keyboard::W)))
+		currentTime++;
+	
+	if ((Keyboard::isKeyPressed(Keyboard::Up) || Keyboard::isKeyPressed(Keyboard::W)) && pos_y > 0.f)
 		pos_y -= speedY;
 
-	if ((Keyboard::isKeyPressed(Keyboard::Down) || Keyboard::isKeyPressed(Keyboard::S)))
+	if ((Keyboard::isKeyPressed(Keyboard::Down) || Keyboard::isKeyPressed(Keyboard::S)) && pos_y < 670.f)
 		pos_y += speedY;
 
-	if ((Keyboard::isKeyPressed(Keyboard::Left) || Keyboard::isKeyPressed(Keyboard::A)))
+	if ((Keyboard::isKeyPressed(Keyboard::Left) || Keyboard::isKeyPressed(Keyboard::A)) && pos_x > 188.f)
 		pos_x -= speedX;
 
-	if ((Keyboard::isKeyPressed(Keyboard::Right) || Keyboard::isKeyPressed(Keyboard::D)))
+	if ((Keyboard::isKeyPressed(Keyboard::Right) || Keyboard::isKeyPressed(Keyboard::D)) && pos_x < 838.f)
 		pos_x += speedX;
 
-	if ((Keyboard::isKeyPressed(Keyboard::Space) || shooting) && fireTime == FLIMIT)
-		bullets.emplace_back(new Bullet(pos_x, pos_y));
+	if (Keyboard::isKeyPressed(Keyboard::Space) && fireTime < currentTime)
+		shoot();
 
-	for (auto b : bullets)
-		b->update();
+	for (unsigned int i = 0; i < bullets.size(); ++i)
+		if (bullets[i]->update())
+			bullets.erase(bullets.begin() + i);
 }
 
 void Player::draw(RenderWindow* window, vector<Sprite>* sprites) {
@@ -44,6 +53,25 @@ void Player::draw(RenderWindow* window, vector<Sprite>* sprites) {
 	for (auto b : bullets)
 		b->draw(window, sprites);
 }
+void Player::shoot() {
+	switch (power) {
+	case 1:
+		bullets.emplace_back(new Bullet(pos_x, pos_y, 90));
+		break;
+	case 2:
+		bullets.emplace_back(new Bullet(pos_x-15, pos_y, 90));
+		bullets.emplace_back(new Bullet(pos_x+15, pos_y, 90));
+		break;
+	case 3:
+		bullets.emplace_back(new Bullet(pos_x-10, pos_y, 70));
+		bullets.emplace_back(new Bullet(pos_x, pos_y, 90));
+		bullets.emplace_back(new Bullet(pos_x+10, pos_y, 110));
+		break;
+	}
+
+	fireTime = currentTime + FLIMIT;
+}
+
 
 float Player::getPosX() {
 	return pos_x;
@@ -67,6 +95,7 @@ Player::Player() {
 	shooting = false;
 
 	fireTime = 0;
+	currentTime = 0;
 }
 
 

@@ -5,14 +5,15 @@ class Bullet {
 private:
 	float pos_x, pos_y, angle;
 	int type;
+	bool live;
 public:
-	void update();
+	int update();
 	void draw(RenderWindow*, vector<Sprite>*);
 
 	float getPosX();
 	float getPosY();
 
-	Bullet(float, float);
+	Bullet(float, float,float);
 	virtual ~Bullet();
 };
 

@@ -96,6 +96,8 @@ void GameState::draw(RenderWindow* window, vector<Sprite>* sprites) {
 
 
 GameState::GameState(Font f) {
+	gameTime = 0;
+
 	font = f;
 	
 	pos_x = 188.f;
