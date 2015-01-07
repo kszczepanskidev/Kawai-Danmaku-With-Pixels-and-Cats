@@ -4,48 +4,40 @@ void Player::handleEvent(Event* event) {
 	if (event->type == Event::KeyPressed)
 		switch (event->key.code) {
 		case Keyboard::W:
-		case Keyboard::Up:
 			speed_y = -5.f;
 			break;
 		case Keyboard::S:
-		case Keyboard::Down:
 			speed_y = 5.f;
 			break;
 		case Keyboard::A:
-		case Keyboard::Left:
 			speed_x = -5.f;
 			break;
 		case Keyboard::D:
-		case Keyboard::Right:
 			speed_x = 5.f;
 			break;
 	}
 	if (event->type == Event::KeyReleased)
 		switch (event->key.code) {
 		case Keyboard::W:
-		case Keyboard::Up:
-			if (Keyboard::isKeyPressed(Keyboard::S) || Keyboard::isKeyPressed(Keyboard::Down))
+			if (Keyboard::isKeyPressed(Keyboard::S))
 				speed_y = 5.f;
 			else
 				speed_y = 0.f;
 			break;
 		case Keyboard::S:
-		case Keyboard::Down:
-			if (Keyboard::isKeyPressed(Keyboard::W) || Keyboard::isKeyPressed(Keyboard::Up))
+			if (Keyboard::isKeyPressed(Keyboard::W))
 				speed_y = 5.f;
 			else
 				speed_y = 0.f;
 			break;
 		case Keyboard::A:
-		case Keyboard::Left:
-			if (Keyboard::isKeyPressed(Keyboard::D) || Keyboard::isKeyPressed(Keyboard::Right))
+			if (Keyboard::isKeyPressed(Keyboard::D))
 				speed_x = 5.f;
 			else
 				speed_x = 0.f;
 			break;
 		case Keyboard::D:
-		case Keyboard::Right:
-			if (Keyboard::isKeyPressed(Keyboard::A) || Keyboard::isKeyPressed(Keyboard::Left))
+			if (Keyboard::isKeyPressed(Keyboard::A))
 				speed_x = -5.f;
 			else
 				speed_x = 0.f;
@@ -79,8 +71,13 @@ void Player::update() {
 }
 
 void Player::move() {
-	pos_y += speed_y;
-	pos_x += speed_x;
+		pos_y += speed_y*id;
+		pos_x += speed_x*id;
+
+		if (pos_y < 0.f) pos_y = 0.f;
+		if (pos_y > 670.f) pos_y = 670.f;
+		if (pos_x < 188.f) pos_x = 188.f;
+		if (pos_x > 833.f) pos_x = 833.f;
 }
 
 void Player::draw(RenderWindow* window) {
@@ -90,19 +87,20 @@ void Player::draw(RenderWindow* window) {
 	for (auto b : bullets)
 		b->draw(window);
 }
+
 void Player::shoot() {
 	switch (power) {
 	case 1:
-		bullets.emplace_back(new Bullet(pos_x, pos_y, 90, texManager));
+		bullets.emplace_back(new Bullet(pos_x, pos_y, 90, PLAYER, texManager));
 		break;
 	case 2:
-		bullets.emplace_back(new Bullet(pos_x - 15, pos_y, 90, texManager));
-		bullets.emplace_back(new Bullet(pos_x + 15, pos_y, 90, texManager));
+		bullets.emplace_back(new Bullet(pos_x - 15, pos_y, 90, PLAYER, texManager));
+		bullets.emplace_back(new Bullet(pos_x + 15, pos_y, 90, PLAYER, texManager));
 		break;
 	case 3:
-		bullets.emplace_back(new Bullet(pos_x - 10, pos_y, 70, texManager));
-		bullets.emplace_back(new Bullet(pos_x, pos_y, 90, texManager));
-		bullets.emplace_back(new Bullet(pos_x + 10, pos_y, 110, texManager));
+		bullets.emplace_back(new Bullet(pos_x - 10, pos_y, 70, PLAYER, texManager));
+		bullets.emplace_back(new Bullet(pos_x, pos_y, 90, PLAYER, texManager));
+		bullets.emplace_back(new Bullet(pos_x + 10, pos_y, 110, PLAYER, texManager));
 		break;
 	}
 
@@ -118,8 +116,17 @@ float Player::getPosY() {
 	return pos_y;
 }
 
-Player::Player(TextureManager* tM) {
-	pos_x = 535.5f;
+void Player::setId(int i) {
+	id = i;
+}
+int Player::getId() {
+	return id;
+}
+
+Player::Player(TextureManager* tM, int i) {
+	id = i;
+
+	//pos_x = 535.5f;
 	pos_y = 650.f;
 	life = 3;
 
@@ -134,7 +141,20 @@ Player::Player(TextureManager* tM) {
 	
 	texManager = tM;
 
+	speed_x = 0.f;
+	speed_y = 0.f;
+
 	sprite.setTexture(texManager->getTexture("player"));
+	switch (id) {
+	case 1:
+		sprite.setColor(Color::Blue);
+		pos_x = 505.5f;
+		break;
+	case 2:
+		sprite.setColor(Color::Red);
+		pos_x = 565.5f;
+		break;
+	}
 }
 
 

@@ -16,6 +16,7 @@ private:;
 	int gameTime;
 
 	Player* player;
+	Player* player2;
 
 	void initTexts();
 	void updateTexts();

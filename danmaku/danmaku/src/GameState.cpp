@@ -11,15 +11,19 @@ void GameState::handleEvent(Event* event, StateManager* stManager) {
 		break;
 	default:
 		player->handleEvent(event);
+		player2->handleEvent(event);
 		break;
 	}
-	else
+	else {
 		player->handleEvent(event);
+		player2->handleEvent(event);
+	}
 }
 
 void GameState::update() {
 	scrollBG();
 	player->update();
+	player2->update();
 	updateTexts();
 }
 
@@ -41,7 +45,7 @@ void GameState::scrollBG() {
 
 	if (pos_y3 >= 720.f) {
 		pos_y3 = -1440.f;
-		bg3 = 6 - bg1 - bg2;
+		bg3 = SCROLL1 + SCROLL2 + SCROLL3 - bg1 - bg2;
 	}
 
 }
@@ -93,6 +97,7 @@ void GameState::draw(RenderWindow* window) {
 	}
 
 	player->draw(window);
+	player2->draw(window);
 }
 
 void GameState::initSprites(TextureManager* texManager) {
@@ -143,7 +148,8 @@ GameState::GameState(Font f, TextureManager* texManager) {
 	initTexts();
 	initSprites(texManager);
 
-	player = new Player(texManager);
+	player = new Player(texManager,1);
+	player2 = new Player(texManager,2);
 }
 
 

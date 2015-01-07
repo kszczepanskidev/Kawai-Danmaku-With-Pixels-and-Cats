@@ -9,6 +9,8 @@ private:
 	Sprite sprite;
 	TextureManager* texManager;
 
+	int id;
+
 	float pos_x, pos_y;
 	float speed_x, speed_y;
 
@@ -28,7 +30,10 @@ public:
 	float getPosX();
 	float getPosY();
 
-	Player(TextureManager*);
+	void setId(int);
+	int getId();
+
+	Player(TextureManager*, int);
 	virtual ~Player();
 };
 
