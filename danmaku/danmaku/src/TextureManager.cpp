@@ -10,7 +10,7 @@ void TextureManager::loadTexture(const string &name, string filename) {
 	}
 
 	/* setting smoothing for texture and adding it to map of textures*/
-	//tex->setSmooth(true);
+	tex->setSmooth(true);
 	this->textures[name] = *tex;
 
 	return;

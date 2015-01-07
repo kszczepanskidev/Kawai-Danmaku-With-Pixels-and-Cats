@@ -1,42 +1,74 @@
 #include "Player.h"
 
-float speedY = 5.f, speedX = 5.f;
-
 void Player::handleEvent(Event* event) {
+	if (event->type == Event::KeyPressed)
+		switch (event->key.code) {
+		case Keyboard::W:
+		case Keyboard::Up:
+			speed_y = -5.f;
+			break;
+		case Keyboard::S:
+		case Keyboard::Down:
+			speed_y = 5.f;
+			break;
+		case Keyboard::A:
+		case Keyboard::Left:
+			speed_x = -5.f;
+			break;
+		case Keyboard::D:
+		case Keyboard::Right:
+			speed_x = 5.f;
+			break;
+	}
 	if (event->type == Event::KeyReleased)
 		switch (event->key.code) {
-		case Keyboard::Z:
-			shooting = !shooting;
+		case Keyboard::W:
+		case Keyboard::Up:
+			if (Keyboard::isKeyPressed(Keyboard::S) || Keyboard::isKeyPressed(Keyboard::Down))
+				speed_y = 5.f;
+			else
+				speed_y = 0.f;
 			break;
+		case Keyboard::S:
+		case Keyboard::Down:
+			if (Keyboard::isKeyPressed(Keyboard::W) || Keyboard::isKeyPressed(Keyboard::Up))
+				speed_y = 5.f;
+			else
+				speed_y = 0.f;
+			break;
+		case Keyboard::A:
+		case Keyboard::Left:
+			if (Keyboard::isKeyPressed(Keyboard::D) || Keyboard::isKeyPressed(Keyboard::Right))
+				speed_x = 5.f;
+			else
+				speed_x = 0.f;
+			break;
+		case Keyboard::D:
+		case Keyboard::Right:
+			if (Keyboard::isKeyPressed(Keyboard::A) || Keyboard::isKeyPressed(Keyboard::Left))
+				speed_x = -5.f;
+			else
+				speed_x = 0.f;
+			break;
+
 		case Keyboard::Equal:
 			if (power < 3)power++;
 			break;
 		case Keyboard::Dash:
 			if (power > 1)power--;
 			break;
-		}
+	}
 }
 
-void Player::update() {
-	
+void Player::update() {	
 	if (currentTime > 60) {
 		currentTime = 1;
 		fireTime -= 60;
 	}
 	else
 		currentTime++;
-	
-	if ((Keyboard::isKeyPressed(Keyboard::Up) || Keyboard::isKeyPressed(Keyboard::W)) && pos_y > 0.f)
-		pos_y -= speedY;
 
-	if ((Keyboard::isKeyPressed(Keyboard::Down) || Keyboard::isKeyPressed(Keyboard::S)) && pos_y < 670.f)
-		pos_y += speedY;
-
-	if ((Keyboard::isKeyPressed(Keyboard::Left) || Keyboard::isKeyPressed(Keyboard::A)) && pos_x > 188.f)
-		pos_x -= speedX;
-
-	if ((Keyboard::isKeyPressed(Keyboard::Right) || Keyboard::isKeyPressed(Keyboard::D)) && pos_x < 838.f)
-		pos_x += speedX;
+	move();
 
 	if (Keyboard::isKeyPressed(Keyboard::Space) && fireTime < currentTime)
 		shoot();
@@ -46,26 +78,31 @@ void Player::update() {
 			bullets.erase(bullets.begin() + i);
 }
 
-void Player::draw(RenderWindow* window, vector<Sprite>* sprites) {
-	(*sprites)[PLAYER].setPosition(pos_x, pos_y);
-	window->draw((*sprites)[PLAYER]);
+void Player::move() {
+	pos_y += speed_y;
+	pos_x += speed_x;
+}
+
+void Player::draw(RenderWindow* window) {
+	sprite.setPosition(pos_x, pos_y);
+	window->draw(sprite);
 
 	for (auto b : bullets)
-		b->draw(window, sprites);
+		b->draw(window);
 }
 void Player::shoot() {
 	switch (power) {
 	case 1:
-		bullets.emplace_back(new Bullet(pos_x, pos_y, 90));
+		bullets.emplace_back(new Bullet(pos_x, pos_y, 90, texManager));
 		break;
 	case 2:
-		bullets.emplace_back(new Bullet(pos_x-15, pos_y, 90));
-		bullets.emplace_back(new Bullet(pos_x+15, pos_y, 90));
+		bullets.emplace_back(new Bullet(pos_x - 15, pos_y, 90, texManager));
+		bullets.emplace_back(new Bullet(pos_x + 15, pos_y, 90, texManager));
 		break;
 	case 3:
-		bullets.emplace_back(new Bullet(pos_x-10, pos_y, 70));
-		bullets.emplace_back(new Bullet(pos_x, pos_y, 90));
-		bullets.emplace_back(new Bullet(pos_x+10, pos_y, 110));
+		bullets.emplace_back(new Bullet(pos_x - 10, pos_y, 70, texManager));
+		bullets.emplace_back(new Bullet(pos_x, pos_y, 90, texManager));
+		bullets.emplace_back(new Bullet(pos_x + 10, pos_y, 110, texManager));
 		break;
 	}
 
@@ -81,7 +118,7 @@ float Player::getPosY() {
 	return pos_y;
 }
 
-Player::Player() {
+Player::Player(TextureManager* tM) {
 	pos_x = 535.5f;
 	pos_y = 650.f;
 	life = 3;
@@ -92,10 +129,12 @@ Player::Player() {
 	graze = 0;
 	score = 0;
 
-	shooting = false;
-
 	fireTime = 0;
 	currentTime = 0;
+	
+	texManager = tM;
+
+	sprite.setTexture(texManager->getTexture("player"));
 }
 
 

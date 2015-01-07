@@ -1,7 +1,10 @@
 ﻿#include "GameState.h"
 #include "StateManager.h"
 
+enum textures{ BG, SCROLL1, SCROLL2, SCROLL3, CUSTOM1 };
+
 void GameState::handleEvent(Event* event, StateManager* stManager) {
+	if (event->type == Event::KeyReleased)
 	switch (event->key.code) {
 	case Keyboard::Return:
 		stManager->setActiveState(stManager->getState(MAINMENU));
@@ -10,6 +13,8 @@ void GameState::handleEvent(Event* event, StateManager* stManager) {
 		player->handleEvent(event);
 		break;
 	}
+	else
+		player->handleEvent(event);
 }
 
 void GameState::update() {
@@ -19,25 +24,24 @@ void GameState::update() {
 }
 
 void GameState::scrollBG() {
-	int speed = 5;
-	pos_y1 += speed;
-	pos_y2 += speed;
-	pos_y3 += speed;
+	pos_y1 += scrollSpeed;
+	pos_y2 += scrollSpeed;
+	pos_y3 += scrollSpeed;
 
 	if (pos_y1 >= 1440.f) {
 		pos_y1 = -720.f;
 		pos_y2 = -1440.f;
 		do
-		bg1 = rand() % 3 + 3;
+		bg1 = rand() % 3 + SCROLL1;
 		while (bg1 == bg3);
 		do
-		bg2 = rand() % 3 + 3;
+		bg2 = rand() % 3 + SCROLL1;
 		while (bg2 == bg1);
 	}
 
 	if (pos_y3 >= 720.f) {
 		pos_y3 = -1440.f;
-		bg3 = 12 - bg1 - bg2;
+		bg3 = 6 - bg1 - bg2;
 	}
 
 }
@@ -71,34 +75,61 @@ void GameState::updateTexts() {
 }
 
 
-void GameState::draw(RenderWindow* window, vector<Sprite>* sprites) {
-	(*sprites)[bg1].setPosition(pos_x, pos_y1);
-	(*sprites)[bg2].setPosition(pos_x, pos_y2);
-	(*sprites)[bg3].setPosition(pos_x, pos_y3);
+void GameState::draw(RenderWindow* window) {
+	sprites[bg1].setPosition(pos_x, pos_y1);
+	sprites[bg2].setPosition(pos_x, pos_y2);
+	sprites[bg3].setPosition(pos_x, pos_y3);
 
-	window->draw((*sprites)[bg1]);
-	window->draw((*sprites)[bg2]);
-	window->draw((*sprites)[bg3]);
+	window->draw(sprites[bg1]);
+	window->draw(sprites[bg2]);
+	window->draw(sprites[bg3]);
 
-	window->draw((*sprites)[GAME_BG]);
+	window->draw(sprites[BG]);
 
-	window->draw((*sprites)[GAME_CUSTOM1]);
+	window->draw(sprites[CUSTOM1]);
 
 	for (auto t : gameTexts) {
 		window->draw(t->text);
 	}
 
-	window->draw(gameTexts[SCORE]->text);
-	window->draw((*sprites)[GAME_CUSTOM1]);
+	player->draw(window);
+}
 
-	player->draw(window, sprites);
+void GameState::initSprites(TextureManager* texManager) {
+	Sprite temp;
+
+	sprites.clear();
+
+	temp.setTexture(texManager->getTexture("game_bg"));
+	sprites.emplace_back(temp);
+
+
+	temp.setTextureRect(IntRect(0, 0, 700, 720));
+
+	temp.setTexture(texManager->getTexture("game_scroll1"));
+	sprites.emplace_back(temp);
+
+	temp.setTexture(texManager->getTexture("game_scroll2"));
+	sprites.emplace_back(temp);
+
+	temp.setTexture(texManager->getTexture("game_scroll3"));
+	sprites.emplace_back(temp);
+
+
+	temp.setTextureRect(IntRect(0, 0, 157, 280));
+	temp.setPosition(932.f, 440.f);
+
+	temp.setTexture(texManager->getTexture("game_custom1"));
+	sprites.emplace_back(temp);
 }
 
 
-GameState::GameState(Font f) {
+GameState::GameState(Font f, TextureManager* texManager) {
 	gameTime = 0;
 
 	font = f;
+
+	scrollSpeed = 5.f;
 	
 	pos_x = 188.f;
 	pos_y1 = 0.f;
@@ -110,8 +141,9 @@ GameState::GameState(Font f) {
 	bg3 = SCROLL3;
 
 	initTexts();
+	initSprites(texManager);
 
-	player = new Player();
+	player = new Player(texManager);
 }
 
 

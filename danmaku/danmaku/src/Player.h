@@ -2,28 +2,33 @@
 #include "Includes.h"
 #include "Bullet.h"
 
-enum dir{ UP, DOWN, LEFT, RIGHT };
+enum dir { UP, DOWN, LEFT, RIGHT };
 
 class Player {
 private:
+	Sprite sprite;
+	TextureManager* texManager;
+
 	float pos_x, pos_y;
+	float speed_x, speed_y;
+
 	int score, life, graze, power, special;
-	bool shooting;
 
 	int fireTime, currentTime;
 
 	void shoot();
+	void move();
 public:
 	vector<Bullet*> bullets;
 
 	void handleEvent(Event*);
 	void update();
-	void draw(RenderWindow*, vector<Sprite>*);
+	void draw(RenderWindow*);
 
 	float getPosX();
 	float getPosY();
 
-	Player();
+	Player(TextureManager*);
 	virtual ~Player();
 };
 

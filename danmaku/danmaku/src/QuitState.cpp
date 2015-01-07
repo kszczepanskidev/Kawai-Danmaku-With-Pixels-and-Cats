@@ -4,7 +4,7 @@ void QuitState::handleEvent(Event* event, StateManager* stManager) {}
 
 void QuitState::update() {}
 
-void QuitState::draw(RenderWindow* window, vector<Sprite>* sprites) {
+void QuitState::draw(RenderWindow* window) {
 	sleep(seconds(0.15f));
 	window->close();
 }

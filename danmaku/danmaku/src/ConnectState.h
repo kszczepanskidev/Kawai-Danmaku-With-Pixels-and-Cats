@@ -1,23 +1,22 @@
 #pragma once
 #include "State.h"
-#include "GameText.h"
+#include "TextureManager.h"
 
-enum texts{ COMMAND, ENTERED_IP, PRESS};
+enum connectTexts{ COMMAND, ENTERED_IP, PRESS};
 
 class ConnectState : public State {
 private:
-	Font font;
 	string temp;
 	vector<GameText*> connectTexts;
 
 	void initTexts();
-	void connect();
+	void initSprites(TextureManager*);
 public:
 	void handleEvent(Event*, StateManager*);
 	void update();
-	void draw(RenderWindow*, vector<Sprite>*);
+	void draw(RenderWindow*);
 
-	ConnectState(Font);
+	ConnectState(Font, TextureManager*);
 	virtual ~ConnectState();
 };
 

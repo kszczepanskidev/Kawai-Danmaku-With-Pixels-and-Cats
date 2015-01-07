@@ -1,6 +1,8 @@
 #include "ConnectState.h"
 #include "StateManager.h"
 
+enum textures{ BG, LOGO };
+
 void ConnectState::handleEvent(Event* event, StateManager* stManager) {
 
 	if (event->type == Event::TextEntered) {
@@ -9,7 +11,7 @@ void ConnectState::handleEvent(Event* event, StateManager* stManager) {
 			connectTexts[ENTERED_IP]->text.setString(temp);
 		}
 	}
-	else if (event->type == Event::KeyReleased){
+	else if (event->type == Event::KeyReleased) {
 		switch (event->key.code) {
 		case Keyboard::Return:
 			stManager->setActiveState(stManager->getState(GAME));
@@ -17,23 +19,23 @@ void ConnectState::handleEvent(Event* event, StateManager* stManager) {
 		case Keyboard::Escape:
 			stManager->setActiveState(stManager->getState(MAINMENU));
 			break;
-
-		case Keyboard::BackSpace:
-			if (temp.size() > 0) {
-				temp.pop_back();
-				connectTexts[ENTERED_IP]->text.setString(temp);
-			}
-			break;
 		}
 	}
 }
 
 void ConnectState::update() {
+	if (Keyboard::isKeyPressed(Keyboard::BackSpace) && temp.size() > 0) {
+		if (temp.size() > 0) {
+			temp.pop_back();
+			connectTexts[ENTERED_IP]->text.setString(temp);
+		}
+	}
+
 	connectTexts[ENTERED_IP]->text.setOrigin(connectTexts[ENTERED_IP]->text.getLocalBounds().width / 2, 0);
 }
 
-void ConnectState::draw(RenderWindow* window, vector<Sprite>* sprites) {
-	window->draw((*sprites)[CONNECT_BG]);
+void ConnectState::draw(RenderWindow* window) {
+	window->draw(sprites[BG]);
 
 
 	for (auto t : connectTexts)
@@ -51,14 +53,20 @@ void ConnectState::initTexts() {
 	connectTexts[ENTERED_IP]->text.setCharacterSize(28);
 }
 
-void ConnectState::connect() {
+void ConnectState::initSprites(TextureManager* texManager) {
+	Sprite temp;
 
+	sprites.clear();
+
+	temp.setTexture(texManager->getTexture("connect_bg"));
+	sprites.emplace_back(temp);
 }
 
-ConnectState::ConnectState(Font f) {
+ConnectState::ConnectState(Font f, TextureManager* texManager) {
 	font = f;
 
 	initTexts();
+	initSprites(texManager);
 }
 
 

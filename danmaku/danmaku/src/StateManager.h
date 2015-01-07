@@ -1,5 +1,6 @@
 #pragma once
 #include "Includes.h"
+#include "TextureManager.h"
 
 #include "State.h"
 #include "MenuState.h"
@@ -18,7 +19,7 @@ public:
 
 	State* getState(int);
 
-	StateManager(Font);
+	StateManager(Font, TextureManager*);
 	virtual ~StateManager();
 };
 

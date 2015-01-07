@@ -17,8 +17,6 @@ private:
 	RenderWindow* window;
 	View* camera;
 
-	vector<Sprite> sprites;
-
 	Font font;
 
 public:
@@ -27,8 +25,7 @@ public:
 	void appEvent();
 	void appUpdate();
 
-	void splashScreen(Sprite);
-	void initSprites();
+	void splashScreen();
 
 	Application();
 	virtual ~Application();

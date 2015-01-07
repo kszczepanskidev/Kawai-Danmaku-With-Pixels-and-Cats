@@ -11,7 +11,7 @@ void Application::appMainLoop() {
 void Application::appDraw() {
 	window->clear(Color::Black);
 
-	stManager->getActiveState()->draw(window, &sprites);
+	stManager->getActiveState()->draw(window);
 
 	window->display();
 }
@@ -25,20 +25,21 @@ void Application::appEvent() {
 
 	while (window->pollEvent(event)) {
 		//if ()
-		if (event.type == Event::KeyReleased || event.type == Event::TextEntered) {
+		if (event.type == Event::KeyReleased) {
 			switch (event.key.code) {
 			case Keyboard::Escape:
 				stManager->setActiveState(stManager->getState(QUIT));
 				break;
-			default:
-				stManager->getActiveState()->handleEvent(&event, stManager);
-				break;
 			}
 		}
+		if (event.type == Event::KeyReleased || event.type == Event::KeyPressed || event.type == Event::TextEntered)
+			stManager->getActiveState()->handleEvent(&event, stManager);
 	}
 }
 
-void Application::splashScreen(Sprite splash) {
+void Application::splashScreen() {
+	Sprite splash;
+	
 	splash.setTexture(texManager->getTexture("splashin"));
 
 	Uint8 light = 10;
@@ -62,56 +63,11 @@ void Application::splashScreen(Sprite splash) {
 	}
 }
 
-void Application::initSprites() {
-	Sprite sprite;
-
-	sprites.clear();
-
-	sprite.setTexture(texManager->getTexture("splashin"));
-	sprites.emplace_back(sprite);
-
-	sprite.setTexture(texManager->getTexture("menu_bg"));
-	sprites.emplace_back(sprite);
-
-	sprite.setTexture(texManager->getTexture("game_bg"));
-	sprites.emplace_back(sprite);
-
-	sprite.setTextureRect(IntRect(0, 0, 700, 720));
-
-	sprite.setTexture(texManager->getTexture("game_scroll1"));
-	sprites.emplace_back(sprite);
-
-	sprite.setTexture(texManager->getTexture("game_scroll2"));
-	sprites.emplace_back(sprite);
-
-	sprite.setTexture(texManager->getTexture("game_scroll3"));
-	sprites.emplace_back(sprite);
-
-	sprite.setTexture(texManager->getTexture("game_custom1"));
-		sprite.setTextureRect(IntRect(0, 0, 157, 280));
-		sprite.setPosition(932.f, 440.f);
-	sprites.emplace_back(sprite);
-
-	sprite.setTextureRect(IntRect(0, 0, 1280, 720));
-	sprite.setPosition(0, 0.f);
-
-	sprite.setTexture(texManager->getTexture("connect_bg"));
-	sprites.emplace_back(sprite);
-
-	sprite.setTexture(texManager->getTexture("player"));
-	sprite.setTextureRect(IntRect(0, 0, 50, 50));
-	sprites.emplace_back(sprite);
-
-	sprite.setTexture(texManager->getTexture("bullet"));
-	sprites.emplace_back(sprite);
-}
-
-
 Application::Application() {
 	font.loadFromFile("resources/fonts/PressStart2P.ttf");
 
-	stManager = new StateManager(font);
 	texManager = new TextureManager();
+	stManager = new StateManager(font, texManager);
 	aniHandler = new AnimationHandler();
 
 	/*camera = new View();
@@ -127,9 +83,6 @@ Application::Application() {
 	Vector2i windowPos = window->getPosition();
 	windowPos.y -= 15;
 	window->setPosition(windowPos);
-
-	/*	Loading tetures to sprites	*/
-	initSprites();
 
 	/* 'animated' splash screen	 */
 	//splashScreen(sprites[SPLASH]);

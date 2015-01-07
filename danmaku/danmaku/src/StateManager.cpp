@@ -13,10 +13,10 @@ State* StateManager::getActiveState() {
 }
 
 
-StateManager::StateManager(Font font) {
-	states.emplace_back(new MenuState(font));
-	states.emplace_back(new GameState(font));
-	states.emplace_back(new ConnectState(font));
+StateManager::StateManager(Font font, TextureManager* texManager) {
+	states.emplace_back(new MenuState(font, texManager));
+	states.emplace_back(new GameState(font, texManager));
+	states.emplace_back(new ConnectState(font, texManager));
 	states.emplace_back(new QuitState());
 
 	setActiveState(states[MAINMENU]);
