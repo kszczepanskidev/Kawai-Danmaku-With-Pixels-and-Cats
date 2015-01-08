@@ -24,7 +24,6 @@ void Application::appEvent() {
 	Event event;
 
 	while (window->pollEvent(event)) {
-		//if ()
 		if (event.type == Event::KeyReleased) {
 			switch (event.key.code) {
 			case Keyboard::Escape:
@@ -34,6 +33,11 @@ void Application::appEvent() {
 		}
 		if (event.type == Event::KeyReleased || event.type == Event::KeyPressed || event.type == Event::TextEntered)
 			stManager->getActiveState()->handleEvent(&event, stManager);
+
+		if (Keyboard::isKeyPressed(Keyboard::Delete))
+			window->setFramerateLimit(0);
+		else
+			window->setFramerateLimit(60);
 	}
 }
 

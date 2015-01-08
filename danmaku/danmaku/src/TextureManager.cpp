@@ -32,6 +32,7 @@ TextureManager::TextureManager() {
 	loadTexture("connect_bg", "connect_bg.png");
 	loadTexture("player", "player.png");
 	loadTexture("bullet", "bullet.png");
+	loadTexture("enemy1", "enemy1.png");
 }
 
 TextureManager::~TextureManager() {}

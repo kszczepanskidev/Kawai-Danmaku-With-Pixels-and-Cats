@@ -29,6 +29,7 @@ void ConnectState::update() {
 			temp.pop_back();
 			connectTexts[ENTERED_IP]->text.setString(temp);
 		}
+		sleep(seconds(0.05f));
 	}
 
 	connectTexts[ENTERED_IP]->text.setOrigin(connectTexts[ENTERED_IP]->text.getLocalBounds().width / 2, 0);
@@ -47,7 +48,7 @@ void ConnectState::initTexts() {
 	connectTexts.clear();
 
 	connectTexts.emplace_back(new GameText("Enter IP", font, 498.f, 206.f));
-	connectTexts.emplace_back(new GameText("192.168.0.1:65560", font, 653.f, 303.f));
+	connectTexts.emplace_back(new GameText(temp, font, 653.f, 303.f));
 	connectTexts.emplace_back(new GameText("and press ENTER.", font, 393.f, 392.f));
 
 	connectTexts[ENTERED_IP]->text.setCharacterSize(28);
@@ -64,6 +65,7 @@ void ConnectState::initSprites(TextureManager* texManager) {
 
 ConnectState::ConnectState(Font f, TextureManager* texManager) {
 	font = f;
+	temp = "192.168.0.1:65560";
 
 	initTexts();
 	initSprites(texManager);

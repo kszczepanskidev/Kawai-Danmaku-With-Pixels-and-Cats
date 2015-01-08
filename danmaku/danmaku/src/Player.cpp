@@ -104,7 +104,7 @@ void Player::shoot() {
 		break;
 	}
 
-	fireTime = currentTime + FLIMIT;
+	fireTime = currentTime + 10;
 }
 
 
@@ -126,7 +126,7 @@ int Player::getId() {
 Player::Player(TextureManager* tM, int i) {
 	id = i;
 
-	//pos_x = 535.5f;
+	pos_x = 535.5f;
 	pos_y = 650.f;
 	life = 3;
 
@@ -145,16 +145,7 @@ Player::Player(TextureManager* tM, int i) {
 	speed_y = 0.f;
 
 	sprite.setTexture(texManager->getTexture("player"));
-	switch (id) {
-	case 1:
-		sprite.setColor(Color::Blue);
-		pos_x = 505.5f;
-		break;
-	case 2:
-		sprite.setColor(Color::Red);
-		pos_x = 565.5f;
-		break;
-	}
+	sprite.setColor(Color::Black);
 }
 
 

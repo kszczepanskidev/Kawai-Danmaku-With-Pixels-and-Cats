@@ -18,8 +18,9 @@ StateManager::StateManager(Font font, TextureManager* texManager) {
 	states.emplace_back(new GameState(font, texManager));
 	states.emplace_back(new ConnectState(font, texManager));
 	states.emplace_back(new QuitState());
+	states.emplace_back(new SplashState(texManager, this));
 
-	setActiveState(states[MAINMENU]);
+	setActiveState(states[GAME]);
 }
 
 

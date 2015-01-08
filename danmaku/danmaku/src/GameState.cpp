@@ -5,26 +5,31 @@ enum textures{ BG, SCROLL1, SCROLL2, SCROLL3, CUSTOM1 };
 
 void GameState::handleEvent(Event* event, StateManager* stManager) {
 	if (event->type == Event::KeyReleased)
-	switch (event->key.code) {
-	case Keyboard::Return:
-		stManager->setActiveState(stManager->getState(MAINMENU));
-		break;
+		switch (event->key.code) {
+		case Keyboard::Return:
+			stManager->setActiveState(stManager->getState(MAINMENU));
+			break;
 	default:
 		player->handleEvent(event);
-		player2->handleEvent(event);
 		break;
 	}
-	else {
+	else
 		player->handleEvent(event);
-		player2->handleEvent(event);
-	}
 }
 
 void GameState::update() {
 	scrollBG();
 	player->update();
-	player2->update();
 	updateTexts();
+
+	
+	if ((rand() % 100 == 3) && enemies.size() < 10)
+		enemies.emplace_back(new Enemy(texManager, float(rand() % 600 + 200), -50.f, 90.f));
+
+	for (unsigned int i = 0; i < enemies.size(); ++i)
+	if (enemies[i]->update())
+		enemies.erase(enemies.begin() + i);
+		
 }
 
 void GameState::scrollBG() {
@@ -47,7 +52,6 @@ void GameState::scrollBG() {
 		pos_y3 = -1440.f;
 		bg3 = SCROLL1 + SCROLL2 + SCROLL3 - bg1 - bg2;
 	}
-
 }
 
 void GameState::initTexts() {
@@ -97,7 +101,9 @@ void GameState::draw(RenderWindow* window) {
 	}
 
 	player->draw(window);
-	player2->draw(window);
+	
+	for (auto e : enemies)
+		e->draw(window);
 }
 
 void GameState::initSprites(TextureManager* texManager) {
@@ -129,12 +135,14 @@ void GameState::initSprites(TextureManager* texManager) {
 }
 
 
-GameState::GameState(Font f, TextureManager* texManager) {
+GameState::GameState(Font f, TextureManager* tM) {
+	texManager = tM;
+
 	gameTime = 0;
 
 	font = f;
 
-	scrollSpeed = 5.f;
+	scrollSpeed = 2.f;
 	
 	pos_x = 188.f;
 	pos_y1 = 0.f;
@@ -149,7 +157,6 @@ GameState::GameState(Font f, TextureManager* texManager) {
 	initSprites(texManager);
 
 	player = new Player(texManager,1);
-	player2 = new Player(texManager,2);
 }
 
 
