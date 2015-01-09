@@ -84,6 +84,11 @@ void Player::draw(RenderWindow* window) {
 	sprite.setPosition(pos_x, pos_y);
 	window->draw(sprite);
 
+	hitbox.setRadius(hitbox_r);
+	hitbox.setPosition(pos_x + 25, pos_y + 25);
+	hitbox.setFillColor(Color::Red);
+	window->draw(hitbox);
+
 	for (auto b : bullets)
 		b->draw(window);
 }
@@ -91,16 +96,16 @@ void Player::draw(RenderWindow* window) {
 void Player::shoot() {
 	switch (power) {
 	case 1:
-		bullets.emplace_back(new Bullet(pos_x, pos_y, 90, PLAYER, texManager));
+		bullets.emplace_back(new Bullet(pos_x + 20.f, pos_y + 10.f, 90.f, PLAYER, texManager));
 		break;
 	case 2:
-		bullets.emplace_back(new Bullet(pos_x - 15, pos_y, 90, PLAYER, texManager));
-		bullets.emplace_back(new Bullet(pos_x + 15, pos_y, 90, PLAYER, texManager));
+		bullets.emplace_back(new Bullet(pos_x + 10.f, pos_y + 10.f, 90.f, PLAYER, texManager));
+		bullets.emplace_back(new Bullet(pos_x + 30.f, pos_y + 10.f, 90.f, PLAYER, texManager));
 		break;
 	case 3:
-		bullets.emplace_back(new Bullet(pos_x - 10, pos_y, 70, PLAYER, texManager));
-		bullets.emplace_back(new Bullet(pos_x, pos_y, 90, PLAYER, texManager));
-		bullets.emplace_back(new Bullet(pos_x + 10, pos_y, 110, PLAYER, texManager));
+		bullets.emplace_back(new Bullet(pos_x + 15.f, pos_y + 10.f, 70.f, PLAYER, texManager));
+		bullets.emplace_back(new Bullet(pos_x + 20.f, pos_y + 10.f, 90.f, PLAYER, texManager));
+		bullets.emplace_back(new Bullet(pos_x + 25.f, pos_y + 10.f, 110.f, PLAYER, texManager));
 		break;
 	}
 
@@ -143,6 +148,8 @@ Player::Player(TextureManager* tM, int i) {
 
 	speed_x = 0.f;
 	speed_y = 0.f;
+
+	hitbox_r = 5.f;
 
 	sprite.setTexture(texManager->getTexture("player"));
 	sprite.setColor(Color::Black);

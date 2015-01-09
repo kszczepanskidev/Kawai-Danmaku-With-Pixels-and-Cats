@@ -1,4 +1,4 @@
-#include "textureManager.h"
+#include "TextureManager.h"
 
 void TextureManager::loadTexture(const string &name, string filename) {
 	Texture* tex = new Texture();

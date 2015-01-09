@@ -29,33 +29,25 @@ int Enemy::update() {
 void Enemy::move() {
 	pos_x += (float)cos(angle*(M_PI / 180))*speed_x;
 	pos_y += (float)sin(angle*(M_PI / 180))*speed_y;
-	//pos_x += speed_x;
-	//pos_y += speed_y;
 }
 
 void Enemy::draw(RenderWindow* window) {
 	sprite.setPosition(pos_x, pos_y);
 	window->draw(sprite);
 
+	hitbox.setRadius(hitbox_r);
+	hitbox.setPosition(pos_x + 25, pos_y + 25);
+	hitbox.setFillColor(Color::Red);
+
+	window->draw(hitbox);
+
 	for (auto b : bullets)
 		b->draw(window);
 }
 
 void Enemy::shoot() {
-	switch (power) {
-	case 1:
-		bullets.emplace_back(new Bullet(pos_x, pos_y,0.f - (float)(rand()%90 + 45), PLAYER, texManager));
-		break;
-	case 2:
-		bullets.emplace_back(new Bullet(pos_x - 15, pos_y, 90, PLAYER, texManager));
-		bullets.emplace_back(new Bullet(pos_x + 15, pos_y, 90, PLAYER, texManager));
-		break;
-	case 3:
-		bullets.emplace_back(new Bullet(pos_x - 10, pos_y, 70, PLAYER, texManager));
-		bullets.emplace_back(new Bullet(pos_x, pos_y, 90, PLAYER, texManager));
-		bullets.emplace_back(new Bullet(pos_x + 10, pos_y, 110, PLAYER, texManager));
-		break;
-	}
+	for (int i = 0; i < power; ++i)
+		bullets.emplace_back(new Bullet(pos_x + 20.f, pos_y - 5.f, 0.f - (float)(rand() % 90 + 45.f), PLAYER, texManager));
 
 	fireTime = currentTime + 5;
 }

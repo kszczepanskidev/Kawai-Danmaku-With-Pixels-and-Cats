@@ -14,6 +14,9 @@ private:
 	float pos_x, pos_y;
 	float speed_x, speed_y;
 
+	CircleShape hitbox;
+	float hitbox_r;
+
 	int score, life, graze, power, special;
 
 	int fireTime, currentTime;

@@ -11,6 +11,9 @@ private:
 	float speed_x, speed_y;
 	float angle;
 
+	CircleShape hitbox;
+	float hitbox_r;
+
 	int life, power;
 
 	int fireTime, currentTime;

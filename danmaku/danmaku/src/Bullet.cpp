@@ -37,12 +37,14 @@ Bullet::Bullet(float x, float y, float a, int type, TextureManager* texManager) 
 	live = true;
 
 	sprite.setTexture(texManager->getTexture("bullet"));
+	sprite.rotate(a - 90.f);
+
 	switch (type) {
 	case PLAYER:
 		sprite.setColor(Color::Magenta);
 		break;
 	case ENEMY:
-		sprite.setColor(Color::Green);
+		sprite.setColor(Color(139,69,19,255));
 		break;
 	case BOSS:
 		break;
