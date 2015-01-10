@@ -10,26 +10,24 @@ void GameState::handleEvent(Event* event, StateManager* stManager) {
 			stManager->setActiveState(stManager->getState(MAINMENU));
 			break;
 	default:
-		player->handleEvent(event);
+		objects[0]->handleEvent(event);
 		break;
 	}
 	else
-		player->handleEvent(event);
+		objects[0]->handleEvent(event);
 }
 
 void GameState::update() {
 	scrollBG();
-	player->update();
 	updateTexts();
 
-	
-	if ((rand() % 100 == 3) && enemies.size() < 10)
-		enemies.emplace_back(new Enemy(texManager, float(rand() % 600 + 200), -50.f, 90.f));
+	for (unsigned int i = 0; i < objects.size(); ++i)
+		if (objects[i]->update())
+			objects.erase(objects.begin() + i);
 
-	for (unsigned int i = 0; i < enemies.size(); ++i)
-	if (enemies[i]->update())
-		enemies.erase(enemies.begin() + i);
-		
+	
+	if ((rand() % 100 == 3) && objects.size() < 10)
+		objects.emplace_back(new Enemy(texManager, float(rand() % 600 + 200), -50.f, 90.f));		
 }
 
 void GameState::scrollBG() {
@@ -94,16 +92,13 @@ void GameState::draw(RenderWindow* window) {
 
 	window->draw(sprites[BG]);
 
-	window->draw(sprites[CUSTOM1]);
+	for (auto o : objects)
+		o->draw(window);
 
-	for (auto t : gameTexts) {
+	window->draw(sprites[BG]);
+
+	for (auto t : gameTexts)
 		window->draw(t->text);
-	}
-
-	player->draw(window);
-	
-	for (auto e : enemies)
-		e->draw(window);
 }
 
 void GameState::initSprites(TextureManager* texManager) {
@@ -156,7 +151,7 @@ GameState::GameState(Font f, TextureManager* tM) {
 	initTexts();
 	initSprites(texManager);
 
-	player = new Player(texManager,1);
+	objects.emplace_back(new Player(texManager, 1));
 }
 
 

@@ -1,5 +1,6 @@
 #pragma once
 #include "State.h"
+#include "FlyingObject.h"
 #include "Player.h"
 #include "Enemy.h"
 
@@ -17,9 +18,7 @@ private:;
 
 	int gameTime;
 
-	Player* player;
-
-	vector<Enemy*> enemies;
+	vector<FlyingObject*> objects;
 
 	void initTexts();
 	void updateTexts();

@@ -1,33 +1,19 @@
 #pragma once
 #include "Includes.h"
+#include "FlyingObject.h"
 #include "Bullet.h"
 
-class Enemy {
+class Enemy : public FlyingObject{
 private:
-	Sprite sprite;
-	TextureManager* texManager;
-
-	float pos_x, pos_y;
-	float speed_x, speed_y;
-	float angle;
-
-	CircleShape hitbox;
-	float hitbox_r;
-
 	int life, power;
-
-	int fireTime, currentTime;
+	float angle;
 
 	void shoot();
 	void move();
-public:
-	vector<Bullet*> bullets;
 
+public:
 	int update();
 	void draw(RenderWindow*);
-
-	float getPosX();
-	float getPosY();
 
 
 	Enemy(TextureManager*, float, float, float);

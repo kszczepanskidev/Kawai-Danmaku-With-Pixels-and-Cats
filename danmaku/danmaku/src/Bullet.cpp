@@ -4,7 +4,7 @@
 #include <math.h>
 
 int Bullet::update() {
-	if (pos_x > 863.f || pos_x < 163.f || pos_y > 745.f || pos_y < -25.f)
+	if (pos_x > 883.f || pos_x < 183.f || pos_y > 725.f || pos_y < -5.f)
 		return 1;
 
 	pos_x -= (float) cos(angle*(M_PI / 180))*sX;

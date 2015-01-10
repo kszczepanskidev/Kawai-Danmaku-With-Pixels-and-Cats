@@ -52,7 +52,7 @@ void Player::handleEvent(Event* event) {
 	}
 }
 
-void Player::update() {	
+int Player::update() {	
 	if (currentTime > 60) {
 		currentTime = 1;
 		fireTime -= 60;
@@ -68,6 +68,8 @@ void Player::update() {
 	for (unsigned int i = 0; i < bullets.size(); ++i)
 		if (bullets[i]->update())
 			bullets.erase(bullets.begin() + i);
+
+	return 0;
 }
 
 void Player::move() {
@@ -110,22 +112,6 @@ void Player::shoot() {
 	}
 
 	fireTime = currentTime + 10;
-}
-
-
-float Player::getPosX() {
-	return pos_x;
-}
-
-float Player::getPosY() {
-	return pos_y;
-}
-
-void Player::setId(int i) {
-	id = i;
-}
-int Player::getId() {
-	return id;
 }
 
 Player::Player(TextureManager* tM, int i) {

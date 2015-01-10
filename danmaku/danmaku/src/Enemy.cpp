@@ -52,15 +52,6 @@ void Enemy::shoot() {
 	fireTime = currentTime + 5;
 }
 
-
-float Enemy::getPosX() {
-	return pos_x;
-}
-
-float Enemy::getPosY() {
-	return pos_y;
-}
-
 Enemy::Enemy(TextureManager* tM, float x, float y, float a) {
 	texManager = tM;
 

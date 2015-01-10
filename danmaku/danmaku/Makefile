@@ -1,17 +1,20 @@
 ProjectName		:=DanMaku
-Files			:=Application ConnectState GameState mainfile MenuState SplashState State StateManager TextureManager
+#Files			:=Application ConnectState GameState mainfile MenuState SplashState State StateManager TextureManager
+Files			:$(wildcard $(SourcesDir)/*.cpp)
 Compiler		:=g++
+
+MKDIR_P = mkdir -p
 
 #IncludePath						:=-I
 #LibPath							:=-L
 
 Libs						:=-lsfml-graphics -lsfml-window -lsfml-system
 CompFlagsDebug				:=-g -fpermissive -std=c++0x
-CompFlagsRelease			:=-O2 -s -march=core2 -fpermissive -std=c++0x
+CompFlagsRelease			:=-fpermissive -std=c++0x
 CompFlagsWarning			:=-w -Wall
 
 SourcesDir						:=src/
-ObjectsDir						:=obj/
+ObjectsDir						:=${MKDIR_P} obj/
 SourcesSuffix					:=.cpp
 ObjectSuffix					:=.o
 MakeDirCommand					:=mkdir -p
@@ -27,7 +30,7 @@ endif
 
 Sources								:=$(addprefix $(SourcesDir), $(addsuffix $(SourcesSuffix), $(Files)))
 Objects								:=$(addprefix $(ObjectsDir), $(addsuffix $(ObjectSuffix),  $(Files)))
-OutputFile						:=$(IntermediateDirectory)/$(ProjectName)
+OutputFile							:=$(IntermediateDirectory)/$(ProjectName)
 
 ##
 ## Main Build Targets
