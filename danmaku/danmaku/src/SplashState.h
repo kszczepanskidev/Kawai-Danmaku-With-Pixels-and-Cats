@@ -11,10 +11,10 @@ private:
 	StateManager* stManager;
 public:
 	void handleEvent(Event*, StateManager*);
-	void update();
+	void update(StateManager*);
 	void draw(RenderWindow*);
 
-	SplashState(TextureManager*, StateManager*);
+	SplashState(TextureManager*);
 	virtual ~SplashState();
 };
 

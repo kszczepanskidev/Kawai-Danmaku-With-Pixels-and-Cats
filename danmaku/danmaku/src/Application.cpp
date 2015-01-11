@@ -17,7 +17,7 @@ void Application::appDraw() {
 }
 
 void Application::appUpdate() {
-	stManager->getActiveState()->update();
+	stManager->getActiveState()->update(stManager);
 }
 
 void Application::appEvent() {
@@ -87,9 +87,6 @@ Application::Application() {
 	Vector2i windowPos = window->getPosition();
 	windowPos.y -= 15;
 	window->setPosition(windowPos);
-
-	/* 'animated' splash screen	 */
-	//splashScreen(sprites[SPLASH]);
 }
 
 Application::~Application() {}

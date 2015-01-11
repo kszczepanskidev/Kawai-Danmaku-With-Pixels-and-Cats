@@ -98,16 +98,16 @@ void Player::draw(RenderWindow* window) {
 void Player::shoot() {
 	switch (power) {
 	case 1:
-		bullets.emplace_back(new Bullet(pos_x + 20.f, pos_y + 10.f, 90.f, PLAYER, texManager));
+		bullets.emplace_back(new Bullet(pos_x		, pos_y - 10.f, 90.f, PLAYER, texManager));
 		break;
 	case 2:
-		bullets.emplace_back(new Bullet(pos_x + 10.f, pos_y + 10.f, 90.f, PLAYER, texManager));
-		bullets.emplace_back(new Bullet(pos_x + 30.f, pos_y + 10.f, 90.f, PLAYER, texManager));
+		bullets.emplace_back(new Bullet(pos_x + 10.f, pos_y - 10.f, 90.f, PLAYER, texManager));
+		bullets.emplace_back(new Bullet(pos_x - 10.f, pos_y - 10.f, 90.f, PLAYER, texManager));
 		break;
 	case 3:
-		bullets.emplace_back(new Bullet(pos_x + 15.f, pos_y + 10.f, 70.f, PLAYER, texManager));
-		bullets.emplace_back(new Bullet(pos_x + 20.f, pos_y + 10.f, 90.f, PLAYER, texManager));
-		bullets.emplace_back(new Bullet(pos_x + 25.f, pos_y + 10.f, 110.f, PLAYER, texManager));
+		bullets.emplace_back(new Bullet(pos_x - 10.f, pos_y - 10.f, 70.f, PLAYER, texManager));
+		bullets.emplace_back(new Bullet(pos_x		, pos_y - 10.f, 90.f, PLAYER, texManager));
+		bullets.emplace_back(new Bullet(pos_x + 10.f, pos_y - 10.f, 110.f, PLAYER, texManager));
 		break;
 	}
 
@@ -115,6 +115,12 @@ void Player::shoot() {
 }
 
 Player::Player(TextureManager* tM, int i) {
+	texManager = tM;
+
+	sprite.setTexture(texManager->getTexture("player"));
+	sprite.setOrigin(sprite.getLocalBounds().width / 2.f, sprite.getLocalBounds().height / 2.f);
+	sprite.setColor(Color::Black);
+	
 	id = i;
 
 	pos_x = 535.5f;
@@ -123,27 +129,21 @@ Player::Player(TextureManager* tM, int i) {
 
 	power = 1;
 	special = 0;
-
 	graze = 0;
 	score = 0;
 
 	fireTime = 0;
-	currentTime = 0;
-	
-	texManager = tM;
+	currentTime = 0;	
 
 	speed_x = 0.f;
 	speed_y = 0.f;
 
 	hitbox_r = 5.f;
-	hitbox_pos_x = 25.f;
-	hitbox_pos_y = 25.f;
 	hitbox.setOrigin(hitbox_r, hitbox_r);
-
-	sprite.setTexture(texManager->getTexture("player"));
-	sprite.setColor(Color::Black);
-
-	life = true;
+	hitbox_pos_x = sprite.getOrigin().x;
+	hitbox_pos_y = sprite.getOrigin().y;
+	
+	live = true;
 }
 
 

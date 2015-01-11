@@ -16,15 +16,19 @@ float FlyingObject::getPosY() {
 }
 
 float FlyingObject::getHitboxPosX() {
-	return hitbox_pos_x + hitbox_r;
+	return hitbox_pos_x;// +hitbox_r;
 }
 
 float FlyingObject::getHitboxPosY() {
-	return hitbox_pos_y + hitbox_r;
+	return hitbox_pos_y;// +hitbox_r;
 }
 
 float FlyingObject::getHitboxR() {
 	return hitbox_r;
+}
+
+bool FlyingObject::getLive() {
+	return live;
 }
 
 void FlyingObject::setLive(bool l) {

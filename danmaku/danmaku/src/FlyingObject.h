@@ -35,6 +35,7 @@ public:
 	float getHitboxPosY();
 	float getHitboxR();
 
+	bool getLive();
 	void setLive(bool);
 
 	void setId(int);

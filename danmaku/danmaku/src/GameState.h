@@ -29,7 +29,7 @@ private:;
 
 public:
 	void handleEvent(Event*, StateManager*);
-	void update();
+	void update(StateManager*);
 	void draw(RenderWindow*);
 
 	GameState(Font, TextureManager*);

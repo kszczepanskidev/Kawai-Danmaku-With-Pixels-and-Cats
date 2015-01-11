@@ -17,18 +17,20 @@ void GameState::handleEvent(Event* event, StateManager* stManager) {
 		objects[0]->handleEvent(event);
 }
 
-void GameState::update() {
+void GameState::update(StateManager* stManager) {
 	scrollBG();
 	updateTexts();
-	objects = checkCollision(objects);
-	//checkCollision(&objects);
 
 	for (unsigned int i = 0; i < objects.size(); ++i)
 		if (objects[i]->update())
 			objects.erase(objects.begin() + i);
 
+	objects = checkCollision(objects);
+
+	if (!objects[0]->getLive())
+		stManager->setActiveState(stManager->getState(MAINMENU));
 	
-	if ((rand() % 100 == 3) && objects.size() < 10)
+	if ((rand() % 100 == 3) && objects.size() < 11)
 		objects.emplace_back(new Enemy(texManager, float(rand() % 600 + 200), -50.f, 90.f));		
 }
 
@@ -74,7 +76,7 @@ void GameState::initTexts() {
 }
 
 void GameState::updateTexts() {
-	/* aligning text to right */
+	/* aligning value texts to right */
 	gameTexts[SCORE_V]->text.setOrigin(gameTexts[SCORE_V]->text.getLocalBounds().width, 0);
 	gameTexts[LIFE_V]->text.setOrigin(gameTexts[LIFE_V]->text.getLocalBounds().width, 0);
 	gameTexts[POWER_V]->text.setOrigin(gameTexts[POWER_V]->text.getLocalBounds().width, 0);

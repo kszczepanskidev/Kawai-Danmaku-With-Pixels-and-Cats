@@ -14,6 +14,7 @@ void ConnectState::handleEvent(Event* event, StateManager* stManager) {
 	else if (event->type == Event::KeyReleased) {
 		switch (event->key.code) {
 		case Keyboard::Return:
+			stManager->newGame();
 			stManager->setActiveState(stManager->getState(GAME));
 			break;
 		case Keyboard::Escape:
@@ -23,7 +24,7 @@ void ConnectState::handleEvent(Event* event, StateManager* stManager) {
 	}
 }
 
-void ConnectState::update() {
+void ConnectState::update(StateManager* stManager) {
 	if (Keyboard::isKeyPressed(Keyboard::BackSpace) && temp.size() > 0) {
 		if (temp.size() > 0) {
 			temp.pop_back();

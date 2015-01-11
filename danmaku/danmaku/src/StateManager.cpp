@@ -1,5 +1,8 @@
 #include "StateManager.h"
 
+Font font;
+TextureManager* texManager;
+
 void StateManager::setActiveState(State* state) {
 	activeState = state;
 }
@@ -12,15 +15,22 @@ State* StateManager::getActiveState() {
 	return activeState;
 }
 
+void StateManager::newGame() {
+	states[GAME] = new GameState(font, texManager);
+}
 
-StateManager::StateManager(Font font, TextureManager* texManager) {
+
+StateManager::StateManager(Font f, TextureManager* tM) {
+	font = f;
+	texManager = tM;
+
 	states.emplace_back(new MenuState(font, texManager));
 	states.emplace_back(new GameState(font, texManager));
 	states.emplace_back(new ConnectState(font, texManager));
 	states.emplace_back(new QuitState());
-	states.emplace_back(new SplashState(texManager, this));
+	states.emplace_back(new SplashState(texManager));
 
-	setActiveState(states[GAME]);
+	setActiveState(states[SPLASH]);
 }
 
 

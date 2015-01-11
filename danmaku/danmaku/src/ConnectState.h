@@ -13,7 +13,7 @@ private:
 	void initSprites(TextureManager*);
 public:
 	void handleEvent(Event*, StateManager*);
-	void update();
+	void update(StateManager*);
 	void draw(RenderWindow*);
 
 	ConnectState(Font, TextureManager*);

@@ -3,7 +3,7 @@
 
 void SplashState::handleEvent(Event* event, StateManager* stManager) {}
 
-void SplashState::update() {
+void SplashState::update(StateManager* stManager) {
 	/*	fade in */
 	if (in && light < 210)
 		light += 2;
@@ -29,11 +29,9 @@ void SplashState::draw(RenderWindow* window) {
 	sleep(seconds(0.01f));
 }
 
-SplashState::SplashState(TextureManager* texManager, StateManager* sM) {
+SplashState::SplashState(TextureManager* texManager) {
 	light = 10;
 	in = 1;
-
-	stManager = sM;
 	sprite.setTexture(texManager->getTexture("splashin"));
 }
 

@@ -32,11 +32,11 @@ float Bullet::getPosY() {
 }
 
 float Bullet::getHitboxPosX() {
-	return hitbox_pos_x + hitbox_r;
+	return hitbox_pos_x;// +hitbox_r;
 }
 
 float Bullet::getHitboxPosY() {
-	return hitbox_pos_y + hitbox_r;
+	return hitbox_pos_y;// +hitbox_r;
 }
 
 float Bullet::getHitboxR() {
@@ -45,17 +45,17 @@ float Bullet::getHitboxR() {
 
 Bullet::Bullet(float x, float y, float a, int type, TextureManager* texManager) {
 	sprite.setTexture(texManager->getTexture("bullet"));
-	sprite.setOrigin(2.5f, 5.f);
+	sprite.setOrigin(sprite.getLocalBounds().width/2.f, sprite.getLocalBounds().height/2.f);
 
-	sY = 10.f;
 	sX = 10.f;
+	sY = 10.f;
 
 	pos_x = x;
 	pos_y = y;
 
 	hitbox_r = 2.f;
-	hitbox_pos_x = 0.5f;
-	hitbox_pos_y = 3.f;
+	hitbox_pos_x = (sprite.getLocalBounds().width / 2.f) - hitbox_r;
+	hitbox_pos_y = (sprite.getLocalBounds().height / 2.f) - hitbox_r;
 	hitbox.setOrigin(hitbox_r, hitbox_r);
 
 	angle = a;

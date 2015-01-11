@@ -20,6 +20,8 @@ public:
 	void setActiveState(State*);
 	State* getActiveState();
 
+	void newGame();
+
 	State* getState(int);
 
 	StateManager(Font, TextureManager*);

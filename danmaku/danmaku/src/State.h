@@ -17,7 +17,7 @@ protected:
 
 public:
 	virtual void handleEvent(Event*, StateManager*) = 0;
-	virtual void update() = 0;
+	virtual void update(StateManager*) = 0;
 	virtual void draw(RenderWindow*) = 0;
 
 	State();

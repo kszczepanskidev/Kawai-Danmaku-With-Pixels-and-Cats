@@ -35,7 +35,7 @@ void MenuState::selectState(StateManager* stManager) {
 }
 
 
-void MenuState::update() {
+void MenuState::update(StateManager* stManager) {
 
 }
 

@@ -54,6 +54,10 @@ void Enemy::shoot() {
 Enemy::Enemy(TextureManager* tM, float x, float y, float a) {
 	texManager = tM;
 
+	sprite.setTexture(tM->getTexture("enemy1"));
+	sprite.setOrigin(sprite.getLocalBounds().width / 2.f, sprite.getLocalBounds().height / 2.f);
+	sprite.setColor(Color::Red);
+
 	pos_x = x;
 	pos_y = y;
 	life = 3;
@@ -67,16 +71,14 @@ Enemy::Enemy(TextureManager* tM, float x, float y, float a) {
 	speed_y = 7.f;
 
 	hitbox_r = 15.f;
-	hitbox_pos_x = 10.f;
-	hitbox_pos_y = 10.f;
 	hitbox.setOrigin(hitbox_r, hitbox_r);
+	hitbox_pos_x = sprite.getOrigin().x;
+	hitbox_pos_y = sprite.getOrigin().y;
 
 	angle = a;
 
-	sprite.setTexture(tM->getTexture("enemy1"));
-	sprite.setColor(Color::Red);
 
-	life = true;
+	live = true;
 }
 
 
