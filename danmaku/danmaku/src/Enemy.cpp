@@ -16,7 +16,7 @@ int Enemy::update() {
 
 	move();
 
-	if ((rand()%100 < 15) /*&& fireTime < currentTime*/)
+	if ((rand()%150 < 10) /*&& fireTime < currentTime*/)
 		shoot();
 
 	for (unsigned int i = 0; i < bullets.size(); ++i)
@@ -36,9 +36,8 @@ void Enemy::draw(RenderWindow* window) {
 	window->draw(sprite);
 
 	hitbox.setRadius(hitbox_r);
-	hitbox.setPosition(pos_x + 25, pos_y + 25);
-	hitbox.setFillColor(Color::Red);
-
+	hitbox.setPosition(pos_x, pos_y);
+	hitbox.setFillColor(Color::Black);
 	window->draw(hitbox);
 
 	for (auto b : bullets)
@@ -64,13 +63,20 @@ Enemy::Enemy(TextureManager* tM, float x, float y, float a) {
 	fireTime = 0;
 	currentTime = 0;
 
-	speed_x = 0.5f;
-	speed_y = 5.f;
+	speed_x = 7.f;
+	speed_y = 7.f;
+
+	hitbox_r = 15.f;
+	hitbox_pos_x = 10.f;
+	hitbox_pos_y = 10.f;
+	hitbox.setOrigin(hitbox_r, hitbox_r);
 
 	angle = a;
 
 	sprite.setTexture(tM->getTexture("enemy1"));
 	sprite.setColor(Color::Red);
+
+	life = true;
 }
 
 

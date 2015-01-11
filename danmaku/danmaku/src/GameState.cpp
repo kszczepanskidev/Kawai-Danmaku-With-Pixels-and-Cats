@@ -20,6 +20,8 @@ void GameState::handleEvent(Event* event, StateManager* stManager) {
 void GameState::update() {
 	scrollBG();
 	updateTexts();
+	objects = checkCollision(objects);
+	//checkCollision(&objects);
 
 	for (unsigned int i = 0; i < objects.size(); ++i)
 		if (objects[i]->update())

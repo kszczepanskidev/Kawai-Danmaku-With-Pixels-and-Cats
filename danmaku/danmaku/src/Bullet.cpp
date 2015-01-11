@@ -7,8 +7,8 @@ int Bullet::update() {
 	if (pos_x > 883.f || pos_x < 183.f || pos_y > 725.f || pos_y < -5.f)
 		return 1;
 
-	pos_x -= (float) cos(angle*(M_PI / 180))*sX;
-	pos_y -= (float) sin(angle*(M_PI / 180))*sY;
+	pos_x -= (float)cos(angle*(M_PI / 180))*sX;
+	pos_y -= (float)sin(angle*(M_PI / 180))*sY;
 
 	return 0;
 }
@@ -16,6 +16,11 @@ int Bullet::update() {
 void Bullet::draw(RenderWindow* window) {
 	sprite.setPosition(pos_x, pos_y);
 	window->draw(sprite);
+
+	hitbox.setRadius(hitbox_r); 
+	hitbox.setPosition(pos_x, pos_y);
+	hitbox.setFillColor(Color::Blue);
+	window->draw(hitbox);
 }
 
 float Bullet::getPosX() {
@@ -26,17 +31,38 @@ float Bullet::getPosY() {
 	return pos_y;
 }
 
+float Bullet::getHitboxPosX() {
+	return hitbox_pos_x + hitbox_r;
+}
+
+float Bullet::getHitboxPosY() {
+	return hitbox_pos_y + hitbox_r;
+}
+
+float Bullet::getHitboxR() {
+	return hitbox_r;
+}
+
 Bullet::Bullet(float x, float y, float a, int type, TextureManager* texManager) {
+	sprite.setTexture(texManager->getTexture("bullet"));
+	sprite.setOrigin(2.5f, 5.f);
+
 	sY = 10.f;
 	sX = 10.f;
+
 	pos_x = x;
 	pos_y = y;
+
+	hitbox_r = 2.f;
+	hitbox_pos_x = 0.5f;
+	hitbox_pos_y = 3.f;
+	hitbox.setOrigin(hitbox_r, hitbox_r);
 
 	angle = a;
 
 	live = true;
 
-	sprite.setTexture(texManager->getTexture("bullet"));
+
 	sprite.rotate(a - 90.f);
 
 	switch (type) {

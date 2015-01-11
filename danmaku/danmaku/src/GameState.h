@@ -3,6 +3,7 @@
 #include "FlyingObject.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "Collision.h"
 
 enum gameTexts{ SCORE, SCORE_V, LIFE, LIFE_V, POWER, POWER_V, SPECIAL, SPECIAL_V, GRAZE, GRAZE_V };
 

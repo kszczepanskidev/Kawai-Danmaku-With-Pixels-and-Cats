@@ -73,8 +73,8 @@ int Player::update() {
 }
 
 void Player::move() {
-		pos_y += speed_y*id;
-		pos_x += speed_x*id;
+		pos_y += speed_y;
+		pos_x += speed_x;
 
 		if (pos_y < 0.f) pos_y = 0.f;
 		if (pos_y > 670.f) pos_y = 670.f;
@@ -87,7 +87,7 @@ void Player::draw(RenderWindow* window) {
 	window->draw(sprite);
 
 	hitbox.setRadius(hitbox_r);
-	hitbox.setPosition(pos_x + 25, pos_y + 25);
+	hitbox.setPosition(pos_x, pos_y);
 	hitbox.setFillColor(Color::Red);
 	window->draw(hitbox);
 
@@ -136,9 +136,14 @@ Player::Player(TextureManager* tM, int i) {
 	speed_y = 0.f;
 
 	hitbox_r = 5.f;
+	hitbox_pos_x = 25.f;
+	hitbox_pos_y = 25.f;
+	hitbox.setOrigin(hitbox_r, hitbox_r);
 
 	sprite.setTexture(texManager->getTexture("player"));
 	sprite.setColor(Color::Black);
+
+	life = true;
 }
 
 

@@ -8,13 +8,15 @@ protected:
 	Sprite sprite;
 	TextureManager* texManager;
 
+	bool live;
+
 	int id;
 
 	float pos_x, pos_y;
+	float hitbox_pos_x, hitbox_pos_y, hitbox_r;
 	float speed_x, speed_y;
 
 	CircleShape hitbox;
-	float hitbox_r;
 
 	int fireTime, currentTime;
 
@@ -29,6 +31,11 @@ public:
 
 	float getPosX();
 	float getPosY();
+	float getHitboxPosX();
+	float getHitboxPosY();
+	float getHitboxR();
+
+	void setLive(bool);
 
 	void setId(int);
 	int getId();
