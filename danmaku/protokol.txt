@@ -1,0 +1,4 @@
+vector na bullety* szyskie -> lista
+server structy player,bullet,enemy
+server oblicza x/y i everything
+client wysyla input i rysuje
