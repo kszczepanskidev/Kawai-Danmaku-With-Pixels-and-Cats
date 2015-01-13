@@ -14,6 +14,8 @@ private:
 	float hitbox_pos_x, hitbox_pos_y, hitbox_r;
 	bool live;
 
+	int type;
+
 public:
 	int update();
 	void draw(RenderWindow*);
@@ -23,6 +25,7 @@ public:
 	float getHitboxPosX();
 	float getHitboxPosY();
 	float getHitboxR();
+	int getType();
 
 	Bullet(float, float, float, int,TextureManager*);
 	virtual ~Bullet();

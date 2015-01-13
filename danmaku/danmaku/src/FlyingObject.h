@@ -22,8 +22,9 @@ protected:
 
 	virtual void shoot();
 	virtual void move();
+
+	vector<Bullet*>* bullets;
 public:
-	vector<Bullet*> bullets;
 
 	virtual void handleEvent(Event*);
 	virtual int update();

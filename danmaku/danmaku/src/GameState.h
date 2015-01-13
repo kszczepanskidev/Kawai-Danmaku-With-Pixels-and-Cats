@@ -20,6 +20,7 @@ private:;
 	int gameTime;
 
 	vector<FlyingObject*> objects;
+	vector<Bullet*> bullets;
 
 	void initTexts();
 	void updateTexts();

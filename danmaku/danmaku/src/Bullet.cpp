@@ -17,10 +17,10 @@ void Bullet::draw(RenderWindow* window) {
 	sprite.setPosition(pos_x, pos_y);
 	window->draw(sprite);
 
-	hitbox.setRadius(hitbox_r); 
+	/*hitbox.setRadius(hitbox_r); 
 	hitbox.setPosition(pos_x, pos_y);
 	hitbox.setFillColor(Color::Blue);
-	window->draw(hitbox);
+	window->draw(hitbox);*/
 }
 
 float Bullet::getPosX() {
@@ -32,18 +32,22 @@ float Bullet::getPosY() {
 }
 
 float Bullet::getHitboxPosX() {
-	return hitbox_pos_x;// +hitbox_r;
+	return hitbox_pos_x;
 }
 
 float Bullet::getHitboxPosY() {
-	return hitbox_pos_y;// +hitbox_r;
+	return hitbox_pos_y;
 }
 
 float Bullet::getHitboxR() {
 	return hitbox_r;
 }
 
-Bullet::Bullet(float x, float y, float a, int type, TextureManager* texManager) {
+int Bullet::getType() {
+	return type;
+}
+
+Bullet::Bullet(float x, float y, float a, int t, TextureManager* texManager) {
 	sprite.setTexture(texManager->getTexture("bullet"));
 	sprite.setOrigin(sprite.getLocalBounds().width/2.f, sprite.getLocalBounds().height/2.f);
 
@@ -62,9 +66,9 @@ Bullet::Bullet(float x, float y, float a, int type, TextureManager* texManager) 
 
 	live = true;
 
-
 	sprite.rotate(a - 90.f);
-
+	
+	type = t;
 	switch (type) {
 	case PLAYER:
 		sprite.setColor(Color::Magenta);

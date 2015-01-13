@@ -30,7 +30,7 @@ StateManager::StateManager(Font f, TextureManager* tM) {
 	states.emplace_back(new QuitState());
 	states.emplace_back(new SplashState(texManager));
 
-	setActiveState(states[SPLASH]);
+	setActiveState(states[GAME]);
 }
 
 

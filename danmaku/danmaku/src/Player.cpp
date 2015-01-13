@@ -65,9 +65,9 @@ int Player::update() {
 	if (Keyboard::isKeyPressed(Keyboard::Space) && fireTime < currentTime)
 		shoot();
 
-	for (unsigned int i = 0; i < bullets.size(); ++i)
-		if (bullets[i]->update())
-			bullets.erase(bullets.begin() + i);
+	/*for (unsigned int i = 0; i < bullets->size(); ++i)
+		if ((*bullets)[i]->update())
+			bullets->erase(bullets->begin() + i);*/
 
 	return 0;
 }
@@ -86,35 +86,35 @@ void Player::draw(RenderWindow* window) {
 	sprite.setPosition(pos_x, pos_y);
 	window->draw(sprite);
 
-	hitbox.setRadius(hitbox_r);
+	/*hitbox.setRadius(hitbox_r);
 	hitbox.setPosition(pos_x, pos_y);
 	hitbox.setFillColor(Color::Red);
-	window->draw(hitbox);
+	window->draw(hitbox);*/
 
-	for (auto b : bullets)
-		b->draw(window);
+	/*for (auto b : bullets)
+		b->draw(window);*/
 }
 
 void Player::shoot() {
 	switch (power) {
 	case 1:
-		bullets.emplace_back(new Bullet(pos_x		, pos_y - 10.f, 90.f, PLAYER, texManager));
+		bullets->emplace_back(new Bullet(pos_x		 , pos_y - 10.f, 90.f , PLAYER, texManager));
 		break;
 	case 2:
-		bullets.emplace_back(new Bullet(pos_x + 10.f, pos_y - 10.f, 90.f, PLAYER, texManager));
-		bullets.emplace_back(new Bullet(pos_x - 10.f, pos_y - 10.f, 90.f, PLAYER, texManager));
+		bullets->emplace_back(new Bullet(pos_x + 10.f, pos_y - 10.f, 90.f , PLAYER, texManager));
+		bullets->emplace_back(new Bullet(pos_x - 10.f, pos_y - 10.f, 90.f , PLAYER, texManager));
 		break;
 	case 3:
-		bullets.emplace_back(new Bullet(pos_x - 10.f, pos_y - 10.f, 70.f, PLAYER, texManager));
-		bullets.emplace_back(new Bullet(pos_x		, pos_y - 10.f, 90.f, PLAYER, texManager));
-		bullets.emplace_back(new Bullet(pos_x + 10.f, pos_y - 10.f, 110.f, PLAYER, texManager));
+		bullets->emplace_back(new Bullet(pos_x - 10.f, pos_y - 10.f, 70.f , PLAYER, texManager));
+		bullets->emplace_back(new Bullet(pos_x		 , pos_y - 10.f, 90.f , PLAYER, texManager));
+		bullets->emplace_back(new Bullet(pos_x + 10.f, pos_y - 10.f, 110.f, PLAYER, texManager));
 		break;
 	}
 
 	fireTime = currentTime + 10;
 }
 
-Player::Player(TextureManager* tM, int i) {
+Player::Player(TextureManager* tM, vector<Bullet*>* b, int i) {
 	texManager = tM;
 
 	sprite.setTexture(texManager->getTexture("player"));
@@ -142,6 +142,8 @@ Player::Player(TextureManager* tM, int i) {
 	hitbox.setOrigin(hitbox_r, hitbox_r);
 	hitbox_pos_x = sprite.getOrigin().x;
 	hitbox_pos_y = sprite.getOrigin().y;
+
+	bullets = b;
 	
 	live = true;
 }

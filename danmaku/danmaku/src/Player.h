@@ -17,7 +17,7 @@ public:
 	int update();
 	void draw(RenderWindow*);
 
-	Player(TextureManager*, int);
+	Player(TextureManager*,vector<Bullet*>*, int);
 	virtual ~Player();
 };
 

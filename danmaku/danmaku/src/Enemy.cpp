@@ -19,9 +19,9 @@ int Enemy::update() {
 	if ((rand()%150 < 10) /*&& fireTime < currentTime*/)
 		shoot();
 
-	for (unsigned int i = 0; i < bullets.size(); ++i)
-	if (bullets[i]->update())
-		bullets.erase(bullets.begin() + i);
+	/*for (unsigned int i = 0; i < bullets->size(); ++i)
+	if ((*bullets)[i]->update())
+		bullets->erase(bullets->begin() + i);*/
 
 	return 0;
 }
@@ -35,23 +35,23 @@ void Enemy::draw(RenderWindow* window) {
 	sprite.setPosition(pos_x, pos_y);
 	window->draw(sprite);
 
-	hitbox.setRadius(hitbox_r);
+	/*hitbox.setRadius(hitbox_r);
 	hitbox.setPosition(pos_x, pos_y);
 	hitbox.setFillColor(Color::Black);
-	window->draw(hitbox);
+	window->draw(hitbox);*/
 
-	for (auto b : bullets)
-		b->draw(window);
+	/*for (auto b : *bullets)
+		b->draw(window);*/
 }
 
 void Enemy::shoot() {
 	for (int i = 0; i < power; ++i)
-		bullets.emplace_back(new Bullet(pos_x + 20.f, pos_y - 5.f, 0.f - (float)(rand() % 90 + 45.f), PLAYER, texManager));
+		bullets->emplace_back(new Bullet(pos_x + 20.f, pos_y - 5.f, 0.f - (float)(rand() % 90 + 45.f), ENEMY, texManager));
 
 	fireTime = currentTime + 5;
 }
 
-Enemy::Enemy(TextureManager* tM, float x, float y, float a) {
+Enemy::Enemy(TextureManager* tM, vector<Bullet*>* b, float x, float y, float a) {
 	texManager = tM;
 
 	sprite.setTexture(tM->getTexture("enemy1"));
@@ -77,6 +77,7 @@ Enemy::Enemy(TextureManager* tM, float x, float y, float a) {
 
 	angle = a;
 
+	bullets = b;
 
 	live = true;
 }

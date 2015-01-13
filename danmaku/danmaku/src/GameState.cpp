@@ -25,13 +25,17 @@ void GameState::update(StateManager* stManager) {
 		if (objects[i]->update())
 			objects.erase(objects.begin() + i);
 
-	objects = checkCollision(objects);
+	for (unsigned int i = 0; i < bullets.size(); ++i)
+		if (bullets[i]->update())
+			bullets.erase(bullets.begin() + i);
 
-	if (!objects[0]->getLive())
-		stManager->setActiveState(stManager->getState(MAINMENU));
+	checkCollision(&objects,&bullets);
+
+	/*if (!objects[0]->getLive())
+		stManager->setActiveState(stManager->getState(MAINMENU));*/
 	
 	if ((rand() % 100 == 3) && objects.size() < 11)
-		objects.emplace_back(new Enemy(texManager, float(rand() % 600 + 200), -50.f, 90.f));		
+		objects.emplace_back(new Enemy(texManager, &bullets, float(rand() % 600 + 200), -50.f, 90.f));
 }
 
 void GameState::scrollBG() {
@@ -99,6 +103,9 @@ void GameState::draw(RenderWindow* window) {
 	for (auto o : objects)
 		o->draw(window);
 
+	for (auto b : bullets)
+		b->draw(window);
+
 	window->draw(sprites[BG]);
 
 	for (auto t : gameTexts)
@@ -155,7 +162,7 @@ GameState::GameState(Font f, TextureManager* tM) {
 	initTexts();
 	initSprites(texManager);
 
-	objects.emplace_back(new Player(texManager, 1));
+	objects.emplace_back(new Player(texManager, &bullets, 1));
 }
 
 

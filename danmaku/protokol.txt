@@ -1,4 +1,4 @@
-vector na bullety* szyskie -> lista
 server structy player,bullet,enemy
 server oblicza x/y i everything
-client wysyla input i rysuje
+client wysyła input i rysuje
+server może być w C++ (?) - inb4 flying vectors
