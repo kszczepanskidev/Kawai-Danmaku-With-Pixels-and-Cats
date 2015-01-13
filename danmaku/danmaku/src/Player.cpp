@@ -65,10 +65,6 @@ int Player::update() {
 	if (Keyboard::isKeyPressed(Keyboard::Space) && fireTime < currentTime)
 		shoot();
 
-	/*for (unsigned int i = 0; i < bullets->size(); ++i)
-		if ((*bullets)[i]->update())
-			bullets->erase(bullets->begin() + i);*/
-
 	return 0;
 }
 
@@ -90,9 +86,6 @@ void Player::draw(RenderWindow* window) {
 	hitbox.setPosition(pos_x, pos_y);
 	hitbox.setFillColor(Color::Red);
 	window->draw(hitbox);*/
-
-	/*for (auto b : bullets)
-		b->draw(window);*/
 }
 
 void Player::shoot() {

@@ -19,10 +19,6 @@ int Enemy::update() {
 	if ((rand()%150 < 10) /*&& fireTime < currentTime*/)
 		shoot();
 
-	/*for (unsigned int i = 0; i < bullets->size(); ++i)
-	if ((*bullets)[i]->update())
-		bullets->erase(bullets->begin() + i);*/
-
 	return 0;
 }
 
@@ -39,9 +35,6 @@ void Enemy::draw(RenderWindow* window) {
 	hitbox.setPosition(pos_x, pos_y);
 	hitbox.setFillColor(Color::Black);
 	window->draw(hitbox);*/
-
-	/*for (auto b : *bullets)
-		b->draw(window);*/
 }
 
 void Enemy::shoot() {

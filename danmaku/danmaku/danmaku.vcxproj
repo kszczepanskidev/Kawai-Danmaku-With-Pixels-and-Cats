@@ -16,6 +16,7 @@
     <ClCompile Include="src\Bullet.cpp" />
     <ClCompile Include="src\Collision.cpp" />
     <ClCompile Include="src\ConnectState.cpp" />
+    <ClCompile Include="src\CreditsState.cpp" />
     <ClCompile Include="src\Enemy.cpp" />
     <ClCompile Include="src\FlyingObject.cpp" />
     <ClCompile Include="src\GameState.cpp" />
@@ -34,6 +35,7 @@
     <ClInclude Include="src\Application.h" />
     <ClInclude Include="src\Collision.h" />
     <ClInclude Include="src\ConnectState.h" />
+    <ClInclude Include="src\CreditsState.h" />
     <ClInclude Include="src\Enemy.h" />
     <ClInclude Include="src\FlyingObject.h" />
     <ClInclude Include="src\GameState.h" />

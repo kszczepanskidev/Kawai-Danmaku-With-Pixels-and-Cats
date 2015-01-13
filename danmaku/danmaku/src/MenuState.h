@@ -1,7 +1,7 @@
 #pragma once
 #include "State.h"
 
-enum menuTexts{MENU_START, MENU_QUIT};
+enum menuTexts{ MENU_START_SP, MENU_START_MP, MENU_CREDITS, MENU_QUIT };
 
 class MenuState : public State {
 private:

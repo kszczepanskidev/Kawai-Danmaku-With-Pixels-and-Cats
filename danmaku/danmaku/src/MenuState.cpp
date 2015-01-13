@@ -25,10 +25,17 @@ void MenuState::handleEvent(Event* event, StateManager* stManager) {
 
 void MenuState::selectState(StateManager* stManager) {
 	switch (currentMenu) {
-	case 0:
+	case MENU_START_SP:
+		stManager->newGame();
+		stManager->setActiveState(stManager->getState(GAME));
+		break;
+	case MENU_START_MP:
 		stManager->setActiveState(stManager->getState(CONNECT));
 		break;
-	case 1:
+	case MENU_CREDITS:
+		stManager->setActiveState(stManager->getState(CREDITS));
+		break;
+	case MENU_QUIT:
 		stManager->setActiveState(stManager->getState(QUIT));
 		break;
 	}
@@ -42,8 +49,13 @@ void MenuState::update(StateManager* stManager) {
 void MenuState::initTexts() {
 	stateTexts.clear();
 
-	stateTexts.emplace_back(new GameText("Start game ", font, 137.f, 281.f));
-	stateTexts.emplace_back(new GameText("   Quit", font, 137.f, 361.f));
+	stateTexts.emplace_back(new GameText("Singleplayer" , font, 332.f, 324.f));	//135
+	stateTexts.emplace_back(new GameText("Multiplayer"	, font, 332.f, 404.f));	//148
+	stateTexts.emplace_back(new GameText("Credits"		, font, 332.f, 484.f));	//215
+	stateTexts.emplace_back(new GameText("Quit"			, font, 332.f, 564.f));	//265
+
+	for (auto t : stateTexts)
+		t->text.setOrigin(t->text.getLocalBounds().width/2, 0);
 }
 
 void MenuState::initSprites(TextureManager* texManager) {

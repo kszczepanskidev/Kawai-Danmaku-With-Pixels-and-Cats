@@ -8,8 +8,9 @@
 #include "ConnectState.h"
 #include "QuitState.h"
 #include "SplashState.h"
+#include "CreditsState.h"
 
-enum states{ MAINMENU, GAME, CONNECT, QUIT, SPLASH };
+enum states{ MAINMENU, GAME, CONNECT, QUIT, SPLASH, CREDITS, NICKNAME };
 
 
 class StateManager {
