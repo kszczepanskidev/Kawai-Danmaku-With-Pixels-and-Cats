@@ -1,9 +1,12 @@
 #include "CreditsState.h"
 
+#include "StateManager.h"
+
 enum textures{ BG };
 
 void CreditsState::handleEvent(Event* event, StateManager* stManager) {
-
+	if (event->type == Event::KeyReleased && event->key.code == Keyboard::Return)
+			stManager->setActiveState(stManager->getState(MAINMENU));
 }
 
 void CreditsState::update(StateManager* stManager) {
@@ -24,12 +27,12 @@ void CreditsState::initSprites(TextureManager* texManager) {
 
 	sprites.clear();
 
-	temp.setTexture(texManager->getTexture("menu_bg"));
+	temp.setTexture(texManager->getTexture("credits_bg"));
 	sprites.emplace_back(temp);
 }
 
 void CreditsState::draw(RenderWindow* window) {
-	//window->draw(sprites[BG]);
+	window->draw(sprites[BG]);
 
 	for (auto t: stateTexts)
 		window->draw(t->text);
