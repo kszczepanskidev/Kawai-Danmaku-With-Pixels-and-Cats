@@ -4,7 +4,9 @@
 #include <math.h>
 
 int Enemy::update() {
-	if (pos_x > 863.f || pos_x < 163.f || pos_y > 720.f)
+	if ((pos_x > 863.f || pos_x < 163.f || pos_y > 720.f) && id != 1)
+		return 1;
+	if (pos_y > 550.f && id == 1)
 		return 1;
 
 	if (currentTime > 60) {
@@ -16,8 +18,10 @@ int Enemy::update() {
 
 	move();
 
-	if ((rand()%150 < 10) /*&& fireTime < currentTime*/)
-		shoot();
+	if ((rand()%150 < 10 && id != 1) /*&& fireTime < currentTime*/)
+			shoot();
+	if ((rand() % 150 < 7 && id == 1))
+			shoot();
 
 	return 0;
 }
@@ -39,17 +43,35 @@ void Enemy::draw(RenderWindow* window) {
 
 void Enemy::shoot() {
 	for (int i = 0; i < power; ++i)
-		bullets->emplace_back(new Bullet(pos_x + 20.f, pos_y - 5.f, 0.f - (float)(rand() % 90 + 45.f), ENEMY, texManager));
+		switch (id) {
+		case 0:
+			bullets->emplace_back(new Bullet(pos_x, pos_y + 5.f, 0.f - (float)(rand() % 90 + 45.f), ENEMY, texManager));
+			break;
+		case 1:
+			bullets->emplace_back(new Bullet(pos_x, pos_y + 5.f, -90.f, 2, texManager));
+			break;
+	}
 
-	fireTime = currentTime + 5;
+	//fireTime = currentTime + 5;
+	cout << "Enemy shot" << endl;
 }
 
-Enemy::Enemy(TextureManager* tM, vector<Bullet*>* b, float x, float y, float a) {
+Enemy::Enemy(TextureManager* tM, vector<Bullet*>* b, int i, float x, float y, float a, float s) {
 	texManager = tM;
+
+	id = i;
 
 	sprite.setTexture(tM->getTexture("enemy1"));
 	sprite.setOrigin(sprite.getLocalBounds().width / 2.f, sprite.getLocalBounds().height / 2.f);
-	sprite.setColor(Color::Red);
+
+		switch (id) {
+	case 0:
+		sprite.setColor(Color::Red);
+		break;
+	case 1:
+		if (id == 1) sprite.setColor(Color::White);
+		break;
+	}
 
 	pos_x = x;
 	pos_y = y;
@@ -60,8 +82,8 @@ Enemy::Enemy(TextureManager* tM, vector<Bullet*>* b, float x, float y, float a) 
 	fireTime = 0;
 	currentTime = 0;
 
-	speed_x = 7.f;
-	speed_y = 7.f;
+	speed_x = s;
+	speed_y = s;
 
 	hitbox_r = 15.f;
 	hitbox.setOrigin(hitbox_r, hitbox_r);
@@ -73,6 +95,7 @@ Enemy::Enemy(TextureManager* tM, vector<Bullet*>* b, float x, float y, float a) 
 	bullets = b;
 
 	live = true;
+
 }
 
 

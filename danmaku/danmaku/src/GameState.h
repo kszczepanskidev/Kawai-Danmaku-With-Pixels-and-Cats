@@ -11,6 +11,7 @@ enum gameTexts{ SCORE, SCORE_V, LIFE, LIFE_V, POWER, POWER_V, SPECIAL, SPECIAL_V
 class GameState : public State {
 private:;
 	vector<GameText*> gameTexts;
+
 	TextureManager* texManager;
 
 	float pos_y1, pos_y2, pos_y3, pos_x;

@@ -16,11 +16,11 @@ float FlyingObject::getPosY() {
 }
 
 float FlyingObject::getHitboxPosX() {
-	return hitbox_pos_x;// +hitbox_r;
+	return hitbox_pos_x;
 }
 
 float FlyingObject::getHitboxPosY() {
-	return hitbox_pos_y;// +hitbox_r;
+	return hitbox_pos_y;
 }
 
 float FlyingObject::getHitboxR() {
@@ -33,6 +33,14 @@ bool FlyingObject::getLive() {
 
 void FlyingObject::setLive(bool l) {
 	live = l;
+}
+
+bool FlyingObject::getShooting() {
+	return live;
+}
+
+void FlyingObject::setShooting(bool s) {
+	shooting = s;
 }
 
 

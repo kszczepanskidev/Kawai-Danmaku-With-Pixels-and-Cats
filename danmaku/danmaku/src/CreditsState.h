@@ -1,10 +1,17 @@
 #pragma once
 #include "State.h"
-#include "TextureManager.h"
+#include "FlyingObject.h"
+#include "Player.h"
+#include "Enemy.h"
 
 class CreditsState : public State {
 private:
+	vector<GameText*> gameTexts;
+
 	TextureManager* texManager;
+
+	vector<FlyingObject*> objects;
+	vector<Bullet*> bullets;
 
 	void initTexts();
 	void initSprites(TextureManager*);

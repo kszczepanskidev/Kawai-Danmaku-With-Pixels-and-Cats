@@ -8,7 +8,7 @@ protected:
 	Sprite sprite;
 	TextureManager* texManager;
 
-	bool live;
+	bool live, shooting;
 
 	int id;
 
@@ -38,6 +38,9 @@ public:
 
 	bool getLive();
 	void setLive(bool);
+
+	bool getShooting();
+	void setShooting(bool);
 
 	void setId(int);
 	int getId();

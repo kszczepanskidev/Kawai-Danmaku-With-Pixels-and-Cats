@@ -35,7 +35,7 @@ void GameState::update(StateManager* stManager) {
 		stManager->setActiveState(stManager->getState(MAINMENU));*/
 	
 	if ((rand() % 100 == 3) && objects.size() < 11)
-		objects.emplace_back(new Enemy(texManager, &bullets, float(rand() % 600 + 200), -50.f, 90.f));
+		objects.emplace_back(new Enemy(texManager, &bullets, 0, float(rand() % 600 + 200), -50.f, 90.f, 7.f));
 }
 
 void GameState::scrollBG() {
@@ -162,7 +162,7 @@ GameState::GameState(Font f, TextureManager* tM) {
 	initTexts();
 	initSprites(texManager);
 
-	objects.emplace_back(new Player(texManager, &bullets, 1));
+	objects.emplace_back(new Player(texManager, &bullets, 1, 535.5f, 650.f));
 }
 
 

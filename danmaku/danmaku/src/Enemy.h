@@ -16,7 +16,7 @@ public:
 	void draw(RenderWindow*);
 
 
-	Enemy(TextureManager*, vector<Bullet*>*, float, float, float);
+	Enemy(TextureManager*, vector<Bullet*>*, int, float, float, float, float);
 	virtual ~Enemy();
 };
 
