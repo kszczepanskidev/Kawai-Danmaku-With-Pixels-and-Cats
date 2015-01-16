@@ -13,6 +13,10 @@ private:
 	vector<FlyingObject*> objects;
 	vector<Bullet*> bullets;
 
+	Uint8 light;
+	int phase;
+	//bool in;
+
 	void initTexts();
 	void initSprites(TextureManager*);
 

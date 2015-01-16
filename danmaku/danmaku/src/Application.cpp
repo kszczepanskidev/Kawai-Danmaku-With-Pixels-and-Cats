@@ -24,6 +24,9 @@ void Application::appEvent() {
 	Event event;
 
 	while (window->pollEvent(event)) {
+		if (event.type == sf::Event::Closed)
+			window->close();
+
 		if (event.type == Event::KeyReleased) {
 			switch (event.key.code) {
 			case Keyboard::Escape:

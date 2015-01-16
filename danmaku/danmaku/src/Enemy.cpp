@@ -51,9 +51,7 @@ void Enemy::shoot() {
 			bullets->emplace_back(new Bullet(pos_x, pos_y + 5.f, -90.f, 2, texManager));
 			break;
 	}
-
 	//fireTime = currentTime + 5;
-	cout << "Enemy shot" << endl;
 }
 
 Enemy::Enemy(TextureManager* tM, vector<Bullet*>* b, int i, float x, float y, float a, float s) {
