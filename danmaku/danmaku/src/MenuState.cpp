@@ -6,12 +6,12 @@ enum textures{ BG, LOGO };
 void MenuState::handleEvent(Event* event, StateManager* stManager) {
 	if (event->type == Event::KeyReleased) {
 		switch (event->key.code) {
-		case Keyboard::Up:
+		case Keyboard::W:
 			--currentMenu;
 			if (currentMenu < 0)
 				currentMenu = stateTexts.size() - 1;
 			break;
-		case Keyboard::Down:
+		case Keyboard::S:
 			++currentMenu;
 			if (currentMenu == stateTexts.size())
 				currentMenu = 0;
