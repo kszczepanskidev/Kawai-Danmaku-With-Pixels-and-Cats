@@ -1,7 +1,9 @@
 ﻿#include "GameState.h"
 #include "StateManager.h"
 
-enum textures{ BG, SCROLL1, SCROLL2, SCROLL3, CUSTOM1 };
+enum textures{ BG, CUSTOM1, CLOUDS };
+
+bool distinct[CLOUDS_NUM];
 
 void GameState::handleEvent(Event* event, StateManager* stManager) {
 	if (event->type == Event::KeyReleased)
@@ -39,24 +41,19 @@ void GameState::update(StateManager* stManager) {
 }
 
 void GameState::scrollBG() {
-	pos_y1 += scrollSpeed;
-	pos_y2 += scrollSpeed;
-	pos_y3 += scrollSpeed;
+	int temp;
 
-	if (pos_y1 >= 1440.f) {
-		pos_y1 = -720.f;
-		pos_y2 = -1440.f;
-		do
-		bg1 = rand() % 3 + SCROLL1;
-		while (bg1 == bg3);
-		do
-		bg2 = rand() % 3 + SCROLL1;
-		while (bg2 == bg1);
-	}
-
-	if (pos_y3 >= 720.f) {
-		pos_y3 = -1440.f;
-		bg3 = SCROLL1 + SCROLL2 + SCROLL3 - bg1 - bg2;
+	for (int i = 0; i < CLOUDS_NUM; ++i) {
+		pos_y[i] += scrollSpeed;
+		if (pos_y[i] > 720.f) {
+			distinct[i] = false;
+			do
+			temp = rand() % 10;
+			while (distinct[temp]);
+			distinct[temp] = true;
+			pos_y[i] = 0.f - temp * 175.f;
+			sprites[i + CLOUDS].setTexture(texManager->getTexture(clouds_names[rand() % CLOUDS_NUM]));
+		}
 	}
 }
 
@@ -90,13 +87,12 @@ void GameState::updateTexts() {
 
 
 void GameState::draw(RenderWindow* window) {
-	sprites[bg1].setPosition(pos_x, pos_y1);
-	sprites[bg2].setPosition(pos_x, pos_y2);
-	sprites[bg3].setPosition(pos_x, pos_y3);
+	window->clear(Color(169, 210, 216, 255));
 
-	window->draw(sprites[bg1]);
-	window->draw(sprites[bg2]);
-	window->draw(sprites[bg3]);
+	for (int i = 0; i < CLOUDS_NUM; ++i) {
+		sprites[i + CLOUDS].setPosition(pos_x, pos_y[i]);
+		window->draw(sprites[i + CLOUDS]);
+	}
 
 	window->draw(sprites[BG]);
 
@@ -115,27 +111,24 @@ void GameState::draw(RenderWindow* window) {
 void GameState::initSprites(TextureManager* texManager) {
 	Sprite temp;
 
+
 	sprites.clear();
 
 	temp.setTexture(texManager->getTexture("game_bg"));
-	sprites.emplace_back(temp);
-
-
-	temp.setTextureRect(IntRect(0, 0, 700, 720));
-
-	temp.setTexture(texManager->getTexture("game_scroll1"));
-	sprites.emplace_back(temp);
-
-	temp.setTexture(texManager->getTexture("game_scroll2"));
-	sprites.emplace_back(temp);
-
-	temp.setTexture(texManager->getTexture("game_scroll3"));
 	sprites.emplace_back(temp);
 
 	temp.setTexture(texManager->getTexture("game_custom1"));
 	sprites.emplace_back(temp);
 	sprites[CUSTOM1].setTextureRect(IntRect(0, 0, 157, 280));
 	sprites[CUSTOM1].setPosition(932.f, 440.f);
+
+	temp.setTextureRect(IntRect(0, 0, 700, 175));
+
+	for (int i = 0; i < CLOUDS_NUM; ++i) {
+		clouds_names.emplace_back("cloud" + to_string(i));
+		temp.setTexture(texManager->getTexture(clouds_names[i]));
+		sprites.emplace_back(temp);
+	}
 }
 
 
@@ -149,13 +142,19 @@ GameState::GameState(Font f, TextureManager* tM) {
 	scrollSpeed = 2.f;
 	
 	pos_x = 188.f;
-	pos_y1 = 0.f;
-	pos_y2 = -720.f;
-	pos_y3 = -1440.f;
+	for (int i = 0; i < CLOUDS_NUM; ++i)
+		distinct[i] = false;
 
-	bg1 = SCROLL1;
-	bg2 = SCROLL2;
-	bg3 = SCROLL3;
+	int temp;
+
+	for (int i = 0; i < CLOUDS_NUM; ++i) {
+		do
+		temp = rand() % 10;
+		while (distinct[temp]);
+		distinct[temp] = true;
+		pos_y[i] = 0.f - temp * 175.f;
+	}
+
 
 	initTexts();
 	initSprites(texManager);
