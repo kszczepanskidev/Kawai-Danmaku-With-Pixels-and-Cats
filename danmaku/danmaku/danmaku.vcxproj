@@ -20,7 +20,8 @@
     <ClCompile Include="src\CreditsState.cpp" />
     <ClCompile Include="src\Enemy.cpp" />
     <ClCompile Include="src\FlyingObject.cpp" />
-    <ClCompile Include="src\GameState.cpp" />
+    <ClCompile Include="src\MPGameState.cpp" />
+    <ClCompile Include="src\SPGameState.cpp" />
     <ClCompile Include="src\mainfile.cpp" />
     <ClCompile Include="src\GameText.cpp" />
     <ClCompile Include="src\MenuState.cpp" />
@@ -40,7 +41,8 @@
     <ClInclude Include="src\CreditsState.h" />
     <ClInclude Include="src\Enemy.h" />
     <ClInclude Include="src\FlyingObject.h" />
-    <ClInclude Include="src\GameState.h" />
+    <ClInclude Include="src\MPGameState.h" />
+    <ClInclude Include="src\SPGameState.h" />
     <ClInclude Include="src\Bullet.h" />
     <ClInclude Include="src\Includes.h" />
     <ClInclude Include="src\GameText.h" />

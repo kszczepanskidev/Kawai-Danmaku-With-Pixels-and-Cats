@@ -27,7 +27,7 @@ void MenuState::selectState(StateManager* stManager) {
 	switch (currentMenu) {
 	case MENU_START_SP:
 		stManager->newGame();
-		stManager->setActiveState(stManager->getState(GAME));
+		stManager->setActiveState(stManager->getState(SPGAME));
 		break;
 	case MENU_START_MP:
 		stManager->setActiveState(stManager->getState(CONNECT));

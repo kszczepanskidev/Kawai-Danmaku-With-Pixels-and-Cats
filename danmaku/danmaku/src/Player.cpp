@@ -1,19 +1,22 @@
 #include "Player.h"
 
+const float sx = 6.5f;
+const float sy = 6.5f;
+
 void Player::handleEvent(Event* event) {
 	if (event->type == Event::KeyPressed)
 		switch (event->key.code) {
 		case Keyboard::W:
-			speed_y = -5.f;
+			speed_y = -sy;//-5.f;
 			break;
 		case Keyboard::S:
-			speed_y = 5.f;
+			speed_y = sy;// 5.f;
 			break;
 		case Keyboard::A:
-			speed_x = -5.f;
+			speed_x = -sx;//-5.f;
 			break;
 		case Keyboard::D:
-			speed_x = 5.f;
+			speed_x = sx;// 5.f;
 			break;
 		case Keyboard::Space:
 			shooting = true;
@@ -79,9 +82,9 @@ void Player::move() {
 		pos_x += speed_x;
 
 		if (pos_y < 0.f && id != 3) pos_y = 0.f;
-		if (pos_y > 670.f && id != 3) pos_y = 670.f;
-		if (pos_x < 188.f && id != 3) pos_x = 188.f;
-		if (pos_x > 833.f && id != 3) pos_x = 833.f;
+		if (pos_y > 690.f && id != 3) pos_y = 690.f;
+		if (pos_x < 218.f && id != 3) pos_x = 218.f;
+		if (pos_x > 803.f && id != 3) pos_x = 803.f;
 }
 
 void Player::draw(RenderWindow* window) {
@@ -126,6 +129,7 @@ Player::Player(TextureManager* tM, vector<Bullet*>* b, int i, float x, float y) 
 	sprite.setColor(Color::Black);
 	
 	id = i;
+	type = 'p';
 
 	pos_x = x;//535.5f;
 	pos_y = y;// 650.f;

@@ -4,7 +4,7 @@
 #include "TextureManager.h"
 #include "AnimationHandler.h"
 
-#include "GameState.h"
+#include "SPGameState.h"
 #include "MenuState.h"
 #include "ConnectState.h"
 

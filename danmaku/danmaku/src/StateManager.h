@@ -4,13 +4,14 @@
 
 #include "State.h"
 #include "MenuState.h"
-#include "GameState.h"
+#include "SPGameState.h"
+#include "MPGameState.h"
 #include "ConnectState.h"
 #include "QuitState.h"
 #include "SplashState.h"
 #include "CreditsState.h"
 
-enum states{ MAINMENU, GAME, CONNECT, QUIT, SPLASH, CREDITS, NICKNAME };
+enum states{ MAINMENU, SPGAME, MPGAME, CONNECT, QUIT, SPLASH, CREDITS };
 
 
 class StateManager {
@@ -22,6 +23,7 @@ public:
 	State* getActiveState();
 
 	void newGame();
+	void newMPGame(int);
 
 	State* getState(int);
 

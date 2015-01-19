@@ -15,7 +15,7 @@ void ConnectState::handleEvent(Event* event, StateManager* stManager) {
 		switch (event->key.code) {
 		case Keyboard::Return:
 			stManager->newGame();
-			stManager->setActiveState(stManager->getState(GAME));
+			stManager->setActiveState(stManager->getState(SPGAME));
 			break;
 		case Keyboard::Escape:
 			stManager->setActiveState(stManager->getState(MAINMENU));

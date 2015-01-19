@@ -37,10 +37,10 @@ void Application::appEvent() {
 		if (event.type == Event::KeyReleased || event.type == Event::KeyPressed || event.type == Event::TextEntered)
 			stManager->getActiveState()->handleEvent(&event, stManager);
 
-		if (Keyboard::isKeyPressed(Keyboard::Delete))
+		/*if (Keyboard::isKeyPressed(Keyboard::Delete))
 			window->setFramerateLimit(0);
 		else
-			window->setFramerateLimit(60);
+			window->setFramerateLimit(60);*/
 	}
 }
 
@@ -77,15 +77,11 @@ Application::Application() {
 	stManager = new StateManager(font, texManager);
 	aniHandler = new AnimationHandler();
 
-	/*camera = new View();
-	camera->setCenter(Vector2f(1280.0f / 2.0f, 720.0f / 2.0f));
-	camera->setSize(Vector2f(1280, 720));*/
-
 	window = new RenderWindow();
 	window->create(VideoMode(1280, 720), "Kawai Danmaku With Pixels and Cats");
 	window->clear(Color::Black);
-	window->setFramerateLimit(60);
-	//window->setView(*camera);
+	//window->setFramerateLimit(60);
+	window->setVerticalSyncEnabled(true);
 	
 	Vector2i windowPos = window->getPosition();
 	windowPos.y -= 15;

@@ -57,6 +57,10 @@ int FlyingObject::getId() {
 	return id;
 }
 
+char FlyingObject::getType() {
+	return type;
+}
+
 
 FlyingObject::FlyingObject() {}
 

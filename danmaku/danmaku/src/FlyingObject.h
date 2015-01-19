@@ -10,6 +10,7 @@ protected:
 
 	bool live, shooting;
 
+	char type;				//p - player, b - bonus, e - enemy
 	int id;
 	int life, power, score, graze, special;
 
@@ -47,6 +48,8 @@ public:
 
 	void setId(int);
 	int getId();
+
+	char getType();
 
 	FlyingObject();
 	virtual ~FlyingObject();

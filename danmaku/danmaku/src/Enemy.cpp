@@ -58,6 +58,7 @@ Enemy::Enemy(TextureManager* tM, vector<Bullet*>* b, int i, float x, float y, fl
 	texManager = tM;
 
 	id = i; //0 - game, 1 - credits
+	type = 'e';
 
 	sprite.setTexture(tM->getTexture("enemy1"));
 	sprite.setOrigin(sprite.getLocalBounds().width / 2.f, sprite.getLocalBounds().height / 2.f);

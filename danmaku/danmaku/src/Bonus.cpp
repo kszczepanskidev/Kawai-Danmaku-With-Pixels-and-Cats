@@ -17,7 +17,8 @@ void Bonus::draw(RenderWindow* window) {
 }
 
 Bonus::Bonus(TextureManager* texManager, float x, float y) {
-	id = -1;
+	//id = -1;
+	type = 'b';
 	live = true;
 
 	sprite.setTexture(texManager->getTexture("bonus"));
