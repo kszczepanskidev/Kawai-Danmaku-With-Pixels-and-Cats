@@ -18,6 +18,7 @@ void Bonus::draw(RenderWindow* window) {
 
 Bonus::Bonus(TextureManager* texManager, float x, float y) {
 	id = -1;
+	live = true;
 
 	sprite.setTexture(texManager->getTexture("bonus"));
 	sprite.setOrigin(sprite.getLocalBounds().width / 2.f, sprite.getLocalBounds().height / 2.f);

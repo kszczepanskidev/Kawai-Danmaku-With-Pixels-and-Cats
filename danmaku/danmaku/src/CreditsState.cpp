@@ -2,13 +2,15 @@
 
 #include "StateManager.h"
 
-enum textures{ BG, /*LOGO*/SPLASHIN, KRYSZTAL, SCOFIELD, SHIHOIN, ARCHER, DANCEFLOOR };
+enum textures{ BG, SPLASHIN, KRYSZTAL, SCOFIELD, SHIHOIN, ARCHER, DANCEFLOOR };
 enum texts { CREDITS_TEXT, DEVELOPEDBY_TEXT, CODERS_TEXT, KRYSZTAL_TEXT, SCOFIELD_TEXT, ARTS_TEXT, ARCHER_TEXT, SHIHOIN_TEXT, MUSIC_TEXT, DANCEFLOOR_TEXT };
 
 void CreditsState::handleEvent(Event* event, StateManager* stManager) {
 	if (event->type == Event::KeyReleased && event->key.code == Keyboard::Return)
-	if (phase == 2)
+	if (phase == 2) {
 		stManager->setActiveState(stManager->getState(MAINMENU));
+		phase = 0;
+	}
 	else
 		++phase;
 }
