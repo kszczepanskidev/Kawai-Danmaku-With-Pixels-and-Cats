@@ -142,7 +142,7 @@ Player::Player(TextureManager* tM, vector<Bullet*>* b, int i, float x, float y) 
 	speed_x = 0.f;
 	speed_y = 0.f;
 
-	hitbox_r = 5.f;
+	hitbox_r = 7.5f;
 	hitbox.setOrigin(hitbox_r, hitbox_r);
 	hitbox_pos_x = sprite.getOrigin().x;
 	hitbox_pos_y = sprite.getOrigin().y;

@@ -43,6 +43,11 @@ void FlyingObject::setShooting(bool s) {
 	shooting = s;
 }
 
+void FlyingObject::inreasePower() {
+	if (power < 3)
+	power++;
+}
+
 
 void FlyingObject::setId(int i) {
 	id = i;

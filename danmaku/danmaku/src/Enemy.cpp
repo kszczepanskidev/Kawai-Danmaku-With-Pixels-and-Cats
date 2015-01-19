@@ -18,7 +18,7 @@ int Enemy::update() {
 
 	move();
 
-	if ((rand()%150 < 10 && id != 1) /*&& fireTime < currentTime*/)
+	if (/*(rand()%150 < 5 && id != 1) &&*/ fireTime < currentTime)
 			shoot();
 	if ((rand() % 150 < 7 && id == 1))
 			shoot();
@@ -51,13 +51,13 @@ void Enemy::shoot() {
 			bullets->emplace_back(new Bullet(pos_x, pos_y + 5.f, -90.f, 2, texManager));
 			break;
 	}
-	//fireTime = currentTime + 5;
+	fireTime = currentTime + 25;
 }
 
 Enemy::Enemy(TextureManager* tM, vector<Bullet*>* b, int i, float x, float y, float a, float s) {
 	texManager = tM;
 
-	id = i;
+	id = i; //0 - game, 1 - credits
 
 	sprite.setTexture(tM->getTexture("enemy1"));
 	sprite.setOrigin(sprite.getLocalBounds().width / 2.f, sprite.getLocalBounds().height / 2.f);
@@ -67,7 +67,7 @@ Enemy::Enemy(TextureManager* tM, vector<Bullet*>* b, int i, float x, float y, fl
 		sprite.setColor(Color::Red);
 		break;
 	case 1:
-		if (id == 1) sprite.setColor(Color::White);
+		sprite.setColor(Color::White);
 		break;
 	}
 
@@ -93,7 +93,6 @@ Enemy::Enemy(TextureManager* tM, vector<Bullet*>* b, int i, float x, float y, fl
 	bullets = b;
 
 	live = true;
-
 }
 
 

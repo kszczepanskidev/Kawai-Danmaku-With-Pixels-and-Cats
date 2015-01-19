@@ -7,7 +7,7 @@ enum texts { CREDITS_TEXT, DEVELOPEDBY_TEXT, CODERS_TEXT, KRYSZTAL_TEXT, SCOFIEL
 
 void CreditsState::handleEvent(Event* event, StateManager* stManager) {
 	if (event->type == Event::KeyReleased && event->key.code == Keyboard::Return)
-	if (phase == 3)
+	if (phase == 2)
 		stManager->setActiveState(stManager->getState(MAINMENU));
 	else
 		++phase;

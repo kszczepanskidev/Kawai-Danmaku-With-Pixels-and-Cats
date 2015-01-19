@@ -5,7 +5,6 @@
 
 class Enemy : public FlyingObject{
 private:
-	int life, power;
 	float angle;
 
 	void shoot();

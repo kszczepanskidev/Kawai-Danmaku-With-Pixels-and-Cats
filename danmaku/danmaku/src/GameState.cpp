@@ -31,10 +31,17 @@ void GameState::update(StateManager* stManager) {
 
 	checkCollision(&objects,&bullets);
 
-	/*if (!objects[0]->getLive())
-		stManager->setActiveState(stManager->getState(MAINMENU));*/
+	for (unsigned int j = 1; j < objects.size(); ++j)
+	if (!objects[j]->getLive()) {
+		if (rand() % 50 < 10)
+			objects.emplace_back(new Bonus(texManager, objects[j]->getPosX(), objects[j]->getPosY()));
+		objects.erase(objects.begin() + j);
+	}
+
+	if (!objects[0]->getLive())
+		stManager->setActiveState(stManager->getState(MAINMENU));
 	
-	if ((rand() % 100 == 3) && objects.size() < 11)
+	if ((rand() % 100 < 2) && objects.size() < 11)
 		objects.emplace_back(new Enemy(texManager, &bullets, 0, float(rand() % 600 + 200), -50.f, 90.f, 7.f));
 }
 

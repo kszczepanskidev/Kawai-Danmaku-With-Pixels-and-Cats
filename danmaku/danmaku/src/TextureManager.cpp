@@ -34,6 +34,7 @@ TextureManager::TextureManager() {
 	loadTexture("player", "player.png");
 	loadTexture("bullet", "bullet.png");
 	loadTexture("enemy1", "enemy1.png");
+	loadTexture("bonus", "bonus.png");
 	loadTexture("krysztal_av", "krysztal_av.png");
 	loadTexture("scofield_av", "scofield_av.png");
 	loadTexture("shihoin_av", "shihoin_av.png");

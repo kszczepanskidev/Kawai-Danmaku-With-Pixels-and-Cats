@@ -11,6 +11,7 @@ protected:
 	bool live, shooting;
 
 	int id;
+	int life, power, score, graze, special;
 
 	float pos_x, pos_y;
 	float hitbox_pos_x, hitbox_pos_y, hitbox_r;
@@ -41,6 +42,8 @@ public:
 
 	bool getShooting();
 	void setShooting(bool);
+
+	void inreasePower();
 
 	void setId(int);
 	int getId();

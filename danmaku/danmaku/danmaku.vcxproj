@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClCompile Include="src\AnimationHandler.cpp" />
     <ClCompile Include="src\Application.cpp" />
+    <ClCompile Include="src\Bonus.cpp" />
     <ClCompile Include="src\Bullet.cpp" />
     <ClCompile Include="src\Collision.cpp" />
     <ClCompile Include="src\ConnectState.cpp" />
@@ -33,6 +34,7 @@
   <ItemGroup>
     <ClInclude Include="src\AnimationHandler.h" />
     <ClInclude Include="src\Application.h" />
+    <ClInclude Include="src\Bonus.h" />
     <ClInclude Include="src\Collision.h" />
     <ClInclude Include="src\ConnectState.h" />
     <ClInclude Include="src\CreditsState.h" />

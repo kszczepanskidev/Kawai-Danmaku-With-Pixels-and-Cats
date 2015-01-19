@@ -7,7 +7,6 @@ enum dir { UP, DOWN, LEFT, RIGHT };
 
 class Player : public FlyingObject {
 private:
-	int score, life, graze, power, special;
 
 	void shoot();
 	void move();
