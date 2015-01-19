@@ -22,6 +22,7 @@ Texture& TextureManager::getTexture(const string &texture) {
 
 /* loading all textures on texture manager creating*/
 TextureManager::TextureManager() {
+	loadTexture("logo", "logo.png");
 	loadTexture("splashin", "krysztal_splash.png");
 	loadTexture("menu_bg", "menu_bg.png");
 	loadTexture("connect_bg", "connect_bg.png");

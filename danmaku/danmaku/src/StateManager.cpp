@@ -36,7 +36,7 @@ StateManager::StateManager(Font f, TextureManager* tM) {
 	states.emplace_back(new SplashState(texManager));
 	states.emplace_back(new CreditsState(font, texManager));
 
-	setActiveState(states[SPGAME]);
+	setActiveState(states[MAINMENU]);
 }
 
 

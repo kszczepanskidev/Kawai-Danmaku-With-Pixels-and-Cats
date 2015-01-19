@@ -2,12 +2,12 @@
 
 #include "StateManager.h"
 
-enum textures{ BG, SPLASHIN, KRYSZTAL, SCOFIELD, SHIHOIN, ARCHER, DANCEFLOOR };
+enum textures{ BG, SPLASHIN, KRYSZTAL, SCOFIELD, SHIHOIN, ARCHER, LOGO, DANCEFLOOR };
 enum texts { CREDITS_TEXT, DEVELOPEDBY_TEXT, CODERS_TEXT, KRYSZTAL_TEXT, SCOFIELD_TEXT, ARTS_TEXT, ARCHER_TEXT, SHIHOIN_TEXT, MUSIC_TEXT, DANCEFLOOR_TEXT };
 
 void CreditsState::handleEvent(Event* event, StateManager* stManager) {
 	if (event->type == Event::KeyReleased && event->key.code == Keyboard::Return)
-	if (phase == 2) {
+	if (phase == 3) {
 		stManager->setActiveState(stManager->getState(MAINMENU));
 		phase = 0;
 	}
@@ -74,6 +74,12 @@ void CreditsState::initSprites(TextureManager* texManager) {
 	sprites.emplace_back(temp);
 	sprites[ARCHER].setPosition(960.f, 332.f);
 	sprites[ARCHER].setTextureRect(IntRect(0, 0, 184, 184));
+
+	temp.setTexture(texManager->getTexture("logo"));
+	sprites.emplace_back(temp);
+	sprites[LOGO].setPosition(359.f, 83.f);
+	sprites[LOGO].setTextureRect(IntRect(0, 0, 595, 510));
+	sprites[LOGO].setScale(0.82, 0.82);
 }
 
 void CreditsState::draw(RenderWindow* window) {
@@ -109,7 +115,7 @@ void CreditsState::draw(RenderWindow* window) {
 		window->draw(sprites[ARCHER]);
 		break;
 	case 3:
-		//big game logo
+		window->draw(sprites[LOGO]);
 		break;
 	}
 }

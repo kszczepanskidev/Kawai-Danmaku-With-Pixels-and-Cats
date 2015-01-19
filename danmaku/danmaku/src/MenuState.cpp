@@ -65,10 +65,16 @@ void MenuState::initSprites(TextureManager* texManager) {
 
 	temp.setTexture(texManager->getTexture("menu_bg"));
 	sprites.emplace_back(temp);
+
+	temp.setTexture(texManager->getTexture("logo"));
+	sprites.emplace_back(temp);
+	sprites[LOGO].setPosition(627.f, 25.f);
+	sprites[LOGO].setTextureRect(IntRect(0, 0, 595, 510));
 }
 
 void MenuState::draw(RenderWindow* window) {
 	window->draw(sprites[BG]);
+	window->draw(sprites[LOGO]);
 
 	for (unsigned int i = 0; i < stateTexts.size(); ++i) {
 		if (i == currentMenu)
