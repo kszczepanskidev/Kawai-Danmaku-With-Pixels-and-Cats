@@ -89,7 +89,7 @@ Enemy::Enemy(TextureManager* tM, vector<Bullet*>* b, int i, float x, float y, fl
 	hitbox_pos_x = sprite.getOrigin().x;
 	hitbox_pos_y = sprite.getOrigin().y;
 
-	angle = a;
+	angle = 60.f; a;
 
 	bullets = b;
 

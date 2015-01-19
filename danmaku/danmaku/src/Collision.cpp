@@ -15,7 +15,8 @@ void checkCollision(vector<FlyingObject*>* objects, vector<Bullet*>* bullets) {
 					distance_y = (*objects)[i]->getPosY() - (*objects)[j]->getPosY();
 
 					if (sqrt(pow(distance_x, 2.0) + pow(distance_y, 2.0)) < ((*objects)[i]->getHitboxR() + (*objects)[j]->getHitboxR())) {
-						(*objects)[i]->setLive(false);
+						//(*objects)[i]->setLive(false);
+						(*objects)[i]->inreasePower(-1);
 						(*objects)[j]->setLive(false);
 						//objects->erase((*objects).begin() + j, (*objects).end());
 						break;
@@ -29,7 +30,8 @@ void checkCollision(vector<FlyingObject*>* objects, vector<Bullet*>* bullets) {
 					distance_y = (*objects)[i]->getPosY() - (*bullets)[j]->getPosY();
 
 					if (sqrt(pow(distance_x, 2) + pow(distance_y, 2)) < ((*objects)[i]->getHitboxR() + (*bullets)[j]->getHitboxR())) {
-						(*objects)[i]->setLive(false);
+						//(*objects)[i]->setLive(false);
+						(*objects)[i]->inreasePower(-1);
 						objects->erase(objects->begin() + 1, objects->end());
 						break;
 					}
@@ -58,7 +60,8 @@ void checkCollision(vector<FlyingObject*>* objects, vector<Bullet*>* bullets) {
 					distance_y = (*objects)[j]->getPosY() - (*objects)[i]->getPosY();
 
 					if (sqrt(pow(distance_x, 2.0) + pow(distance_y, 2.0)) < ((*objects)[j]->getHitboxR() + (*objects)[i]->getHitboxR())) {
-						(*objects)[j]->inreasePower();
+						(*objects)[j]->inreasePower(1);
+						(*objects)[j]->increaseScore(5);
 						objects->erase((*objects).begin() + i);
 						break;
 					}

@@ -2,7 +2,7 @@
 #include "StateManager.h"
 
 enum textures{ BG, CUSTOM1, SCROLLS };
-enum gameTexts{ SCORE, SCORE_V, LIFE, LIFE_V, POWER, POWER_V, SPECIAL, SPECIAL_V, GRAZE, GRAZE_V };
+enum gameTexts{ SCORE, SCORE_V, LIFE, LIFE_V, SPECIAL, SPECIAL_V, POWER, POWER_V, GRAZE, GRAZE_V };
 
 void SPGameState::handleEvent(Event* event, StateManager* stManager) {
 	if (event->type == Event::KeyReleased)
@@ -37,6 +37,7 @@ void SPGameState::update(StateManager* stManager) {
 		if (rand() % 50 < 10)
 			objects.emplace_back(new Bonus(texManager, objects[j]->getPosX(), objects[j]->getPosY()));
 		objects.erase(objects.begin() + j);
+		objects[0]->increaseScore(10);
 	}
 
 	if (!objects[0]->getLive())
@@ -76,6 +77,27 @@ void SPGameState::initTexts() {
 }
 
 void SPGameState::updateTexts() {
+	String temp;
+
+	gameTexts[SCORE_V]->text.setString(to_string(objects[0]->getScore()));
+
+	for (int i = 0; i < objects[0]->getLife(); ++i)
+		temp += "+ ";
+	gameTexts[LIFE_V]->text.setString(temp);
+	temp.clear();
+
+	for (int i = 0; i < objects[0]->getSpecial(); ++i)
+		temp += "* ";
+	gameTexts[SPECIAL_V]->text.setString(temp);
+	temp.clear();
+
+	for (int i = 0; i < objects[0]->getPower(); ++i)
+		temp += "# ";
+	gameTexts[POWER_V]->text.setString(temp);
+	temp.clear();
+	
+	gameTexts[GRAZE_V]->text.setString(to_string(objects[0]->getGraze()));
+
 	/* aligning value texts to right */
 	gameTexts[SCORE_V]->text.setOrigin(gameTexts[SCORE_V]->text.getLocalBounds().width, 0);
 	gameTexts[LIFE_V]->text.setOrigin(gameTexts[LIFE_V]->text.getLocalBounds().width, 0);

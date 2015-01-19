@@ -43,11 +43,44 @@ void FlyingObject::setShooting(bool s) {
 	shooting = s;
 }
 
-void FlyingObject::inreasePower() {
-	if (power < 3)
-	power++;
+void FlyingObject::inreasePower(int v) {
+	power += v;
+	if (power > 3)
+		power = 3;
+	if (power < 1)
+		power = 1;
+}
+int FlyingObject::getPower() {
+	return power;
 }
 
+void FlyingObject::increaseScore(int s) {
+	score += s;
+}
+int FlyingObject::getScore() {
+	return score;
+}
+
+void FlyingObject::setLife(int l) {
+	life = l;
+}
+int FlyingObject::getLife() {
+	return life;
+}
+
+void FlyingObject::setGraze(int g) {
+	graze = g;
+}
+int FlyingObject::getGraze() {
+	return graze;
+}
+
+void FlyingObject::setSpecial(int s) {
+	special = s;
+}
+int FlyingObject::getSpecial() {
+	return special;
+}
 
 void FlyingObject::setId(int i) {
 	id = i;

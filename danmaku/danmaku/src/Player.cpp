@@ -26,25 +26,25 @@ void Player::handleEvent(Event* event) {
 		switch (event->key.code) {
 		case Keyboard::W:
 			if (Keyboard::isKeyPressed(Keyboard::S))
-				speed_y = 5.f;
+				speed_y = sy;// 5.f;
 			else
 				speed_y = 0.f;
 			break;
 		case Keyboard::S:
 			if (Keyboard::isKeyPressed(Keyboard::W))
-				speed_y = 5.f;
+				speed_y = -sy;// -5.f;
 			else
 				speed_y = 0.f;
 			break;
 		case Keyboard::A:
 			if (Keyboard::isKeyPressed(Keyboard::D))
-				speed_x = 5.f;
+				speed_x = sx;// 5.f;
 			else
 				speed_x = 0.f;
 			break;
 		case Keyboard::D:
 			if (Keyboard::isKeyPressed(Keyboard::A))
-				speed_x = -5.f;
+				speed_x = -sx;// -5.f;
 			else
 				speed_x = 0.f;
 			break;
@@ -117,7 +117,7 @@ void Player::shoot() {
 			bullets->emplace_back(new Bullet(pos_x + 10.f, pos_y - 10.f, 110.f, PLAYER, texManager));
 			break;
 		}
-		fireTime = currentTime + 10;
+		fireTime = currentTime + 20;//10;
 	}
 }
 

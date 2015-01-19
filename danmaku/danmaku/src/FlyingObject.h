@@ -44,7 +44,20 @@ public:
 	bool getShooting();
 	void setShooting(bool);
 
-	void inreasePower();
+	void inreasePower(int);
+	int getPower();
+
+	void increaseScore(int);
+	int getScore();
+
+	void setLife(int);
+	int getLife();
+
+	void setGraze(int);
+	int getGraze();
+
+	void setSpecial(int);
+	int getSpecial();
 
 	void setId(int);
 	int getId();
