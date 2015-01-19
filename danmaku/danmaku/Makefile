@@ -1,4 +1,5 @@
 ProjectName			:=DanMaku
+ProjectPath			:=../Release/	
 Files				:=$(basename $(notdir $(wildcard src/*.cpp)))
 Compiler			:=g++
 
@@ -6,17 +7,17 @@ IncludePath			:=-I
 LibPath				:=-L
 
 Libs				:=-lsfml-graphics -lsfml-window -lsfml-system
-CompFlags			:=-w -Wall -fpermissive -std=c++0x
+CompFlags			:=-w -Wall -std=c++0x
 
 SourcesDir			:=src/
 ObjectsDir			:=obj/
-SourcesSuffix			:=.cpp
-ObjectSuffix			:=.o
+SourcesSuffix		:=.cpp
+ObjectSuffix		:=.o
 MDir				:=mkdir -p
 
 Sources				:=$(addprefix $(SourcesDir), $(addsuffix $(SourcesSuffix), $(Files)))
 Objects				:=$(addprefix $(ObjectsDir), $(addsuffix $(ObjectSuffix),  $(Files)))
-OutputFile			:=$(ProjectName)
+OutputFile			:=$(ProjectPath)$(ProjectName)
 
 ##
 ## Main Build Targets
