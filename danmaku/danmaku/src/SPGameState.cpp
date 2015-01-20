@@ -7,7 +7,7 @@ enum gameTexts{ SCORE, SCORE_V, LIFE, LIFE_V, SPECIAL, SPECIAL_V, POWER, POWER_V
 void SPGameState::handleEvent(Event* event, StateManager* stManager) {
 	if (event->type == Event::KeyReleased)
 		switch (event->key.code) {
-		case Keyboard::Return:
+		case Keyboard::Escape:
 			stManager->setActiveState(stManager->getState(MAINMENU));
 			break;
 	default:
@@ -44,7 +44,7 @@ void SPGameState::update(StateManager* stManager) {
 		stManager->setActiveState(stManager->getState(MAINMENU));
 	
 	if ((rand() % 100 < 2) && objects.size() < 11)
-		objects.emplace_back(new Enemy(texManager, &bullets, 0, float(rand() % 600 + 200), -50.f, 90.f, 7.f));
+		objects.emplace_back(new Enemy(texManager, &bullets, 0, float(rand() % 600 + 200), -25.f, 90.f, 4.f));
 }
 
 void SPGameState::scrollBG() {
@@ -108,7 +108,8 @@ void SPGameState::updateTexts() {
 
 
 void SPGameState::draw(RenderWindow* window) {
-	window->clear(Color(169, 210, 216, 255));
+	window->clear(Color(144, 179, 184, 255));
+	//window->clear(Color(169, 210, 216, 255));
 
 	for (int i = 0; i < 3; ++i) {
 		sprites[i + SCROLLS].setPosition(pos_x, pos_y[i]);

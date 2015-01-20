@@ -45,8 +45,10 @@ void FlyingObject::setShooting(bool s) {
 
 void FlyingObject::inreasePower(int v) {
 	power += v;
-	if (power > 3)
-		power = 3;
+	if (power > max_stat) {
+		power = max_stat;
+		increaseScore(69);
+	}
 	if (power < 1)
 		power = 1;
 }
@@ -62,7 +64,24 @@ int FlyingObject::getScore() {
 }
 
 void FlyingObject::setLife(int l) {
-	life = l;
+	if (l < life) {
+		if (!invisible) {
+			deathTime = 90;
+			invisible = true;
+
+			if (l == 0)
+				live = false;
+			else
+				life = l;
+		}
+	}
+	else
+		life = l;
+
+	if (life > max_stat) {
+		life = max_stat;
+		score += 123;
+	}
 }
 int FlyingObject::getLife() {
 	return life;
@@ -92,6 +111,20 @@ int FlyingObject::getId() {
 
 char FlyingObject::getType() {
 	return type;
+}
+
+void FlyingObject::setInvisible(bool i) {
+	invisible = i;
+}
+bool FlyingObject::getInvisible() {
+	return invisible;
+}
+
+void FlyingObject::setDeathTime(int dT) {
+	deathTime = dT;
+}
+int FlyingObject::getDeathTime() {
+	return deathTime;
 }
 
 

@@ -27,13 +27,13 @@ void Application::appEvent() {
 		if (event.type == sf::Event::Closed)
 			window->close();
 
-		if (event.type == Event::KeyReleased) {
+		/*if (event.type == Event::KeyReleased) {
 			switch (event.key.code) {
 			case Keyboard::Escape:
 				stManager->setActiveState(stManager->getState(QUIT));
 				break;
 			}
-		}
+		}*/
 		if (event.type == Event::KeyReleased || event.type == Event::KeyPressed || event.type == Event::TextEntered)
 			stManager->getActiveState()->handleEvent(&event, stManager);
 

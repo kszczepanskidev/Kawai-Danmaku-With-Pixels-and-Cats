@@ -7,16 +7,21 @@ void MenuState::handleEvent(Event* event, StateManager* stManager) {
 	if (event->type == Event::KeyReleased) {
 		switch (event->key.code) {
 		case Keyboard::W:
+		case Keyboard::Up:
 			--currentMenu;
 			if (currentMenu < 0)
 				currentMenu = stateTexts.size() - 1;
 			break;
 		case Keyboard::S:
+		case Keyboard::Down:
 			++currentMenu;
 			if (currentMenu == stateTexts.size())
 				currentMenu = 0;
 			break;
+		case Keyboard::Escape:
+			currentMenu = MENU_QUIT;
 		case Keyboard::Return:
+		case Keyboard::Space:
 			selectState(stManager);
 			break;
 		}

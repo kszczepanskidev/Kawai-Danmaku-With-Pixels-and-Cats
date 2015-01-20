@@ -17,13 +17,18 @@ void Bonus::draw(RenderWindow* window) {
 }
 
 Bonus::Bonus(TextureManager* texManager, float x, float y) {
-	//id = -1;
+	id = 1;
+	
 	type = 'b';
 	live = true;
 
 	sprite.setTexture(texManager->getTexture("bonus"));
 	sprite.setOrigin(sprite.getLocalBounds().width / 2.f, sprite.getLocalBounds().height / 2.f);
 	sprite.setColor(Color::Magenta);
+	if (rand() % 100 < 10) {
+		id = 2;
+		sprite.setColor(Color::Green);
+	}
 
 	pos_x = x;
 	pos_y = y;

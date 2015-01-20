@@ -2,17 +2,32 @@
 
 #include "StateManager.h"
 
+const int max_phase = 3;
+
 enum textures{ BG, SPLASHIN, KRYSZTAL, SCOFIELD, SHIHOIN, ARCHER, LOGO, DANCEFLOOR };
 enum texts { CREDITS_TEXT, DEVELOPEDBY_TEXT, CODERS_TEXT, KRYSZTAL_TEXT, SCOFIELD_TEXT, ARTS_TEXT, ARCHER_TEXT, SHIHOIN_TEXT, MUSIC_TEXT, DANCEFLOOR_TEXT };
 
 void CreditsState::handleEvent(Event* event, StateManager* stManager) {
-	if (event->type == Event::KeyReleased && event->key.code == Keyboard::Return)
-	if (phase == 3) {
-		stManager->setActiveState(stManager->getState(MAINMENU));
-		phase = 0;
+	if (event->type == Event::KeyReleased)
+		switch (event->key.code) {
+		case Keyboard::Escape:
+			stManager->setActiveState(stManager->getState(MAINMENU));
+			break;
+		case Keyboard::Return:
+		case Keyboard::Right:
+		case Keyboard::D:
+			if (phase == max_phase) {
+				stManager->setActiveState(stManager->getState(MAINMENU));
+				phase = -1;
+			} else
+				++phase;
+			break;
+		case Keyboard::Left:
+		case Keyboard::A:
+			if (phase > 0)
+				--phase;
+			break;
 	}
-	else
-		++phase;
 }
 
 void CreditsState::update(StateManager* stManager) {
@@ -79,7 +94,7 @@ void CreditsState::initSprites(TextureManager* texManager) {
 	sprites.emplace_back(temp);
 	sprites[LOGO].setPosition(359.f, 83.f);
 	sprites[LOGO].setTextureRect(IntRect(0, 0, 595, 510));
-	sprites[LOGO].setScale(0.82, 0.82);
+	sprites[LOGO].setScale(0.82f, 0.82f);
 }
 
 void CreditsState::draw(RenderWindow* window) {

@@ -7,7 +7,7 @@ enum gameTexts{ SCORE, SCORE_V, LIFE, LIFE_V, POWER, POWER_V, SPECIAL, SPECIAL_V
 void MPGameState::handleEvent(Event* event, StateManager* stManager) {
 	if (event->type == Event::KeyReleased)
 		switch (event->key.code) {
-		case Keyboard::Return:
+		case Keyboard::Escape:
 			stManager->setActiveState(stManager->getState(MAINMENU));
 			break;
 		default:
@@ -88,7 +88,7 @@ void MPGameState::updateTexts() {
 
 
 void MPGameState::draw(RenderWindow* window) {
-	window->clear(Color(169, 210, 216, 255));
+	window->clear(Color(144, 179, 184, 255));
 
 	for (int i = 0; i < 3; ++i) {
 		sprites[i + SCROLLS].setPosition(pos_x, pos_y[i]);

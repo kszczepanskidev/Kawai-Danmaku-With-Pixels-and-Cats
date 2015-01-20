@@ -10,13 +10,14 @@ void checkCollision(vector<FlyingObject*>* objects, vector<Bullet*>* bullets) {
 		if ((*objects)[i]->getType() == 'p') {
 			/* PLAYER with ENEMIES*/
 			for (unsigned int j = 0; j < objects->size(); ++j) {
-				if ((*objects)[i]->getType() == 'e') {
+				if ((*objects)[j]->getType() == 'e') {
 					distance_x = (*objects)[i]->getPosX() - (*objects)[j]->getPosX();
 					distance_y = (*objects)[i]->getPosY() - (*objects)[j]->getPosY();
 
 					if (sqrt(pow(distance_x, 2.0) + pow(distance_y, 2.0)) < ((*objects)[i]->getHitboxR() + (*objects)[j]->getHitboxR())) {
 						//(*objects)[i]->setLive(false);
-						(*objects)[i]->inreasePower(-1);
+						//(*objects)[i]->inreasePower(-1);
+						(*objects)[i]->setLife((*objects)[i]->getLife() - 1);
 						(*objects)[j]->setLive(false);
 						//objects->erase((*objects).begin() + j, (*objects).end());
 						break;
@@ -32,7 +33,9 @@ void checkCollision(vector<FlyingObject*>* objects, vector<Bullet*>* bullets) {
 					if (sqrt(pow(distance_x, 2) + pow(distance_y, 2)) < ((*objects)[i]->getHitboxR() + (*bullets)[j]->getHitboxR())) {
 						//(*objects)[i]->setLive(false);
 						(*objects)[i]->inreasePower(-1);
-						objects->erase(objects->begin() + 1, objects->end());
+						(*objects)[i]->setLife((*objects)[i]->getLife() - 1);
+						bullets->erase(bullets->begin() + j);
+						//objects->erase(objects->begin() + 1, objects->end());
 						break;
 					}
 				}
@@ -47,6 +50,7 @@ void checkCollision(vector<FlyingObject*>* objects, vector<Bullet*>* bullets) {
 
 					if ((sqrt(pow(distance_x, 2) + pow(distance_y, 2))) < (((*objects)[i]->getHitboxR() + (*bullets)[j]->getHitboxR()))) {
 						(*objects)[i]->setLive(false);
+						bullets->erase(bullets->begin() + j);
 						break;
 					}
 				}
@@ -60,7 +64,10 @@ void checkCollision(vector<FlyingObject*>* objects, vector<Bullet*>* bullets) {
 					distance_y = (*objects)[j]->getPosY() - (*objects)[i]->getPosY();
 
 					if (sqrt(pow(distance_x, 2.0) + pow(distance_y, 2.0)) < ((*objects)[j]->getHitboxR() + (*objects)[i]->getHitboxR())) {
-						(*objects)[j]->inreasePower(1);
+						if ((*objects)[j]->getId() == 1)
+							(*objects)[j]->inreasePower(1);
+						else if ((*objects)[j]->getId() == 2)
+							(*objects)[i]->setLife((*objects)[j]->getLife() + 1);
 						(*objects)[j]->increaseScore(5);
 						objects->erase((*objects).begin() + i);
 						break;

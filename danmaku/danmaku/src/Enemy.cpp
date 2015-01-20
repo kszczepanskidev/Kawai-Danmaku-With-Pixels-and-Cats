@@ -35,23 +35,37 @@ void Enemy::draw(RenderWindow* window) {
 	sprite.setPosition(pos_x, pos_y);
 	window->draw(sprite);
 
-	/*hitbox.setRadius(hitbox_r);
+	hitbox.setRadius(hitbox_r);
 	hitbox.setPosition(pos_x, pos_y);
 	hitbox.setFillColor(Color::Black);
-	window->draw(hitbox);*/
+	window->draw(hitbox);
 }
 
 void Enemy::shoot() {
 	for (int i = 0; i < power; ++i)
 		switch (id) {
 		case 0:
-			bullets->emplace_back(new Bullet(pos_x, pos_y + 5.f, 0.f - (float)(rand() % 90 + 45.f), ENEMY, texManager));
+			switch (power) {
+			case 1:
+				bullets->emplace_back(new Bullet(pos_x, pos_y + 5.f, -90.f/*0.f - (float)(rand() % 90 + 45.f)*/, ENEMY, texManager));
+				break;
+			case 2:
+				bullets->emplace_back(new Bullet(pos_x + 10.f, pos_y + 10.f, -70.f, ENEMY, texManager));
+				bullets->emplace_back(new Bullet(pos_x - 10.f, pos_y + 10.f, -110.f, ENEMY, texManager));
+				break;
+			case 3:
+				bullets->emplace_back(new Bullet(pos_x + 10.f, pos_y + 10.f, -70.f, ENEMY, texManager));
+				bullets->emplace_back(new Bullet(pos_x + 5.f, pos_y + 10.f, -90.f, ENEMY, texManager));
+				bullets->emplace_back(new Bullet(pos_x - 5.f, pos_y + 10.f, -90.f, ENEMY, texManager));
+				bullets->emplace_back(new Bullet(pos_x - 10.f, pos_y + 10.f, -110.f, ENEMY, texManager));
+				break;
+			}
 			break;
 		case 1:
 			bullets->emplace_back(new Bullet(pos_x, pos_y + 5.f, -90.f, 2, texManager));
 			break;
 	}
-	fireTime = currentTime + 25;
+	fireTime = currentTime + 35;
 }
 
 Enemy::Enemy(TextureManager* tM, vector<Bullet*>* b, int i, float x, float y, float a, float s) {
@@ -76,7 +90,7 @@ Enemy::Enemy(TextureManager* tM, vector<Bullet*>* b, int i, float x, float y, fl
 	pos_y = y;
 	life = 3;
 
-	power = 1;
+	power = rand() % 3 + 1;
 
 	fireTime = 0;
 	currentTime = 0;
@@ -89,7 +103,11 @@ Enemy::Enemy(TextureManager* tM, vector<Bullet*>* b, int i, float x, float y, fl
 	hitbox_pos_x = sprite.getOrigin().x;
 	hitbox_pos_y = sprite.getOrigin().y;
 
-	angle = 60.f; a;
+	if (pos_x < 538.f)
+		angle = rand() % 10 + 50.f;//60.f; a;
+	else
+		angle = rand() % 10 + 140.f;//60.f; a;
+	
 
 	bullets = b;
 

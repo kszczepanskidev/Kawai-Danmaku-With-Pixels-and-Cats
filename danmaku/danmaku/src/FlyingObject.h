@@ -3,12 +3,16 @@
 #include "Bullet.h"
 #include "TextureManager.h"
 
+const int max_stat = 5;
+
 class FlyingObject {
 protected:
 	Sprite sprite;
 	TextureManager* texManager;
 
 	bool live, shooting;
+	bool invisible;
+	int deathTime;
 
 	char type;				//p - player, b - bonus, e - enemy
 	int id;
@@ -61,6 +65,12 @@ public:
 
 	void setId(int);
 	int getId();
+
+	void setInvisible(bool);
+	bool getInvisible();
+
+	void setDeathTime(int);
+	int getDeathTime();
 
 	char getType();
 

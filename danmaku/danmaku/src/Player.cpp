@@ -50,7 +50,7 @@ void Player::handleEvent(Event* event) {
 			break;
 
 		case Keyboard::Equal:
-			if (power < 3)power++;
+			if (power < max_stat)power++;
 			break;
 		case Keyboard::Dash:
 			if (power > 1)power--;
@@ -74,6 +74,10 @@ int Player::update() {
 	if (/*Keyboard::isKeyPressed(Keyboard::Space)*/shooting && fireTime < currentTime)
 		shoot();
 
+	--deathTime;
+	if (deathTime == 0)
+		invisible = false;
+
 	return 0;
 }
 
@@ -89,32 +93,50 @@ void Player::move() {
 
 void Player::draw(RenderWindow* window) {
 	sprite.setPosition(pos_x, pos_y);
+	if (invisible && id != 3)
+		sprite.setColor(Color(0, 0, 0, 100));
+	else if (id != 3)
+		sprite.setColor(Color::Black);
+
 	window->draw(sprite);
 
-	/*hitbox.setRadius(hitbox_r);
+	hitbox.setRadius(hitbox_r);
 	hitbox.setPosition(pos_x, pos_y);
 	hitbox.setFillColor(Color::Red);
-	window->draw(hitbox);*/
+	window->draw(hitbox);
 }
 
 void Player::shoot() {
 	if (id == 3) {
-		bullets->emplace_back(new Bullet(pos_x, pos_y - 10.f, 90.f, 2, texManager));
+		bullets->emplace_back(new Bullet(pos_x - 3.5f, pos_y - 10.f, 90.f, 2, texManager));
 		fireTime = currentTime + (rand()%20 + 30);
 	}
 	else {
 		switch (power) {
 		case 1:
-			bullets->emplace_back(new Bullet(pos_x, pos_y - 10.f, 90.f, PLAYER, texManager));
+			bullets->emplace_back(new Bullet(pos_x - 3.5f, pos_y - 10.f, 90.f, PLAYER, texManager));
 			break;
 		case 2:
-			bullets->emplace_back(new Bullet(pos_x + 10.f, pos_y - 10.f, 90.f, PLAYER, texManager));
-			bullets->emplace_back(new Bullet(pos_x - 10.f, pos_y - 10.f, 90.f, PLAYER, texManager));
+			bullets->emplace_back(new Bullet(pos_x + 6.5f, pos_y - 10.f, 90.f, PLAYER, texManager));
+			bullets->emplace_back(new Bullet(pos_x - 13.5f, pos_y - 10.f, 90.f, PLAYER, texManager));
 			break;
 		case 3:
-			bullets->emplace_back(new Bullet(pos_x - 10.f, pos_y - 10.f, 70.f, PLAYER, texManager));
-			bullets->emplace_back(new Bullet(pos_x, pos_y - 10.f, 90.f, PLAYER, texManager));
-			bullets->emplace_back(new Bullet(pos_x + 10.f, pos_y - 10.f, 110.f, PLAYER, texManager));
+			bullets->emplace_back(new Bullet(pos_x - 13.5f, pos_y - 10.f, 70.f, PLAYER, texManager));
+			bullets->emplace_back(new Bullet(pos_x - 3.5f, pos_y - 10.f, 90.f, PLAYER, texManager));
+			bullets->emplace_back(new Bullet(pos_x + 6.5f, pos_y - 10.f, 110.f, PLAYER, texManager));
+			break;
+		case 4:
+			bullets->emplace_back(new Bullet(pos_x - 10.5f, pos_y - 10.f, 90.f, PLAYER, texManager));
+			bullets->emplace_back(new Bullet(pos_x - 28.5f, pos_y - 10.f, 90.f, PLAYER, texManager));
+			bullets->emplace_back(new Bullet(pos_x + 21.5f, pos_y - 10.f, 90.f, PLAYER, texManager));
+			bullets->emplace_back(new Bullet(pos_x + 3.f, pos_y - 10.f, 90.f, PLAYER, texManager));
+			break;
+		case 5:
+			bullets->emplace_back(new Bullet(pos_x - 13.5f, pos_y - 10.f, 72.f, PLAYER, texManager));
+			bullets->emplace_back(new Bullet(pos_x - 8.5f, pos_y - 10.f, 81.f, PLAYER, texManager));
+			bullets->emplace_back(new Bullet(pos_x - 3.5f, pos_y - 10.f, 90.f, PLAYER, texManager));
+			bullets->emplace_back(new Bullet(pos_x + 1.5f, pos_y - 10.f, 99.f, PLAYER, texManager));
+			bullets->emplace_back(new Bullet(pos_x + 6.5f, pos_y - 10.f, 108.f, PLAYER, texManager));
 			break;
 		}
 		fireTime = currentTime + 20;//10;
@@ -148,13 +170,16 @@ Player::Player(TextureManager* tM, vector<Bullet*>* b, int i, float x, float y) 
 
 	hitbox_r = 7.5f;
 	hitbox.setOrigin(hitbox_r, hitbox_r);
-	hitbox_pos_x = sprite.getOrigin().x;
+	hitbox_pos_x = sprite.getOrigin().x - 3.5f;
 	hitbox_pos_y = sprite.getOrigin().y;
 
 	bullets = b;
 	
 	live = true;
 	shooting = false;
+
+	deathTime = 0;
+	invisible = false;
 
 	if (id == 3) sprite.setColor(Color::White);
 }
