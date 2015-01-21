@@ -18,7 +18,7 @@ void CreditsState::handleEvent(Event* event, StateManager* stManager) {
 		case Keyboard::D:
 			if (phase == max_phase) {
 				stManager->setActiveState(stManager->getState(MAINMENU));
-				phase = -1;
+				phase = 0;
 			} else
 				++phase;
 			break;

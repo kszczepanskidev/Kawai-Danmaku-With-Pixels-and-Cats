@@ -100,10 +100,10 @@ void Player::draw(RenderWindow* window) {
 
 	window->draw(sprite);
 
-	hitbox.setRadius(hitbox_r);
+	/*hitbox.setRadius(hitbox_r);
 	hitbox.setPosition(pos_x, pos_y);
 	hitbox.setFillColor(Color::Red);
-	window->draw(hitbox);
+	window->draw(hitbox);*/
 }
 
 void Player::shoot() {

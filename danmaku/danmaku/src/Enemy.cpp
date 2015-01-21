@@ -35,10 +35,10 @@ void Enemy::draw(RenderWindow* window) {
 	sprite.setPosition(pos_x, pos_y);
 	window->draw(sprite);
 
-	hitbox.setRadius(hitbox_r);
+	/*hitbox.setRadius(hitbox_r);
 	hitbox.setPosition(pos_x, pos_y);
 	hitbox.setFillColor(Color::Black);
-	window->draw(hitbox);
+	window->draw(hitbox);*/
 }
 
 void Enemy::shoot() {

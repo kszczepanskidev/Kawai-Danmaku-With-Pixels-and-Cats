@@ -57,17 +57,17 @@ void checkCollision(vector<FlyingObject*>* objects, vector<Bullet*>* bullets) {
 			}
 		}
 		else if ((*objects)[i]->getType() == 'b') {
-			/* BONUS with PLAYER*/
+			/* BONUS with PLAYER*/ /* i - bonus, j - player*/
 			for (unsigned int j = 0; j < objects->size(); ++j) {
 				if ((*objects)[j]->getType() == 'p') {
 					distance_x = (*objects)[j]->getPosX() - (*objects)[i]->getPosX();
 					distance_y = (*objects)[j]->getPosY() - (*objects)[i]->getPosY();
 
 					if (sqrt(pow(distance_x, 2.0) + pow(distance_y, 2.0)) < ((*objects)[j]->getHitboxR() + (*objects)[i]->getHitboxR())) {
-						if ((*objects)[j]->getId() == 1)
+						if ((*objects)[i]->getId() == 1)
 							(*objects)[j]->inreasePower(1);
-						else if ((*objects)[j]->getId() == 2)
-							(*objects)[i]->setLife((*objects)[j]->getLife() + 1);
+						else if ((*objects)[i]->getId() == 2)
+							(*objects)[j]->setLife((*objects)[j]->getLife() + 1);
 						(*objects)[j]->increaseScore(5);
 						objects->erase((*objects).begin() + i);
 						break;
