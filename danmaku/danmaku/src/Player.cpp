@@ -1,7 +1,7 @@
 #include "Player.h"
 
-const float sx = 6.5f;
-const float sy = 6.5f;
+const float sx = 4.f;
+const float sy = 4.f;
 
 void Player::handleEvent(Event* event) {
 	if (event->type == Event::KeyPressed)

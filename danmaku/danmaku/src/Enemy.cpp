@@ -95,8 +95,8 @@ Enemy::Enemy(TextureManager* tM, vector<Bullet*>* b, int i, float x, float y, fl
 	fireTime = 0;
 	currentTime = 0;
 
-	speed_x = s;
-	speed_y = s;
+	speed_x = 3.f;// s;
+	speed_y = 3.f;// s;
 
 	hitbox_r = 15.f;
 	hitbox.setOrigin(hitbox_r, hitbox_r);
@@ -104,9 +104,9 @@ Enemy::Enemy(TextureManager* tM, vector<Bullet*>* b, int i, float x, float y, fl
 	hitbox_pos_y = sprite.getOrigin().y;
 
 	if (pos_x < 538.f)
-		angle = rand() % 10 + 50.f;//60.f; a;
+		angle = rand() % 10 + 40.f;//60.f; a;
 	else
-		angle = rand() % 10 + 140.f;//60.f; a;
+		angle = rand() % 10 + 150.f;//60.f; a;
 	
 
 	bullets = b;

@@ -51,8 +51,8 @@ Bullet::Bullet(float x, float y, float a, int t, TextureManager* texManager) {
 	sprite.setTexture(texManager->getTexture("bullet"));
 	sprite.setOrigin(sprite.getLocalBounds().width/2.f, sprite.getLocalBounds().height/2.f);
 
-	sX = 10.f;
-	sY = 10.f;
+	sX = 6.5f;
+	sY = 6.5f;
 
 	pos_x = x;
 	pos_y = y;
