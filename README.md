@@ -1,4 +1,4 @@
 Kawai-Danmaku-With-Pixels-and-Cats
 ==================================
 
-Game project for Computer Networks 2 labs at Uni
+Awesome danmaku (shmup) game with pixels, cats started as university project, but will be continued to deliver complete game.
