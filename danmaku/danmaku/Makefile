@@ -1,5 +1,5 @@
 ProjectName			:=DanMaku
-ProjectPath			:=../Release/	
+ProjectPath			:=Release/	
 Files				:=$(basename $(notdir $(wildcard src/*.cpp)))
 Compiler			:=g++
 
