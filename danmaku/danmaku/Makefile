@@ -23,6 +23,7 @@ OutputFile			:=$(ProjectPath)$(ProjectName)
 ## Main Build Targets
 ##
 $(OutputFile): $(Objects)
+	@$(MDir) $(ProjectPath)
 	$(Compiler) $(CompFlags) -o $(OutputFile) $(Objects) $(IncludePath) $(LibPath) $(Libs)
 
 ##
@@ -37,4 +38,4 @@ $(ObjectsDir)%$(ObjectSuffix): $(SourcesDir)%$(SourcesSuffix)
 ##
 clean:
 	-rm -r -f $(ObjectsDir)
-	-rm -f $(ProjectName)
+	-rm -r -f $(ProjectPath)
