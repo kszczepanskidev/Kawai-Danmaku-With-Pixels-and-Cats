@@ -1,0 +1,6 @@
+﻿server: 
+  - player, bullet, enemy objects
+  - evaluates all changes in game (position, score etc)
+client:
+  - sends input to server
+  - draws game

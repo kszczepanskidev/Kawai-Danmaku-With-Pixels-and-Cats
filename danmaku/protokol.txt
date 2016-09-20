@@ -1,4 +1,0 @@
-server structy player,bullet,enemy
-server oblicza x/y i everything
-client wysyła input i rysuje
-server może być w C++ (?) - inb4 flying vectors
