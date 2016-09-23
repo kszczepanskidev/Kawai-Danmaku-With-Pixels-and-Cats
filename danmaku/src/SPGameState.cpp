@@ -136,7 +136,7 @@ void SPGameState::initSprites(TextureManager* texManager) {
 	temp.setTexture(texManager->getTexture("game_bg"));
 	sprites.emplace_back(temp);
 
-	temp.setTexture(texManager->getTexture("game_custom1"));
+	temp.setTexture(texManager->getTexture("shihoin_av"));
 	sprites.emplace_back(temp);
 	sprites[CUSTOM1].setTextureRect(IntRect(0, 0, 157, 280));
 	sprites[CUSTOM1].setPosition(932.f, 440.f);

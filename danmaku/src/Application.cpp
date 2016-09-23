@@ -1,6 +1,9 @@
 #include "Application.h"
+#include <iomanip>
+Clock update_clock;
 
 void Application::appMainLoop() {
+	
 	while (window->isOpen()) {
 		appEvent();
 		appUpdate();
@@ -17,14 +20,19 @@ void Application::appDraw() {
 }
 
 void Application::appUpdate() {
-	stManager->getActiveState()->update(stManager);
+	Time elapsed_time = update_clock.getElapsedTime();
+	
+	if (elapsed_time.asSeconds() >= 0.01666) {
+		stManager->getActiveState()->update(stManager);
+		update_clock.restart();
+	}
 }
 
 void Application::appEvent() {
 	Event event;
 
 	while (window->pollEvent(event)) {
-		if (event.type == sf::Event::Closed)
+		if (event.type == Event::Closed)
 			window->close();
 
 		/*if (event.type == Event::KeyReleased) {
@@ -36,11 +44,6 @@ void Application::appEvent() {
 		}*/
 		if (event.type == Event::KeyReleased || event.type == Event::KeyPressed || event.type == Event::TextEntered)
 			stManager->getActiveState()->handleEvent(&event, stManager);
-
-		/*if (Keyboard::isKeyPressed(Keyboard::Delete))
-			window->setFramerateLimit(0);
-		else
-			window->setFramerateLimit(60);*/
 	}
 }
 
@@ -80,12 +83,13 @@ Application::Application() {
 	window = new RenderWindow();
 	window->create(VideoMode(1280, 720), "Kawai Danmaku With Pixels and Cats");
 	window->clear(Color::Black);
-	//window->setFramerateLimit(60);
-	window->setVerticalSyncEnabled(true);
+	//window->setVerticalSyncEnabled(true);
 	
 	Vector2i windowPos = window->getPosition();
 	windowPos.y -= 15;
 	window->setPosition(windowPos);
+
+	splashScreen();
 }
 
 Application::~Application() {}

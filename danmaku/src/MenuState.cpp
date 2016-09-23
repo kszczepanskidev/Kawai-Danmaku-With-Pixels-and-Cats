@@ -35,7 +35,7 @@ void MenuState::selectState(StateManager* stManager) {
 		stManager->setActiveState(stManager->getState(SPGAME));
 		break;
 	case MENU_START_MP:
-		stManager->setActiveState(stManager->getState(CONNECT));
+		//stManager->setActiveState(stManager->getState(CONNECT));
 		break;
 	case MENU_CREDITS:
 		stManager->setActiveState(stManager->getState(CREDITS));

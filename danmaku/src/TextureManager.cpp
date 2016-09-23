@@ -31,7 +31,6 @@ TextureManager::TextureManager() {
 	loadTexture("game_scroll1", "scroll1.png");
 	loadTexture("game_scroll2", "scroll2.png");
 	loadTexture("game_scroll3", "scroll3.png");
-	loadTexture("game_custom1", "sarima.png");
 	loadTexture("player", "player.png");
 	loadTexture("bullet", "bullet.png");
 	loadTexture("enemy1", "enemy1.png");
