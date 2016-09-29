@@ -1,5 +1,5 @@
-ProjectName			:=DanMaku
-ProjectPath			:=Release/	
+ProjectName			:=danmaku
+ProjectPath			:=Release/
 Files				:=$(basename $(notdir $(wildcard src/*.cpp)))
 Compiler			:=g++
 
@@ -11,8 +11,8 @@ CompFlags			:=-w -Wall -std=c++0x
 
 SourcesDir			:=src/
 ObjectsDir			:=obj/
-SourcesSuffix		:=.cpp
-ObjectSuffix		:=.o
+SourcesSuffix			:=.cpp
+ObjectSuffix			:=.o
 MDir				:=mkdir -p
 
 Sources				:=$(addprefix $(SourcesDir), $(addsuffix $(SourcesSuffix), $(Files)))
