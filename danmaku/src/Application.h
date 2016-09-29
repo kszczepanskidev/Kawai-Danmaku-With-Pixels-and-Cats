@@ -7,15 +7,15 @@
 #include "SPGameState.h"
 #include "MenuState.h"
 #include "ConnectState.h"
-
+#include <memory>
 
 class Application {
 private:
-	StateManager* stManager;
-	TextureManager* texManager;
-	AnimationHandler* aniHandler;
-	RenderWindow* window;
-	View* camera;
+	unique_ptr<StateManager> stManager;
+	unique_ptr<TextureManager> texManager;
+	unique_ptr<AnimationHandler> aniHandler;
+	unique_ptr<RenderWindow> window;
+	unique_ptr<View> camera;
 
 	Font font;
 

@@ -16,9 +16,9 @@ protected:
 	void initTexts();
 
 public:
-	virtual void handleEvent(Event*, StateManager*) = 0;
-	virtual void update(StateManager*) = 0;
-	virtual void draw(RenderWindow*) = 0;
+	virtual void handleEvent(Event*, unique_ptr<StateManager>) = 0;
+	virtual void update(unique_ptr<StateManager>) = 0;
+	virtual void draw(unique_ptr<RenderWindow>) = 0;
 
 	State();
 	~State();

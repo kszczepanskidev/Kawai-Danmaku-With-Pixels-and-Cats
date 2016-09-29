@@ -1,5 +1,6 @@
 #include "Application.h"
 #include <iomanip>
+//#include <memory>
 Clock update_clock;
 
 void Application::appMainLoop() {
@@ -76,18 +77,18 @@ void Application::splashScreen() {
 Application::Application() {
 	font.loadFromFile("resources/fonts/PressStart2P.ttf");
 
-	texManager = new TextureManager();
-	stManager = new StateManager(font, texManager);
-	aniHandler = new AnimationHandler();
+	texManager = make_unique<TextureManager>();
+	stManager = make_unique<StateManager>(font, texManager);
+	aniHandler = make_unique<AnimationHandler>();
 
-	window = new RenderWindow();
+	window = make_unique<RenderWindow>();
 	window->create(VideoMode(1280, 720), "Kawai Danmaku With Pixels and Cats");
 	window->clear(Color::Black);
 	//window->setVerticalSyncEnabled(true);
 	
-	Vector2i windowPos = window->getPosition();
-	windowPos.y -= 15;
-	window->setPosition(windowPos);
+	//Vector2i windowPos = window->getPosition();
+	//windowPos.y -= 15;
+	window->setPosition((window->getPosition()).y - 15);
 
 	splashScreen();
 }

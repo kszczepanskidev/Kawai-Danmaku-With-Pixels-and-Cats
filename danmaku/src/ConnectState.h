@@ -10,11 +10,11 @@ private:
 	vector<GameText*> connectTexts;
 
 	void initTexts();
-	void initSprites(TextureManager*);
+	void initSprites(unique_ptr<TextureManager>);
 public:
-	void handleEvent(Event*, StateManager*);
-	void update(StateManager*);
-	void draw(RenderWindow*);
+	virtual void handleEvent(Event*, unique_ptr<StateManager>);
+	virtual void update(unique_ptr<StateManager>);
+	virtual void draw(unique_ptr<RenderWindow>);
 
 	ConnectState(Font, TextureManager*);
 	virtual ~ConnectState();
